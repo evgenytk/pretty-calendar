@@ -1,3 +1,3 @@
 export interface Weekday {
-	name: string
+  name: string
 }

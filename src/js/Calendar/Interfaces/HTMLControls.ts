@@ -1,5 +1,5 @@
 export interface HTMLControls {
-	left: Element,
-	center: Element,
-	right: Element
+  left: Element,
+  center: Element,
+  right: Element
 }
