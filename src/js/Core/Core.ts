@@ -28,7 +28,7 @@ class Core {
 	}
 
 	public getWeekdays(): Array<Weekday> {
-		const weeks = ['Sun.', 'Mon.', 'Tue.', 'Wed.', 'Thu.', 'Fri.', 'Sat.'];
+		const weeks = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
 		const sorted = [];
 
 		let i:WeekdaysEnum = this._options.firstDay;

@@ -1,6 +1,7 @@
 import Core from '../Core/Core';
 import HTMLNode from '../HTML/HTMLNode';
 import { WeekdaysEnum } from '../Core/Enums';
+import { Weekday } from '../Core/Interfaces';
 import { CalendarViewEnum } from './Enum';
 import { CalendarOptions, CalendarNodes } from './Interfaces';
 
@@ -208,14 +209,33 @@ class Calendar {
 	private updateDays(core: Core): void {
 		const incoming = new Date();
 
-		const dates = core.monthView(incoming);
-		const cells: Array<Element> = [];
+		const dates = core.monthView(incoming),
+			  weeks = core.getWeekdays(),
+			  cells: Array<Element> = [];
+
+		weeks.forEach((week: Weekday) => {
+			cells.push(
+				new HTMLNode({
+					name: 'week',
+					tagName: 'div',
+					attributes: [{
+						name: 'class',
+						value: 'pc-cell light'
+					}],
+					content: week.name
+				}).element
+			)
+		});
 
 		dates.forEach((date: Date, i, array) => {
 			let className = 'pc-cell';
 
 			if(!date.dayInMonth(incoming)) {
 				className += ' light';
+			}
+
+			if(date.isToday()) {
+				className += ' active';
 			}
 
 			cells.push(
