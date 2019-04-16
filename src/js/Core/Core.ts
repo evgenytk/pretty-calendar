@@ -1,91 +1,95 @@
-import { WeekdaysEnum, MonthsEnum, CalendarStatesEnum } from './Enums';
-import { Day, CoreOptions } from './Interfaces';
+import { WeekdaysEnum, MonthsEnum } from './Enums';
+import { Weekday, CoreOptions } from './Interfaces';
 
 class Core {
 
-	private range: Array<Day>;
+	private _dates: Array<Date>;
 
-	private selected: Date;
-
-	private firstDay: WeekdaysEnum;
-
-	public state: CalendarStatesEnum;
-
-	private gridSize: number = 42;
+	private _options: CoreOptions;
 
 	constructor(options: CoreOptions) {
-		this.range = this.makeRange(options.minDate, options.maxDate);
-		this.selected = options.selectedDate;
-		this.firstDay = options.firstDay;
-		this.state = CalendarStatesEnum.DAYS;
+		this._dates = this.makeDates(options.minDate, options.maxDate);
+		this._options = options;
 	}
 
-	private makeRange(startDate: Date, endDate: Date): Array<Day> {
+	private makeDates(startDate: Date, endDate: Date): Array<Date> {
 		const diff:number = endDate.diffInDays(startDate);
-		const days: Array<Day> = [];
+		const dates: Array<Date> = [];
 		let i: number = 0;
 		
 		startDate = startDate.resetTime();
 
 		for(i = 0; i < diff; i++) {
-			days.push(this.makeDay(startDate));
+			dates.push(new Date(startDate));
 			startDate = startDate.addDays(1);
 		}
 
-		return days;
+		return dates;
 	}
 
-	private makeDay(date: Date): Day {
-		return {
-			day: date.getDate(),
-			week: date.getDay() + 1,
-			month: date.getMonth() + 1,
-			year: date.getFullYear()
+	public getWeekdays(): Array<Weekday> {
+		const weeks = ['Sun.', 'Mon.', 'Tue.', 'Wed.', 'Thu.', 'Fri.', 'Sat.'];
+		const sorted = [];
+
+		let i:WeekdaysEnum = this._options.firstDay;
+
+		for(i; i < weeks.length; i++) {
+			sorted.push({
+				name: weeks[i]
+			});
 		}
+
+		let j:WeekdaysEnum = 0;
+		for(j; j < this._options.firstDay; j++) {
+			sorted.push({
+				name: weeks[j]
+			});
+		}
+
+		return sorted
 	}
 
-	public filter(): Array<Day> {
-		const now: Day = this.makeDay(this.selected);
+	public monthView(date: Date): Array<Date> {
 
-		// Get all days in current month
-		const days: Array<Day> = this.range.filter((day: Day) => {
+		// Get all days in given month
+		const dates: Array<Date> = this._dates.filter((d: Date) => {
 			return (
-				day.year === now.year &&
-				day.month === now.month
+				d.getFullYear() === date.getFullYear() &&
+				d.getMonth() === date.getMonth()
 			)
 		});
 
-		// Getting a first index of the first day of current month in this.range
-		let firstIndex: number = this.range.findIndex((day) => {
+		// Getting a first index of the first day of current month in this._dates
+		let firstIndex: number = this._dates.findIndex((d: Date) => {
 			return (
-				day.year === days[0].year &&
-				day.month === days[0].month &&
-				day.day === days[0].day
+				d.getFullYear() === dates[0].getFullYear() &&
+				d.getMonth() === dates[0].getMonth() &&
+				d.getDate() === dates[0].getDate()
 			)
 		});
 
-		// Getting a last index of the first day of current month in this.range
-		let lastIndex: number = this.range.findIndex((day) => {
+		// Getting a last index of the first day of current month in this._dates
+		let lastIndex: number = this._dates.findIndex((d: Date) => {
 			return (
-				day.year === days[days.length - 1].year &&
-				day.month === days[days.length - 1].month &&
-				day.day === days[days.length - 1].day
+				d.getFullYear() === dates[dates.length - 1].getFullYear() &&
+				d.getMonth() === dates[dates.length - 1].getMonth() &&
+				d.getDate() === dates[dates.length - 1].getDate()
 			)
 		});
 
 		// Offset to left baesd on first day of week
-		while(this.range[firstIndex] !== undefined && this.range[firstIndex].week !== this.firstDay) {
-			days.unshift(this.range[firstIndex - 1]);
+		while(this._dates[firstIndex] !== undefined && this._dates[firstIndex].getDay() !== this._options.firstDay) {
+			dates.unshift(this._dates[firstIndex - 1]);
 			firstIndex--;
 		}
 
 		// Offset to right baesd on first day of week
-		while(this.range[lastIndex] !== undefined && days.length !== this.gridSize) {
-			days.push(this.range[lastIndex + 1]);
+		while(this._dates[lastIndex] !== undefined && dates.length !== 42) {
+			dates.push(this._dates[lastIndex + 1]);
 			lastIndex++;
 		}
 
-		return days.filter((day: Day) => day !== undefined);
+		return dates.filter((d: Date) => d !== undefined);
 	}
 }
 

@@ -1,23 +1,25 @@
 import Core from '../Core/Core';
 import HTMLNode from '../HTML/HTMLNode';
-import { WeekdaysEnum, CalendarStatesEnum } from '../Core/Enums';
-import { Day } from '../Core/Interfaces';
+import { WeekdaysEnum } from '../Core/Enums';
+import { CalendarViewEnum } from './Enum';
 import { CalendarOptions, CalendarNodes } from './Interfaces';
 
 class Calendar {
 
-	private rootNode: Element;
+	private _rootNode: Element;
 
-	private nodes: CalendarNodes;
+	private _nodes: CalendarNodes;
 
-	private options: CalendarOptions;
+	private _options: CalendarOptions;
 
-	private core: Core;
+	private _core: Core;
+
+	private _view: CalendarViewEnum;
 
 	static defaultOptions: CalendarOptions = {
 		minDate: new Date('1970-01-01'),
 		maxDate: new Date('2100-01-01'),
-		selectedDate: new Date(),
+		// selectedDate: new Date(),
 		firstDay: WeekdaysEnum.MONDAY,
 		dateInput: false,
 		timeInput: false,
@@ -26,16 +28,17 @@ class Calendar {
 	}
 
 	constructor(node: string | Element, options: object = {}) {
-		this.rootNode = this.findRootNode(node);
-		this.options = {
+		this._rootNode = this.findRootNode(node);
+		this._options = {
 			...Calendar.defaultOptions,
 			...options
 		};
-		this.nodes = this.makeNodes();
-		this.core = new Core(this.options);
-		this.renderRoot(this.rootNode, this.nodes.wrapper);
-		this.initEventListeners(this.rootNode);
-		this.updateGrid(this.core);
+		this._nodes = this.makeNodes();
+		this._core = new Core(this._options);
+		this._view = CalendarViewEnum.MONTH;
+		this.renderRoot(this._rootNode, this._nodes.wrapper);
+		this.initEventListeners(this._rootNode);
+		this.updateGrid(this._core);
 
 		console.log(this)
 	}
@@ -187,30 +190,31 @@ class Calendar {
 	}
 
 	private updateGrid(core: Core): void {
-		switch(core.state) {
-			case CalendarStatesEnum.DAYS: 
-				this.updateDays(core.filter())
+		switch(this._view) {
+			case CalendarViewEnum.MONTH: 
+				this.updateDays(core)
 				break;
-			case CalendarStatesEnum.MONTHS:
+			case CalendarViewEnum.YEAR:
 				// TODO
 				break;
-			case CalendarStatesEnum.YEARS:
+			case CalendarViewEnum.DECADE:
 				// TODO
 				break;
 			default:
-				throw new Error(`Unknown state "${core.state}"`);
+				throw new Error(`Unknown view "${this._view}"`);
 		}
 	}
 
-	private updateDays(days: Array<Day>): void {
+	private updateDays(core: Core): void {
+		const incoming = new Date();
+
+		const dates = core.monthView(incoming);
 		const cells: Array<Element> = [];
 
-		const { selectedDate } = this.options;
-
-		days.forEach((day: Day, i, array) => {
+		dates.forEach((date: Date, i, array) => {
 			let className = 'pc-cell';
 
-			if(selectedDate.getMonth() + 1 !== day.month) {
+			if(!date.dayInMonth(incoming)) {
 				className += ' light';
 			}
 
@@ -222,14 +226,12 @@ class Calendar {
 						name: 'class',
 						value: className
 					}],
-					content: day.day.toString()
+					content: date.getDate().toString()
 				}).element
 			)
 		});
 
-		// console.log(this.nodes)
-
-		this.render(this.nodes.plate, cells);
+		this.render(this._nodes.plate, cells);
 	}
 
 	// private updateMonths(days: Array<Day>): void {
