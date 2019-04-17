@@ -10,7 +10,8 @@
     "build:modern": "NODE_ENV=development BROWSERSLIST_ENV=modern webpack --mode development",
     "prod": "node clean.js && npm run prod:modern && npm run prod:legacy",
     "prod:legacy": "NODE_ENV=production BROWSERSLIST_ENV=legacy webpack --mode production",
-    "prod:modern": "NODE_ENV=production BROWSERSLIST_ENV=modern webpack --mode production"
+    "prod:modern": "NODE_ENV=production BROWSERSLIST_ENV=modern webpack --mode production",
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",
@@ -19,30 +20,33 @@
     "@babel/polyfill": "^7.2.5",
     "@babel/preset-env": "^7.3.1",
     "@babel/preset-react": "^7.0.0",
+    "@types/react": "^16.8.13",
+    "@types/react-dom": "^16.8.4",
     "autoprefixer": "^9.4.6",
+    "awesome-typescript-loader": "^5.2.1",
     "babel-loader": "^8.0.5",
     "css-loader": "^2.1.0",
     "cssnano": "^4.1.8",
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.5.0",
     "node-sass": "^4.11.0",
+    "nodelist-foreach-polyfill": "^1.2.0",
     "postcss-custom-properties": "^8.0.9",
     "postcss-flexbugs-fixes": "^4.1.0",
     "postcss-loader": "^3.0.0",
     "sass-loader": "^7.1.0",
+    "source-map-loader": "^0.2.4",
     "style-loader": "^0.23.1",
-    "nodelist-foreach-polyfill": "^1.2.0",
+    "typescript": "^3.4.3",
     "webpack": "^4.29.0",
     "webpack-cli": "^3.2.1",
-    "webpack-dev-server": "^3.1.14",
-    "source-map-loader": "^0.2.4",
-    "awesome-typescript-loader": "^5.2.1",
-    "@types/react": "^16.8.13",
-    "@types/react-dom": "^16.8.4",
-    "typescript": "^3.4.3"
+    "webpack-dev-server": "^3.1.14"
   },
   "dependencies": {
+    "@types/jest": "^24.0.11",
+    "jest": "^24.7.1",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "ts-jest": "^24.0.2"
   }
 }
