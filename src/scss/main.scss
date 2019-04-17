@@ -129,7 +129,7 @@
     position: relative;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: flex-start;
   }
 
   &-cell {
@@ -161,9 +161,9 @@
     &:before {
       position: absolute;
       bottom: 0;
-      right: 0;
-      width: 69px;
-      height: calc(100% - 32px);
+      right: 3px;
+      width: 72px;
+      height: calc(100% - 36px);
       background: #f2f2f2;
       border-radius: $pc-border-radius;
       content: '';
@@ -172,9 +172,9 @@
   }
 
   &-plate-days &-cell {
-    width: 32px;
-    height: 32px;
-    line-height: 32px;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
 
     // &:nth-child(n+8) {
       cursor: pointer;
