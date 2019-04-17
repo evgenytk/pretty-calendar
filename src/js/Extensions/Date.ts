@@ -2,6 +2,8 @@ interface Date {
   resetTime(): Date,
   diffInDays(date: Date): number,
   addDays(count: number): Date,
+  addMonths(count: number): Date,
+  addYears(count: number): Date,
   isToday(): boolean,
   dayInMonth(date: Date): boolean
 }
@@ -22,7 +24,31 @@ Date.prototype.diffInDays = function(date: Date): number {
 Date.prototype.addDays = function(count: number): Date {
   const timestamp: number = new Date(this).getTime();
 
-  return new Date(timestamp + (3600 * 24 * 1000));
+  if(count >= 0) {
+    return new Date(timestamp + (3600 * 24 * count * 1000));
+  } else {
+    return new Date(timestamp - (3600 * 24 * Math.abs(count) * 1000));
+  }
+}
+
+Date.prototype.addMonths = function(count: number): Date {
+  const timestamp: number = new Date(this).getTime();
+
+  if(count >= 0) {
+    return new Date(timestamp + (3600 * 24 * 30 * count * 1000));
+  } else {
+    return new Date(timestamp - (3600 * 24 * 30 * Math.abs(count) * 1000));
+  }
+}
+
+Date.prototype.addYears = function(count: number): Date {
+  const timestamp: number = new Date(this).getTime();
+
+  if(count >= 0) {
+    return new Date(timestamp + (3600 * 24 * 30 * 12 * count * 1000));
+  } else {
+    return new Date(timestamp - (3600 * 24 * 30 * 12 * Math.abs(count) * 1000));
+  }
 }
 
 Date.prototype.isToday = function(): boolean {
