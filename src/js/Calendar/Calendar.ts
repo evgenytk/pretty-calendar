@@ -1,7 +1,6 @@
 import Core from '../Core/Core';
 import HTMLNode from '../HTML/HTMLNode';
 import { WeekdaysEnum } from '../Core/Enums';
-import { Weekday } from '../Core/Interfaces';
 import { CalendarViewEnum } from './Enum';
 import { CalendarOptions, CalendarNodes } from './Interfaces';
 
@@ -9,13 +8,17 @@ class Calendar {
 
   private _rootNode: Element;
 
-  private _nodes: CalendarNodes;
+  private _html: CalendarNodes;
 
   private _options: CalendarOptions;
 
   private _core: Core;
 
   private _view: CalendarViewEnum;
+
+  private _viewOffset: number = 0;
+
+  private _now: Date;
 
   static defaultOptions: CalendarOptions = {
     minDate: new Date('1970-01-01'),
@@ -34,12 +37,13 @@ class Calendar {
       ...Calendar.defaultOptions,
       ...options
     };
-    this._nodes = this.makeNodes();
+    this._now = new Date;
     this._core = new Core(this._options);
     this._view = CalendarViewEnum.MONTH;
-    this.renderRoot(this._rootNode, this._nodes.wrapper);
-    this.initEventListeners(this._rootNode);
-    this.updateGrid(this._core);
+    this._html = this.makeHTMLModel();
+    this.renderRoot(this._rootNode, this._html.wrapper);
+    this.updateView();
+    this.initEventListeners();
 
     console.log(this)
   }
@@ -58,7 +62,7 @@ class Calendar {
     return node;
   }
 
-  private makeNodes(): CalendarNodes {
+  private makeHTMLModel(): CalendarNodes {
     const plate = new HTMLNode({
       name: 'plage',
       tagName: 'div',
@@ -183,17 +187,36 @@ class Calendar {
     });
   }
 
-  private initEventListeners(node: Element): void {
-    node.addEventListener('click', (event) => {
-      console.log('TRIGGERED EVENT')
-      console.log(event);
+  private initEventListeners(): void {
+    this._html.wrapper.addEventListener('click', (event) => {
+      if(event.target === null || !(event.target instanceof Element)) {
+        return null;
+      }
+
+      if(event.target.isEqualNode(this._html.controls.left)) {
+        this.handleLeftClick();
+      }
+
+      if(event.target.isEqualNode(this._html.controls.right)) {
+        this.handleRightClick();
+      }
     })
   }
 
-  private updateGrid(core: Core): void {
+  handleLeftClick() {
+    this._viewOffset -= 1;
+    this.updateView();
+  }
+
+  handleRightClick() {
+    this._viewOffset += 1;
+    this.updateView();
+  }
+
+  private updateView(): void {
     switch(this._view) {
       case CalendarViewEnum.MONTH: 
-        this.updateDays(core)
+        this.updateMonthView();
         break;
       case CalendarViewEnum.YEAR:
         // TODO
@@ -206,14 +229,15 @@ class Calendar {
     }
   }
 
-  private updateDays(core: Core): void {
-    const incoming = new Date();
+  private updateMonthView(): void {
+    const date: Date = this._now.addMonths(1 * this._viewOffset);
 
-    const dates = core.monthView(incoming),
-        weeks = core.getWeekdays(),
-        cells: Array<Element> = [];
+    const dates: Array<Date> = this._core.monthView(date),
+          weeks: Array<string> = this._core.getWeekdays(),
+          months: Array<string> = this._core.getMonths(),
+          cells: Array<Element> = [];
 
-    weeks.forEach((week: Weekday) => {
+    weeks.forEach((week: string) => {
       cells.push(
         new HTMLNode({
           name: 'week',
@@ -222,19 +246,19 @@ class Calendar {
             name: 'class',
             value: 'pc-cell light'
           }],
-          content: week.name
+          content: week
         }).element
       )
     });
 
-    dates.forEach((date: Date, i, array) => {
+    dates.forEach((d: Date, i, array) => {
       let className = 'pc-cell';
 
-      if(!date.dayInMonth(incoming)) {
+      if(!d.dayInMonth(date)) {
         className += ' light';
       }
 
-      if(date.isToday()) {
+      if(d.isToday()) {
         className += ' active';
       }
 
@@ -246,12 +270,24 @@ class Calendar {
             name: 'class',
             value: className
           }],
-          content: date.getDate().toString()
+          content: d.getDate().toString()
         }).element
       )
     });
 
-    this.render(this._nodes.plate, cells);
+    this.render(this._html.plate, cells);
+    this.render(
+      this._html.controls.center, 
+      new HTMLNode({
+        name: 'title',
+        tagName: 'div',
+        attributes: [{
+          name: 'class',
+          value: 'pc-title'
+        }],
+        content: `${months[date.getMonth()]}, ${date.getFullYear()}`
+      }).element
+    );
   }
 
   // private updateMonths(days: Array<Day>): void {

@@ -12,7 +12,7 @@ import HTMLNode from './HTML/HTMLNode';
 // console.log(core.filter())
 
 
-// const calendar = new Calendar('#pc', {
-//  selectedDate: new Date('2019-02-01')
-// });
-const calendar = new Calendar('#pc');
+const calendar = new Calendar('#pc', {
+ selectedDate: new Date('2019-02-01')
+});
+// const calendar = new Calendar('#pc');

@@ -4,5 +4,6 @@ export interface CalendarOptions extends CoreOptions {
   dateInput: boolean,
   timeInput: boolean,
   hours24: boolean,
+  selectedDate?: Date,
   onChange: Function
 }
