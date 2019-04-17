@@ -1,5 +1,5 @@
 import { WeekdaysEnum, MonthsEnum } from './Enums';
-import { Weekday, CoreOptions } from './Interfaces';
+import { CoreOptions } from './Interfaces';
 
 class Core {
 
@@ -27,26 +27,26 @@ class Core {
     return dates;
   }
 
-  public getWeekdays(): Array<Weekday> {
+  public getMonths(): Array<string> {
+    return ['January', 'February', 'March', 'April', 'May', 'June', 'Jule', 'August', 'September', 'October', 'November', 'December'];
+  }
+
+  public getWeekdays(): Array<string> {
     const weeks = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
     const sorted = [];
 
     let i:WeekdaysEnum = this._options.firstDay;
 
     for(i; i < weeks.length; i++) {
-      sorted.push({
-        name: weeks[i]
-      });
+      sorted.push(weeks[i]);
     }
 
     let j:WeekdaysEnum = 0;
     for(j; j < this._options.firstDay; j++) {
-      sorted.push({
-        name: weeks[j]
-      });
+      sorted.push(weeks[j]);
     }
 
-    return sorted
+    return sorted;
   }
 
   public monthView(date: Date): Array<Date> {
