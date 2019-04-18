@@ -1,5 +1,5 @@
-import { WeekdaysEnum, MonthsEnum } from './Enums';
-import { CoreOptions } from './Interfaces';
+import { WeekdaysEnum, MonthsEnum, GridViewEnum } from './Enums';
+import { CoreOptions, GridView } from './Interfaces';
 
 class Core {
 
@@ -49,7 +49,75 @@ class Core {
     return sorted;
   }
 
-  public monthView(date: Date): Array<Date> {
+  public decadeView(date: Date): GridView {
+
+    // Getting all dates in given year
+    const month: any = this._dates.find((d: Date) => {
+      return (
+        d.getFullYear() === date.getFullYear() &&
+        d.getMonth() === 0 &&
+        d.getDate() === 1
+      )
+    });
+
+    if(!(month instanceof Date)) {
+      throw new Error('...');
+    }
+
+    const years: Array<Date> = [];
+    let i: number = 0;
+
+    for(i; i < 12; i ++) {
+      years.unshift(new Date(month.getFullYear() - i, 0, 1));
+
+      if((month.getFullYear() + i) % 10 === 0) {
+        years.push(new Date(month.getFullYear() + i, 0, 1));
+      }
+
+      if((month.getFullYear() - i) % 10 === 0) {
+        years.unshift(new Date(month.getFullYear() - (i + 1), 0, 1))
+        break;
+      }
+    }
+
+    return {
+      title: `${years[1].getFullYear()} - ${years[years.length - 2].getFullYear()}`,
+      type: GridViewEnum.DECADE,
+      items: years
+    }
+  }
+
+  public yearView(date: Date): GridView {
+
+    // Getting all dates in given year
+    const dates: Array<Date> = this._dates.filter((d: Date) => {
+      return d.getFullYear() === date.getFullYear()
+    });
+
+    if(dates.length === 0) {
+      throw new Error('Given date is out of range')
+    }
+
+    const months: Array<Date> = [];
+    let i: number = 0;
+
+    // Getting a day of each month
+    for(i; i <= 11; i++) {
+      months[i] = dates.filter((d: Date) => d.getMonth() === i)[0];
+    }
+
+    return {
+      title: months[0].getFullYear().toString(),
+      type: GridViewEnum.YEAR,
+      items: months
+    }
+  }
+
+  /**
+   * @param  {Date}     date Depends of month
+   * @return {GridView}      [description]
+   */
+  public monthView(date: Date): GridView {
 
     // Get all days in given month
     const dates: Array<Date> = this._dates.filter((d: Date) => {
@@ -58,6 +126,13 @@ class Core {
         d.getMonth() === date.getMonth()
       )
     });
+
+    if(dates.length === 0) {
+      throw new Error('Given date is out of the range')
+    }
+
+    const months: Array<string> = this.getMonths();
+    const title: string = `${months[dates[0].getMonth()]}, ${dates[0].getFullYear()}`
 
     // Getting a first index of the first day of current month in this._dates
     let firstIndex: number = this._dates.findIndex((d: Date) => {
@@ -89,7 +164,11 @@ class Core {
       lastIndex++;
     }
 
-    return dates.filter((d: Date) => d !== undefined);
+    return {
+      title,
+      type: GridViewEnum.MONTH,
+      items: dates.filter((d: Date) => d !== undefined)
+    }
   }
 }
 
