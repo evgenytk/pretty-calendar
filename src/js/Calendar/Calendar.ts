@@ -1,8 +1,10 @@
-import Core from '../Core/Core';
-import HTMLNode from '../HTML/HTMLNode';
-import { WeekdaysEnum } from '../Core/Enums';
-import { CalendarViewEnum } from './Enum';
 import { CalendarOptions, CalendarNodes } from './Interfaces';
+
+import Core from '../Core/Core';
+import { WeekdaysEnum, GridViewEnum } from '../Core/Enums';
+import { GridView } from '../Core/Interfaces';
+import HTMLNode from '../HTML/HTMLNode';
+
 
 class Calendar {
 
@@ -14,9 +16,7 @@ class Calendar {
 
   private _core: Core;
 
-  private _view: CalendarViewEnum;
-
-  private _viewOffset: number = 0;
+  private _gridView: GridViewEnum;
 
   private _now: Date;
 
@@ -39,13 +39,13 @@ class Calendar {
     };
     this._now = new Date;
     this._core = new Core(this._options);
-    this._view = CalendarViewEnum.MONTH;
+    this._gridView = GridViewEnum.MONTH;
     this._html = this.makeHTMLModel();
     this.renderRoot(this._rootNode, this._html.wrapper);
     this.updateView();
     this.initEventListeners();
 
-    console.log(this)
+    // console.log(this)
   }
 
   private findRootNode(node: string | Element): Element {
@@ -204,37 +204,36 @@ class Calendar {
   }
 
   handleLeftClick() {
-    this._viewOffset -= 1;
+    // this._viewOffset -= 1;
     this.updateView();
   }
 
   handleRightClick() {
-    this._viewOffset += 1;
+    // this._viewOffset += 1;
     this.updateView();
   }
 
   private updateView(): void {
-    switch(this._view) {
-      case CalendarViewEnum.MONTH: 
+    switch(this._gridView) {
+      case GridViewEnum.MONTH: 
         this.updateMonthView();
         break;
-      case CalendarViewEnum.YEAR:
+      case GridViewEnum.YEAR:
         // TODO
         break;
-      case CalendarViewEnum.DECADE:
+      case GridViewEnum.DECADE:
         // TODO
         break;
       default:
-        throw new Error(`Unknown view "${this._view}"`);
+        throw new Error(`Unknown grid view "${this._gridView}"`);
     }
   }
 
   private updateMonthView(): void {
-    const date: Date = this._now.addMonths(1 * this._viewOffset);
+    const date: Date = this._now;
 
-    const dates: Array<Date> = this._core.monthView(date),
+    const view: GridView = this._core.monthView(date),
           weeks: Array<string> = this._core.getWeekdays(),
-          months: Array<string> = this._core.getMonths(),
           cells: Array<Element> = [];
 
     weeks.forEach((week: string) => {
@@ -251,7 +250,7 @@ class Calendar {
       )
     });
 
-    dates.forEach((d: Date, i, array) => {
+    view.items.forEach((d: Date, i, array) => {
       let className = 'pc-cell';
 
       if(!d.dayInMonth(date)) {
@@ -285,7 +284,7 @@ class Calendar {
           name: 'class',
           value: 'pc-title'
         }],
-        content: `${months[date.getMonth()]}, ${date.getFullYear()}`
+        content: `${view.title}`
       }).element
     );
   }
