@@ -3,28 +3,10 @@ import { CoreOptions, GridView } from './Interfaces';
 
 class Core {
 
-  private _dates: Array<Date>;
-
   private _options: CoreOptions;
 
   constructor(options: CoreOptions) {
-    this._dates = this.makeDates(options.minDate, options.maxDate);
     this._options = options;
-  }
-
-  private makeDates(startDate: Date, endDate: Date): Array<Date> {
-    const diff:number = endDate.diffInDays(startDate);
-    const dates: Array<Date> = [];
-    let i: number = 0;
-    
-    startDate = startDate.resetTime();
-
-    for(i = 0; i < diff; i++) {
-      dates.push(new Date(startDate));
-      startDate = startDate.addDays(1);
-    }
-
-    return dates;
   }
 
   public getMonths(): Array<string> {
@@ -50,64 +32,37 @@ class Core {
   }
 
   public decadeView(date: Date): GridView {
+    date = date.resetDecade()
+               .resetYear()
+               .resetMonth()
+               .resetTime();
 
-    // Getting all dates in given year
-    const month: any = this._dates.find((d: Date) => {
-      return (
-        d.getFullYear() === date.getFullYear() &&
-        d.getMonth() === 0 &&
-        d.getDate() === 1
-      )
-    });
-
-    if(!(month instanceof Date)) {
-      throw new Error('...');
-    }
-
-    const years: Array<Date> = [];
+    const dates: Array<Date> = [];
     let i: number = 0;
 
-    for(i; i < 12; i ++) {
-      years.unshift(new Date(month.getFullYear() - i, 0, 1));
-
-      if((month.getFullYear() + i) % 10 === 0) {
-        years.push(new Date(month.getFullYear() + i, 0, 1));
-      }
-
-      if((month.getFullYear() - i) % 10 === 0) {
-        years.unshift(new Date(month.getFullYear() - (i + 1), 0, 1))
-        break;
-      }
+    for(i; i < 10; i++) {
+      dates.push(date);
+      date = date.addYears(1);
     }
 
     return {
-      title: `${years[1].getFullYear()} - ${years[years.length - 2].getFullYear()}`,
+      title: `${dates[0].getFullYear()} - ${dates[dates.length - 1].getFullYear()}`,
       type: GridViewEnum.DECADE,
-      items: years
+      items: dates
     }
   }
 
   public yearView(date: Date): GridView {
-
-    // Getting all dates in given year
-    const dates: Array<Date> = this._dates.filter((d: Date) => {
-      return d.getFullYear() === date.getFullYear()
-    });
-
-    if(dates.length === 0) {
-      throw new Error('Given date is out of range')
-    }
-
+    date = date.resetYear().resetMonth().resetTime();
     const months: Array<Date> = [];
     let i: number = 0;
 
-    // Getting a day of each month
-    for(i; i <= 11; i++) {
-      months[i] = dates.filter((d: Date) => d.getMonth() === i)[0];
+    for(i; i < 12; i++) {
+      months.push(new Date(date.setMonth(i)));
     }
-
+    
     return {
-      title: months[0].getFullYear().toString(),
+      title: date.getFullYear().toString(),
       type: GridViewEnum.YEAR,
       items: months
     }
@@ -118,56 +73,38 @@ class Core {
    * @return {GridView}      [description]
    */
   public monthView(date: Date): GridView {
+    date = date.resetMonth().resetTime();
 
-    // Get all days in given month
-    const dates: Array<Date> = this._dates.filter((d: Date) => {
-      return (
-        d.getFullYear() === date.getFullYear() &&
-        d.getMonth() === date.getMonth()
-      )
-    });
-
-    if(dates.length === 0) {
-      throw new Error('Given date is out of the range')
-    }
-
+    const dates: Array<Date> = [];
     const months: Array<string> = this.getMonths();
-    const title: string = `${months[dates[0].getMonth()]}, ${dates[0].getFullYear()}`
+    const title: string = `${months[date.getMonth()]}, ${date.getFullYear()}`
 
-    // Getting a first index of the first day of current month in this._dates
-    let firstIndex: number = this._dates.findIndex((d: Date) => {
-      return (
-        d.getFullYear() === dates[0].getFullYear() &&
-        d.getMonth() === dates[0].getMonth() &&
-        d.getDate() === dates[0].getDate()
-      )
-    });
+    let i: number = 0;
+    let iDate = date;
 
-    // Getting a last index of the first day of current month in this._dates
-    let lastIndex: number = this._dates.findIndex((d: Date) => {
-      return (
-        d.getFullYear() === dates[dates.length - 1].getFullYear() &&
-        d.getMonth() === dates[dates.length - 1].getMonth() &&
-        d.getDate() === dates[dates.length - 1].getDate()
-      )
-    });
-
-    // Offset to left baesd on first day of week
-    while(this._dates[firstIndex] !== undefined && this._dates[firstIndex].getDay() !== this._options.firstDay) {
-      dates.unshift(this._dates[firstIndex - 1]);
-      firstIndex--;
+    while(iDate.getMonth() === date.getMonth()) {
+      dates.push(iDate);
+      iDate = iDate.addDays(1);
     }
 
-    // Offset to right baesd on first day of week
-    while(this._dates[lastIndex] !== undefined && dates.length !== 42) {
-      dates.push(this._dates[lastIndex + 1]);
-      lastIndex++;
+    iDate = date;
+
+    while(dates[0].getDay() !== this._options.firstDay) {
+      dates.unshift(iDate.addDays(-1));
+      iDate = iDate.addDays(-1);
+    }
+
+    iDate = dates[dates.length - 1];
+
+    while(dates.length !== 42) {
+      dates.push(iDate.addDays(1));
+      iDate = iDate.addDays(1);
     }
 
     return {
       title,
       type: GridViewEnum.MONTH,
-      items: dates.filter((d: Date) => d !== undefined)
+      items: dates
     }
   }
 }
