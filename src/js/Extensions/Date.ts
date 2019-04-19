@@ -5,6 +5,7 @@ interface Date {
   resetDecade(): Date,
   diffInDays(date: Date): number,
   addDays(count: number): Date,
+  addMonths(count: number): Date,
   addYears(count: number): Date,
   isToday(): boolean,
   dayInMonth(date: Date): boolean
@@ -51,6 +52,16 @@ Date.prototype.addDays = function(count: number): Date {
     return new Date(timestamp + (3600 * 24 * count * 1000));
   } else {
     return new Date(timestamp - (3600 * 24 * Math.abs(count) * 1000));
+  }
+}
+
+Date.prototype.addMonths = function(count: number): Date {
+  const date: Date = new Date(this);
+
+  if(count >= 0) {
+    return new Date(date.setMonth(date.getMonth() + count));
+  } else {
+    return new Date(date.setMonth(date.getMonth() - Math.abs(count)));
   }
 }
 
