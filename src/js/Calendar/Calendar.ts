@@ -18,12 +18,13 @@ class Calendar {
 
   private _gridView: GridViewEnum;
 
+  private _gridDate: Date;
+
   private _now: Date;
 
   static defaultOptions: CalendarOptions = {
     minDate: new Date('1970-01-01'),
     maxDate: new Date('2100-01-01'),
-    // selectedDate: new Date(),
     firstDay: WeekdaysEnum.MONDAY,
     dateInput: false,
     timeInput: false,
@@ -40,12 +41,13 @@ class Calendar {
     this._now = new Date;
     this._core = new Core(this._options);
     this._gridView = GridViewEnum.MONTH;
+    this._gridDate = new Date;
     this._html = this.makeHTMLModel();
     this.renderRoot(this._rootNode, this._html.wrapper);
     this.updateView();
     this.initEventListeners();
 
-    // console.log(this)
+    console.log(this)
   }
 
   private findRootNode(node: string | Element): Element {
@@ -200,17 +202,75 @@ class Calendar {
       if(event.target.isEqualNode(this._html.controls.right)) {
         this.handleRightClick();
       }
+
+      if(event.target.isEqualNode(this._html.controls.center)) {
+        this.handleCenterClick();
+      }
+
+      if(event.target.getAttribute('data-pc-timestamp')) {
+        this.handleCellClick(event.target.getAttribute('data-pc-timestamp'));
+      }
     })
   }
 
-  handleLeftClick() {
-    // this._viewOffset -= 1;
+  private handleCellClick(timestamp: any): void {
+    if(this._gridView !== GridViewEnum.MONTH) {
+      this._gridDate = new Date(parseInt(timestamp));
+      this._gridView = this._gridView - 1;
+      this.updateView();
+    } else {
+      this._options.selectedDate = new Date(parseInt(timestamp));
+      this.updateView();
+    }
+  }
+
+  private handleCenterClick(): void {
+    if(this._gridView !== GridViewEnum.DECADE) {
+      this._gridView = this._gridView + 1;
+      this.updateView();
+    }
+  }
+
+  private handleLeftClick() {
+    this.decrementGrid();
     this.updateView();
   }
 
-  handleRightClick() {
-    // this._viewOffset += 1;
+  private handleRightClick() {
+    this.incrementGrid();
     this.updateView();
+  }
+
+  private incrementGrid(): void {
+    switch(this._gridView) {
+      case GridViewEnum.MONTH: 
+        this._gridDate = this._gridDate.resetMonth().addMonths(1);
+        break;
+      case GridViewEnum.YEAR:
+        this._gridDate = this._gridDate.resetYear().addYears(1);
+        break;
+      case GridViewEnum.DECADE:
+        this._gridDate = this._gridDate.resetDecade().addYears(10);
+        break;
+      default:
+        throw new Error(`Unknown grid view "${this._gridView}"`);
+    }
+  }
+
+  private decrementGrid(): void {
+    switch(this._gridView) {
+      case GridViewEnum.MONTH: 
+        this._gridDate = this._gridDate.resetMonth().addMonths(-1);
+        break;
+      case GridViewEnum.YEAR:
+        this._gridDate = this._gridDate.resetYear().addYears(-1);
+        break;
+      case GridViewEnum.DECADE:
+        this._gridDate = this._gridDate.resetDecade().addYears(-10);
+        break;
+      default:
+        throw new Error(`Unknown grid view "${this._gridView}"`);
+    }
   }
 
   private updateView(): void {
@@ -219,21 +279,80 @@ class Calendar {
         this.updateMonthView();
         break;
       case GridViewEnum.YEAR:
-        // TODO
+        this.updateYearView();
         break;
       case GridViewEnum.DECADE:
-        // TODO
+        this.updateDecadeView();
         break;
       default:
         throw new Error(`Unknown grid view "${this._gridView}"`);
     }
   }
 
-  private updateMonthView(): void {
-    const date: Date = this._now;
+  private updateDecadeView(): void {
+    const date: Date = this._gridDate;
+    const view: GridView = this._core.getYears(date),
+          cells: Array<Element> = [];
 
-    const view: GridView = this._core.monthView(date),
-          weeks: Array<string> = this._core.getWeekdays(),
+    view.items.forEach((d: Date, i, array) => {
+      let className = 'pc-cell';
+
+      cells.push(
+        new HTMLNode({
+          name: 'cell',
+          tagName: 'div',
+          attributes: [{
+            name: 'class',
+            value: className
+          }, {
+            name: 'data-pc-timestamp',
+            value: d.getTime().toString()
+          }],
+          content: d.getFullYear().toString()
+        }).element
+      )
+    });
+
+    this.render(this._html.plate, cells);
+    this._html.plate.className = 'pc-plate pc-plate-months';
+    this._html.controls.center.textContent = view.title;
+  }
+
+  private updateYearView(): void {
+    const date: Date = this._gridDate;
+    const view: GridView = this._core.getMonths(date),
+          months: Array<string> = this._core.getMonthNames(),
+          cells: Array<Element> = [];
+
+    view.items.forEach((d: Date, i, array) => {
+      let className = 'pc-cell';
+
+      cells.push(
+        new HTMLNode({
+          name: 'cell',
+          tagName: 'div',
+          attributes: [{
+            name: 'class',
+            value: className
+          }, {
+            name: 'data-pc-timestamp',
+            value: d.getTime().toString()
+          }],
+          content: months[d.getMonth()]
+        }).element
+      )
+    });
+
+    this.render(this._html.plate, cells);
+    this._html.plate.className = 'pc-plate pc-plate-months';
+    this._html.controls.center.textContent = view.title;
+  }
+
+  private updateMonthView(): void {
+    const date: Date = this._gridDate;
+
+    const view: GridView = this._core.getDays(date),
+          weeks: Array<string> = this._core.getWeekdayNames(),
           cells: Array<Element> = [];
 
     weeks.forEach((week: string) => {
@@ -261,6 +380,10 @@ class Calendar {
         className += ' active';
       }
 
+      if(this._options.selectedDate && this._options.selectedDate.diffInDays(d) === 0) {
+        className += ' selected';
+      }
+
       cells.push(
         new HTMLNode({
           name: 'cell',
@@ -268,6 +391,9 @@ class Calendar {
           attributes: [{
             name: 'class',
             value: className
+          }, {
+            name: 'data-pc-timestamp',
+            value: d.getTime().toString()
           }],
           content: d.getDate().toString()
         }).element
@@ -275,27 +401,9 @@ class Calendar {
     });
 
     this.render(this._html.plate, cells);
-    this.render(
-      this._html.controls.center, 
-      new HTMLNode({
-        name: 'title',
-        tagName: 'div',
-        attributes: [{
-          name: 'class',
-          value: 'pc-title'
-        }],
-        content: `${view.title}`
-      }).element
-    );
+    this._html.plate.className = 'pc-plate pc-plate-days';
+    this._html.controls.center.textContent = view.title;
   }
-
-  // private updateMonths(days: Array<Day>): void {
-    
-  // }
-
-  // private updateYears(days: Array<Day>): void {
-    
-  // }  
 }
 
 export default Calendar;
