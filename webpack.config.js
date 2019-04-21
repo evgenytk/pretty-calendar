@@ -25,7 +25,7 @@ module.exports = {
   },
   entry: {
     app: modern ? [
-      './src/js/Core/Core.ts', 
+      './src/js/index.ts', 
       './src/scss/main.scss'
     ] : [
       '@babel/polyfill',

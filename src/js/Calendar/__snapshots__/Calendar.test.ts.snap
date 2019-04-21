@@ -1,0 +1,1691 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Publisher.ts it should change selectedDate by date click (MonthState) 1`] = `
+<body>
+  <div
+    id="root"
+  >
+    
+      
+    <div
+      class="pc-wrapper"
+    >
+      
+        
+      <div
+        class="pc-container"
+      >
+        
+          
+      
+        <nav
+          class="pc-controls"
+        >
+          
+        
+          <button
+            class="pc-pointer pc-pointer-left"
+            type="button"
+          />
+          
+        
+          <button
+            class="pc-title"
+            type="button"
+          >
+            January, 2019
+          </button>
+          
+        
+          <button
+            class="pc-pointer pc-pointer-right"
+            type="button"
+          />
+          
+      
+        </nav>
+        
+      
+        <div
+          class="pc-plate pc-plate-days"
+        >
+          
+        
+          <span
+            class="pc-cell light"
+          >
+            Mo
+          </span>
+          <span
+            class="pc-cell light"
+          >
+            Tu
+          </span>
+          <span
+            class="pc-cell light"
+          >
+            We
+          </span>
+          <span
+            class="pc-cell light"
+          >
+            Th
+          </span>
+          <span
+            class="pc-cell light"
+          >
+            Fr
+          </span>
+          <span
+            class="pc-cell light"
+          >
+            Sa
+          </span>
+          <span
+            class="pc-cell light"
+          >
+            Su
+          </span>
+          
+        
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1546214400000"
+          >
+            31
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1546300800000"
+          >
+            1
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1546387200000"
+          >
+            2
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1546473600000"
+          >
+            3
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1546560000000"
+          >
+            4
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1546646400000"
+          >
+            5
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1546732800000"
+          >
+            6
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1546819200000"
+          >
+            7
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1546905600000"
+          >
+            8
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1546992000000"
+          >
+            9
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1547078400000"
+          >
+            10
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1547164800000"
+          >
+            11
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1547251200000"
+          >
+            12
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1547337600000"
+          >
+            13
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1547424000000"
+          >
+            14
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1547510400000"
+          >
+            15
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1547596800000"
+          >
+            16
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1547683200000"
+          >
+            17
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1547769600000"
+          >
+            18
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1547856000000"
+          >
+            19
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1547942400000"
+          >
+            20
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1548028800000"
+          >
+            21
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1548115200000"
+          >
+            22
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1548201600000"
+          >
+            23
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1548288000000"
+          >
+            24
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1548374400000"
+          >
+            25
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1548460800000"
+          >
+            26
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1548547200000"
+          >
+            27
+          </button>
+          <button
+            class="pc-cell selected"
+            data-pc-timestamp="1548633600000"
+          >
+            28
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1548720000000"
+          >
+            29
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1548806400000"
+          >
+            30
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1548892800000"
+          >
+            31
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1548979200000"
+          >
+            1
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1549065600000"
+          >
+            2
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1549152000000"
+          >
+            3
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1549238400000"
+          >
+            4
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1549324800000"
+          >
+            5
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1549411200000"
+          >
+            6
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1549497600000"
+          >
+            7
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1549584000000"
+          >
+            8
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1549670400000"
+          >
+            9
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1549756800000"
+          >
+            10
+          </button>
+          
+      
+        </div>
+        
+    
+        
+      </div>
+      
+      
+    </div>
+    
+    
+  </div>
+</body>
+`;
+
+exports[`Publisher.ts it should change the scope to left by click (MonthState) 1`] = `
+<body>
+  <div
+    id="root"
+  >
+    
+      
+    <div
+      class="pc-wrapper"
+    >
+      
+        
+      <div
+        class="pc-container"
+      >
+        
+          
+      
+        <nav
+          class="pc-controls"
+        >
+          
+        
+          <button
+            class="pc-pointer pc-pointer-left"
+            type="button"
+          />
+          
+        
+          <button
+            class="pc-title"
+            type="button"
+          >
+            January, 2019
+          </button>
+          
+        
+          <button
+            class="pc-pointer pc-pointer-right"
+            type="button"
+          />
+          
+      
+        </nav>
+        
+      
+        <div
+          class="pc-plate pc-plate-days"
+        >
+          
+        
+          <span
+            class="pc-cell light"
+          >
+            Mo
+          </span>
+          <span
+            class="pc-cell light"
+          >
+            Tu
+          </span>
+          <span
+            class="pc-cell light"
+          >
+            We
+          </span>
+          <span
+            class="pc-cell light"
+          >
+            Th
+          </span>
+          <span
+            class="pc-cell light"
+          >
+            Fr
+          </span>
+          <span
+            class="pc-cell light"
+          >
+            Sa
+          </span>
+          <span
+            class="pc-cell light"
+          >
+            Su
+          </span>
+          
+        
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1546214400000"
+          >
+            31
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1546300800000"
+          >
+            1
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1546387200000"
+          >
+            2
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1546473600000"
+          >
+            3
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1546560000000"
+          >
+            4
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1546646400000"
+          >
+            5
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1546732800000"
+          >
+            6
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1546819200000"
+          >
+            7
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1546905600000"
+          >
+            8
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1546992000000"
+          >
+            9
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1547078400000"
+          >
+            10
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1547164800000"
+          >
+            11
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1547251200000"
+          >
+            12
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1547337600000"
+          >
+            13
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1547424000000"
+          >
+            14
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1547510400000"
+          >
+            15
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1547596800000"
+          >
+            16
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1547683200000"
+          >
+            17
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1547769600000"
+          >
+            18
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1547856000000"
+          >
+            19
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1547942400000"
+          >
+            20
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1548028800000"
+          >
+            21
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1548115200000"
+          >
+            22
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1548201600000"
+          >
+            23
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1548288000000"
+          >
+            24
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1548374400000"
+          >
+            25
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1548460800000"
+          >
+            26
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1548547200000"
+          >
+            27
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1548633600000"
+          >
+            28
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1548720000000"
+          >
+            29
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1548806400000"
+          >
+            30
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1548892800000"
+          >
+            31
+          </button>
+          <button
+            class="pc-cell light selected"
+            data-pc-timestamp="1548979200000"
+          >
+            1
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1549065600000"
+          >
+            2
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1549152000000"
+          >
+            3
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1549238400000"
+          >
+            4
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1549324800000"
+          >
+            5
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1549411200000"
+          >
+            6
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1549497600000"
+          >
+            7
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1549584000000"
+          >
+            8
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1549670400000"
+          >
+            9
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1549756800000"
+          >
+            10
+          </button>
+          
+      
+        </div>
+        
+    
+        
+      </div>
+      
+      
+    </div>
+    
+    
+  </div>
+</body>
+`;
+
+exports[`Publisher.ts it should change the scope to right by click (MonthState) 1`] = `
+<body>
+  <div
+    id="root"
+  >
+    
+      
+    <div
+      class="pc-wrapper"
+    >
+      
+        
+      <div
+        class="pc-container"
+      >
+        
+          
+      
+        <nav
+          class="pc-controls"
+        >
+          
+        
+          <button
+            class="pc-pointer pc-pointer-left"
+            type="button"
+          />
+          
+        
+          <button
+            class="pc-title"
+            type="button"
+          >
+            March, 2019
+          </button>
+          
+        
+          <button
+            class="pc-pointer pc-pointer-right"
+            type="button"
+          />
+          
+      
+        </nav>
+        
+      
+        <div
+          class="pc-plate pc-plate-days"
+        >
+          
+        
+          <span
+            class="pc-cell light"
+          >
+            Mo
+          </span>
+          <span
+            class="pc-cell light"
+          >
+            Tu
+          </span>
+          <span
+            class="pc-cell light"
+          >
+            We
+          </span>
+          <span
+            class="pc-cell light"
+          >
+            Th
+          </span>
+          <span
+            class="pc-cell light"
+          >
+            Fr
+          </span>
+          <span
+            class="pc-cell light"
+          >
+            Sa
+          </span>
+          <span
+            class="pc-cell light"
+          >
+            Su
+          </span>
+          
+        
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1551052800000"
+          >
+            25
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1551139200000"
+          >
+            26
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1551225600000"
+          >
+            27
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1551312000000"
+          >
+            28
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1551398400000"
+          >
+            1
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1551484800000"
+          >
+            2
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1551571200000"
+          >
+            3
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1551657600000"
+          >
+            4
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1551744000000"
+          >
+            5
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1551830400000"
+          >
+            6
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1551916800000"
+          >
+            7
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1552003200000"
+          >
+            8
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1552089600000"
+          >
+            9
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1552176000000"
+          >
+            10
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1552262400000"
+          >
+            11
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1552348800000"
+          >
+            12
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1552435200000"
+          >
+            13
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1552521600000"
+          >
+            14
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1552608000000"
+          >
+            15
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1552694400000"
+          >
+            16
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1552780800000"
+          >
+            17
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1552867200000"
+          >
+            18
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1552953600000"
+          >
+            19
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1553040000000"
+          >
+            20
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1553126400000"
+          >
+            21
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1553212800000"
+          >
+            22
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1553299200000"
+          >
+            23
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1553385600000"
+          >
+            24
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1553472000000"
+          >
+            25
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1553558400000"
+          >
+            26
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1553644800000"
+          >
+            27
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1553731200000"
+          >
+            28
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1553817600000"
+          >
+            29
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1553904000000"
+          >
+            30
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1553990400000"
+          >
+            31
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1554076800000"
+          >
+            1
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1554163200000"
+          >
+            2
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1554249600000"
+          >
+            3
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1554336000000"
+          >
+            4
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1554422400000"
+          >
+            5
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1554508800000"
+          >
+            6
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1554595200000"
+          >
+            7
+          </button>
+          
+      
+        </div>
+        
+    
+        
+      </div>
+      
+      
+    </div>
+    
+    
+  </div>
+</body>
+`;
+
+exports[`Publisher.ts it should initialize with MonthState 1`] = `
+<body>
+  <div
+    id="root"
+  >
+    
+      
+    <div
+      class="pc-wrapper"
+    >
+      
+        
+      <div
+        class="pc-container"
+      >
+        
+          
+      
+        <nav
+          class="pc-controls"
+        >
+          
+        
+          <button
+            class="pc-pointer pc-pointer-left"
+            type="button"
+          />
+          
+        
+          <button
+            class="pc-title"
+            type="button"
+          >
+            February, 2019
+          </button>
+          
+        
+          <button
+            class="pc-pointer pc-pointer-right"
+            type="button"
+          />
+          
+      
+        </nav>
+        
+      
+        <div
+          class="pc-plate pc-plate-days"
+        >
+          
+        
+          <span
+            class="pc-cell light"
+          >
+            Mo
+          </span>
+          <span
+            class="pc-cell light"
+          >
+            Tu
+          </span>
+          <span
+            class="pc-cell light"
+          >
+            We
+          </span>
+          <span
+            class="pc-cell light"
+          >
+            Th
+          </span>
+          <span
+            class="pc-cell light"
+          >
+            Fr
+          </span>
+          <span
+            class="pc-cell light"
+          >
+            Sa
+          </span>
+          <span
+            class="pc-cell light"
+          >
+            Su
+          </span>
+          
+        
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1548633600000"
+          >
+            28
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1548720000000"
+          >
+            29
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1548806400000"
+          >
+            30
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1548892800000"
+          >
+            31
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1548979200000"
+          >
+            1
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1549065600000"
+          >
+            2
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1549152000000"
+          >
+            3
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1549238400000"
+          >
+            4
+          </button>
+          <button
+            class="pc-cell selected"
+            data-pc-timestamp="1549324800000"
+          >
+            5
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1549411200000"
+          >
+            6
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1549497600000"
+          >
+            7
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1549584000000"
+          >
+            8
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1549670400000"
+          >
+            9
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1549756800000"
+          >
+            10
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1549843200000"
+          >
+            11
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1549929600000"
+          >
+            12
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1550016000000"
+          >
+            13
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1550102400000"
+          >
+            14
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1550188800000"
+          >
+            15
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1550275200000"
+          >
+            16
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1550361600000"
+          >
+            17
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1550448000000"
+          >
+            18
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1550534400000"
+          >
+            19
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1550620800000"
+          >
+            20
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1550707200000"
+          >
+            21
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1550793600000"
+          >
+            22
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1550880000000"
+          >
+            23
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1550966400000"
+          >
+            24
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1551052800000"
+          >
+            25
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1551139200000"
+          >
+            26
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1551225600000"
+          >
+            27
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1551312000000"
+          >
+            28
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1551398400000"
+          >
+            1
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1551484800000"
+          >
+            2
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1551571200000"
+          >
+            3
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1551657600000"
+          >
+            4
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1551744000000"
+          >
+            5
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1551830400000"
+          >
+            6
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1551916800000"
+          >
+            7
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1552003200000"
+          >
+            8
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1552089600000"
+          >
+            9
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1552176000000"
+          >
+            10
+          </button>
+          
+      
+        </div>
+        
+    
+        
+      </div>
+      
+      
+    </div>
+    
+    
+  </div>
+</body>
+`;
+
+exports[`Publisher.ts it should update the state from MonthState to YearState by click 1`] = `
+<body>
+  <div
+    id="root"
+  >
+    
+      
+    <div
+      class="pc-wrapper"
+    >
+      
+        
+      <div
+        class="pc-container"
+      >
+        
+          
+      
+        <nav
+          class="pc-controls"
+        >
+          
+        
+          <button
+            class="pc-pointer pc-pointer-left"
+            type="button"
+          />
+          
+        
+          <button
+            class="pc-title"
+            type="button"
+          >
+            2019
+          </button>
+          
+        
+          <button
+            class="pc-pointer pc-pointer-right"
+            type="button"
+          />
+          
+      
+        </nav>
+        
+      
+        <div
+          class="pc-plate pc-plate-months"
+        >
+          
+        
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1546300800000"
+          >
+            January
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1548979200000"
+          >
+            February
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1551398400000"
+          >
+            March
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1554076800000"
+          >
+            April
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1556668800000"
+          >
+            May
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1559347200000"
+          >
+            June
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1561939200000"
+          >
+            Jule
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1564617600000"
+          >
+            August
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1567296000000"
+          >
+            September
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1569888000000"
+          >
+            October
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1572566400000"
+          >
+            November
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1575158400000"
+          >
+            December
+          </button>
+          
+      
+        </div>
+        
+    
+        
+      </div>
+      
+      
+    </div>
+    
+    
+  </div>
+</body>
+`;
+
+exports[`Publisher.ts it should update the state from YearState to DecadeState by click 1`] = `
+<body>
+  <div
+    id="root"
+  >
+    
+      
+    <div
+      class="pc-wrapper"
+    >
+      
+        
+      <div
+        class="pc-container"
+      >
+        
+          
+      
+        <nav
+          class="pc-controls"
+        >
+          
+        
+          <button
+            class="pc-pointer pc-pointer-left"
+            type="button"
+          />
+          
+        
+          <button
+            class="pc-title"
+            type="button"
+          >
+            2010 - 2019
+          </button>
+          
+        
+          <button
+            class="pc-pointer pc-pointer-right"
+            type="button"
+          />
+          
+      
+        </nav>
+        
+      
+        <div
+          class="pc-plate pc-plate-months"
+        >
+          
+        
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1264982400000"
+          >
+            2010
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1296507600000"
+          >
+            2011
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1328130000000"
+          >
+            2012
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1359925200000"
+          >
+            2013
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1391202000000"
+          >
+            2014
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1423170000000"
+          >
+            2015
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1454619600000"
+          >
+            2016
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1486242000000"
+          >
+            2017
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1517346000000"
+          >
+            2018
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1546462800000"
+          >
+            2019
+          </button>
+          
+      
+        </div>
+        
+    
+        
+      </div>
+      
+      
+    </div>
+    
+    
+  </div>
+</body>
+`;

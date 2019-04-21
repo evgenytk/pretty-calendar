@@ -1,56 +1,96 @@
-import { CalendarOptions, CalendarNodes } from './Interfaces';
-
-import Core from '../Core/Core';
-import { WeekdaysEnum, GridViewEnum } from '../Core/Enums';
-import { GridView } from '../Core/Interfaces';
-import HTMLNode from '../HTML/HTMLNode';
-
+import '../Extensions/Date';
+import Grid from '../Grid/Grid';
+import State from '../State/State';
+import MonthState from '../State/MonthState';
+import Publisher from '../Publisher/Publisher';
+import { CalendarOptions } from './CalendarOptions';
+import { WeekdaysEnum } from '../Grid/WeekdaysEnum';
 
 class Calendar {
 
-  private _rootNode: Element;
+  /**
+   * Main calendar options.
+   * 
+   * @type {CalendarOptions}
+   */
+  public options: CalendarOptions;
 
-  private _html: CalendarNodes;
-
-  private _options: CalendarOptions;
-
-  private _core: Core;
-
-  private _gridView: GridViewEnum;
-
-  private _gridDate: Date;
-
-  private _now: Date;
-
+  /**
+   * Default calendar options.
+   * 
+   * @type {CalendarOptions}
+   */
   static defaultOptions: CalendarOptions = {
-    minDate: new Date('1970-01-01'),
-    maxDate: new Date('2100-01-01'),
-    firstDay: WeekdaysEnum.MONDAY,
-    dateInput: false,
-    timeInput: false,
-    hours24: true,
-    onChange: () => null
+    firstDay: WeekdaysEnum.MONDAY
   }
 
+  /**
+   * Grid generator.
+   * 
+   * @type {Grid}
+   */
+  public grid: Grid;
+
+  /**
+   * TODO: create comment here ...
+   * 
+   * @type {Date}
+   */
+  public scope: Date;
+
+  /**
+   * Calendar view state.
+   * 
+   * @type {State}
+   */
+  public state: State;
+
+  /**
+   * Event publisher.
+   * 
+   * @type {Publisher}
+   */
+  public publisher: Publisher;
+
+  /**
+   * Root HTML node.
+   * 
+   * @type {Element}
+   */
+  private root: Element;
+
+  /**
+   * Initializing.
+   * 
+   * @param {string | Element} node
+   * @param {object = {}}    options
+   */
   constructor(node: string | Element, options: object = {}) {
-    this._rootNode = this.findRootNode(node);
-    this._options = {
+    this.options = {
       ...Calendar.defaultOptions,
       ...options
-    };
-    this._now = new Date;
-    this._core = new Core(this._options);
-    this._gridView = GridViewEnum.MONTH;
-    this._gridDate = new Date;
-    this._html = this.makeHTMLModel();
-    this.renderRoot(this._rootNode, this._html.wrapper);
-    this.updateView();
-    this.initEventListeners();
+    }
 
-    console.log(this)
+    this.grid = new Grid({
+      firstDay: this.options.firstDay
+    });
+    this.state = new MonthState(this);
+    this.publisher = new Publisher();
+    this.scope = this.options.selectedDate || new Date;
+    this.root = this.findRoot(node);
+    this.updateRoot();
+    this.updateEventListeners();
   }
 
-  private findRootNode(node: string | Element): Element {
+  // TODO: validation for incorrect options
+
+  /**
+   * Finding the root HTML node in DOM.
+   * 
+   * @param  {string | Element}     node [description]
+   * @return {Element}     [description]
+   */
+  private findRoot(node: string | Element): Element {
     if(typeof node === 'string') {
       const findedNode = document.querySelector(node);
 
@@ -64,345 +104,119 @@ class Calendar {
     return node;
   }
 
-  private makeHTMLModel(): CalendarNodes {
-    const plate = new HTMLNode({
-      name: 'plage',
-      tagName: 'div',
-      attributes: [{
-        name: 'class',
-        value: 'pc-plate pc-plate-days'
-      }]
-    });
+  /**
+   * Initialization event listeners.
+   */
+  private updateEventListeners(): void {
+    this.root.removeEventListener('click', this.handleClickEvents);
+    this.root.addEventListener('click', this.handleClickEvents);
+  }
 
-    const left = new HTMLNode({
-      name: 'left',
-      tagName: 'button',
-      attributes: [{
-        name: 'class',
-        value: 'pc-pointer pc-pointer-left'
-      }]
-    });
+  /**
+   * Handling click events.
+   * 
+   * @type {[type]}
+   */
+  private handleClickEvents = (event: any): void => {
+    // TODO: Do something with types...
+    if(event.target !== undefined) {
+      if(event.target.classList.contains('pc-pointer-left')) {
+        this.state.handleLeftClick();
+        this.publisher.notify('prev-clicked');
+      }
 
-    const center = new HTMLNode({
-      name: 'center',
-      tagName: 'button',
-      attributes: [{
-        name: 'class',
-        value: 'pc-title'
-      }]
-    });
+      if(event.target.classList.contains('pc-pointer-right')) {
+        this.state.handleRightClick();
+        this.publisher.notify('next-clicked');
+      }
 
-    const right = new HTMLNode({
-      name: 'right',
-      tagName: 'button',
-      attributes: [{
-        name: 'class',
-        value: 'pc-pointer pc-pointer-right'
-      }]
-    });
+      if(event.target.classList.contains('pc-title')) {
+        this.state.handleCenterClick();
+        this.publisher.notify('center-clicked');
+      }
 
-    const controls = new HTMLNode({
-      name: 'controls',
-      tagName: 'div',
-      attributes: [{
-        name: 'class',
-        value: 'pc-controls'
-      }]
-    }, [left, center, right]);
-
-    const row = new HTMLNode({
-      name: 'row',
-      tagName: 'nav',
-      attributes: [{
-        name: 'class',
-        value: 'pc-row'
-      }]
-    });
-
-    const container = new HTMLNode({
-      name: 'container',
-      tagName: 'div',
-      attributes: [{
-        name: 'class',
-        value: 'pc-container'
-      }]
-    }, [row, controls, plate]);
-
-    const wrapper = new HTMLNode({
-      name: 'wrapper',
-      tagName: 'div',
-      attributes: [{
-        name: 'class',
-        value: 'pc-wrapper'
-      }]
-    }, [container]);
-
-    return {
-      wrapper: wrapper.element,
-      container: container.element,
-      row: row.element,
-      controls: {
-        left: left.element,
-        center: center.element,
-        right: right.element
-      },
-      plate: plate.element
+      if(event.target.classList.contains('pc-cell')) {
+        this.state.handleDateClick(event.target);
+      }
     }
   }
 
-  private renderRoot(node: Element, element: Element): void {
-    if(node.tagName === 'INPUT') {
+  /**
+   * Updating the state, the root HTML node and reinit event listeners.
+   * 
+   * @param {State} state [description]
+   */
+  public updateState(state: State): void {
+    this.state = state;
+    this.updateRoot();
+    this.updateEventListeners();
+    this.publisher.notify('state-updated');
+  }
+
+  /**
+   * Updating the root HTML node by a content coming from the render() method.
+   */
+  private updateRoot(): void {
+    if(this.root.tagName === 'INPUT') {
       // TODO ...
     } else {
-      if(node.parentNode !== null) {
-        node.parentNode.insertBefore(element, node.nextSibling);
-        node.remove();
-      } else {
-        throw new Error('....')
-      }
+      this.root.innerHTML = this.render();
     }
   }
 
-  private render(node: Element, element: Element | Array<Element>): void {
-    if(Array.isArray(element)) {
-      this.renderMany(node, element);
-    } else {
-      this.renderOne(node, element);
-    }
+  /**
+   * Alias for Publisher.subscribe method.
+   * 
+   * @param  {string}   eventType
+   * @param  {Function} callback
+   * @return {Function}
+   */
+  public on(eventType: string, callback: Function): Function {
+    return this.publisher.subscribe(eventType, callback);
   }
 
-  private renderOne(node: Element, element: Element): void {
-    node.innerHTML = '';
-    node.appendChild(element)
-    const attributes = Array.from(element.attributes);
-
-    attributes.forEach(attr => {
-      node.setAttribute(attr.name, attr.value);
-    });
+  /**
+   * Alias for Publisher.unsubscribe method.
+   * 
+   * @param  {string}   eventType
+   * @param  {Function} callback
+   * @return {Function}
+   */
+  public unsubscribe(eventType: string, callback: Function): void {
+    this.publisher.unsubscribe(eventType, callback);
   }
 
-  private renderMany(node: Element, elements: Array<Element>): void {
-    node.innerHTML = '';
+  /**
+   * Rendering HTML content.
+   * 
+   * @return {string} [description]
+   */
+  private render(): string {
+    return `
+      <div class="pc-wrapper">
+        <div class="pc-container">
+          ${this.state.render()}
+        </div>
+      </div>
+    `;
 
-    elements.forEach((element: Element) => {
-      node.appendChild(element);
-    });
-  }
-
-  private initEventListeners(): void {
-    this._html.wrapper.addEventListener('click', (event) => {
-      if(event.target === null || !(event.target instanceof Element)) {
-        return null;
-      }
-
-      if(event.target.isEqualNode(this._html.controls.left)) {
-        this.handleLeftClick();
-      }
-
-      if(event.target.isEqualNode(this._html.controls.right)) {
-        this.handleRightClick();
-      }
-
-      if(event.target.isEqualNode(this._html.controls.center)) {
-        this.handleCenterClick();
-      }
-
-      if(event.target.getAttribute('data-pc-timestamp')) {
-        this.handleCellClick(event.target.getAttribute('data-pc-timestamp'));
-      }
-    })
-  }
-
-  private handleCellClick(timestamp: any): void {
-    if(this._gridView !== GridViewEnum.MONTH) {
-      this._gridDate = new Date(parseInt(timestamp));
-      this._gridView = this._gridView - 1;
-      this.updateView();
-    } else {
-      this._options.selectedDate = new Date(parseInt(timestamp));
-      this.updateView();
-    }
-  }
-
-  private handleCenterClick(): void {
-    if(this._gridView !== GridViewEnum.DECADE) {
-      this._gridView = this._gridView + 1;
-      this.updateView();
-    }
-  }
-
-  private handleLeftClick() {
-    this.decrementGrid();
-    this.updateView();
-  }
-
-  private handleRightClick() {
-    this.incrementGrid();
-    this.updateView();
-  }
-
-  private incrementGrid(): void {
-    switch(this._gridView) {
-      case GridViewEnum.MONTH: 
-        this._gridDate = this._gridDate.resetMonth().addMonths(1);
-        break;
-      case GridViewEnum.YEAR:
-        this._gridDate = this._gridDate.resetYear().addYears(1);
-        break;
-      case GridViewEnum.DECADE:
-        this._gridDate = this._gridDate.resetDecade().addYears(10);
-        break;
-      default:
-        throw new Error(`Unknown grid view "${this._gridView}"`);
-    }
-  }
-
-  private decrementGrid(): void {
-    switch(this._gridView) {
-      case GridViewEnum.MONTH: 
-        this._gridDate = this._gridDate.resetMonth().addMonths(-1);
-        break;
-      case GridViewEnum.YEAR:
-        this._gridDate = this._gridDate.resetYear().addYears(-1);
-        break;
-      case GridViewEnum.DECADE:
-        this._gridDate = this._gridDate.resetDecade().addYears(-10);
-        break;
-      default:
-        throw new Error(`Unknown grid view "${this._gridView}"`);
-    }
-  }
-
-  private updateView(): void {
-    switch(this._gridView) {
-      case GridViewEnum.MONTH: 
-        this.updateMonthView();
-        break;
-      case GridViewEnum.YEAR:
-        this.updateYearView();
-        break;
-      case GridViewEnum.DECADE:
-        this.updateDecadeView();
-        break;
-      default:
-        throw new Error(`Unknown grid view "${this._gridView}"`);
-    }
-  }
-
-  private updateDecadeView(): void {
-    const date: Date = this._gridDate;
-    const view: GridView = this._core.getYears(date),
-          cells: Array<Element> = [];
-
-    view.items.forEach((d: Date, i, array) => {
-      let className = 'pc-cell';
-
-      cells.push(
-        new HTMLNode({
-          name: 'cell',
-          tagName: 'div',
-          attributes: [{
-            name: 'class',
-            value: className
-          }, {
-            name: 'data-pc-timestamp',
-            value: d.getTime().toString()
-          }],
-          content: d.getFullYear().toString()
-        }).element
-      )
-    });
-
-    this.render(this._html.plate, cells);
-    this._html.plate.className = 'pc-plate pc-plate-months';
-    this._html.controls.center.textContent = view.title;
-  }
-
-  private updateYearView(): void {
-    const date: Date = this._gridDate;
-    const view: GridView = this._core.getMonths(date),
-          months: Array<string> = this._core.getMonthNames(),
-          cells: Array<Element> = [];
-
-    view.items.forEach((d: Date, i, array) => {
-      let className = 'pc-cell';
-
-      cells.push(
-        new HTMLNode({
-          name: 'cell',
-          tagName: 'div',
-          attributes: [{
-            name: 'class',
-            value: className
-          }, {
-            name: 'data-pc-timestamp',
-            value: d.getTime().toString()
-          }],
-          content: months[d.getMonth()]
-        }).element
-      )
-    });
-
-    this.render(this._html.plate, cells);
-    this._html.plate.className = 'pc-plate pc-plate-months';
-    this._html.controls.center.textContent = view.title;
-  }
-
-  private updateMonthView(): void {
-    const date: Date = this._gridDate;
-
-    const view: GridView = this._core.getDays(date),
-          weeks: Array<string> = this._core.getWeekdayNames(),
-          cells: Array<Element> = [];
-
-    weeks.forEach((week: string) => {
-      cells.push(
-        new HTMLNode({
-          name: 'week',
-          tagName: 'div',
-          attributes: [{
-            name: 'class',
-            value: 'pc-cell light'
-          }],
-          content: week
-        }).element
-      )
-    });
-
-    view.items.forEach((d: Date, i, array) => {
-      let className = 'pc-cell';
-
-      if(!d.dayInMonth(date)) {
-        className += ' light';
-      }
-
-      if(d.isToday()) {
-        className += ' active';
-      }
-
-      if(this._options.selectedDate && this._options.selectedDate.diffInDays(d) === 0) {
-        className += ' selected';
-      }
-
-      cells.push(
-        new HTMLNode({
-          name: 'cell',
-          tagName: 'div',
-          attributes: [{
-            name: 'class',
-            value: className
-          }, {
-            name: 'data-pc-timestamp',
-            value: d.getTime().toString()
-          }],
-          content: d.getDate().toString()
-        }).element
-      )
-    });
-
-    this.render(this._html.plate, cells);
-    this._html.plate.className = 'pc-plate pc-plate-days';
-    this._html.controls.center.textContent = view.title;
+    // return `
+    //   <div class="pc-wrapper">
+    //     <div class="pc-container">
+    //       <div class="pc-row">
+    //         <label class="pc-form-group">
+    //           Date
+    //           <input type="text" class="pc-input" value="03.04.2019">
+    //         </label>
+    //         <label class="pc-form-group">
+    //           Time
+    //           <input type="text" class="pc-input" placeholder="00:00:00">
+    //         </label>
+    //       </div>
+    //       ${this.state.render()}
+    //     </div>
+    //   </div>
+    // `;
   }
 }
 
