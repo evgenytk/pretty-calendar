@@ -64,7 +64,6 @@ class YearState extends State {
     const date = new Date(parseInt(timestamp));
 
     this.calendar.scope = date;
-    this.calendar.publisher.notify('month-changed', date.getMonth());
     this.calendar.updateState(new MonthState(this.calendar));
   }
 

@@ -10099,6 +10099,80 @@ module.exports.setLogLevel = function(level) {
 
 /***/ }),
 
+/***/ "./src/js/Calendar/API.ts":
+/*!********************************!*\
+  !*** ./src/js/Calendar/API.ts ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const MonthState_1 = __webpack_require__(/*! ../State/MonthState */ "./src/js/State/MonthState.ts");
+const YearState_1 = __webpack_require__(/*! ../State/YearState */ "./src/js/State/YearState.ts");
+const DecadeState_1 = __webpack_require__(/*! ../State/DecadeState */ "./src/js/State/DecadeState.ts");
+class API {
+    /**
+     * Initialize.
+     *
+     * @param {Calendar} calendar [description]
+     */
+    constructor(calendar) {
+        /**
+         * Shift scope to left.
+         */
+        this.prev = () => {
+            this.calendar.state.handleLeftClick();
+        };
+        /**
+         * Shift scope to right.
+         */
+        this.next = () => {
+            this.calendar.state.handleRightClick();
+        };
+        /**
+         * Changing calendar state.
+         *
+         * @param {string}  name
+         */
+        this.changeState = (name) => {
+            const states = {
+                MonthState: MonthState_1.default,
+                YearState: YearState_1.default,
+                DecadeState: DecadeState_1.default
+            };
+            if (states[name] === undefined) {
+                throw new Error(`Unknown state name. Use the one of this - ${Object.keys(states).join(', ')}`);
+            }
+            this.calendar.updateState(new states[name](this.calendar));
+        };
+        /**
+         * Changing calendar scope.
+         *
+         * @param {Date}  date
+         */
+        this.changeScope = (date) => {
+            this.calendar.scope = date;
+            this.calendar.updateState(this.calendar.state);
+        };
+        /**
+         * Changing selected date in calendar options.
+         *
+         * @param {Date}  date
+         */
+        this.changeDate = (date) => {
+            this.calendar.options.selectedDate = date;
+            this.calendar.updateState(this.calendar.state);
+        };
+        this.calendar = calendar;
+    }
+}
+exports.default = API;
+
+
+/***/ }),
+
 /***/ "./src/js/Calendar/Calendar.ts":
 /*!*************************************!*\
   !*** ./src/js/Calendar/Calendar.ts ***!
@@ -10110,6 +10184,7 @@ module.exports.setLogLevel = function(level) {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 __webpack_require__(/*! ../Extensions/Date */ "./src/js/Extensions/Date.ts");
+const API_1 = __webpack_require__(/*! ./API */ "./src/js/Calendar/API.ts");
 const Grid_1 = __webpack_require__(/*! ../Grid/Grid */ "./src/js/Grid/Grid.ts");
 const MonthState_1 = __webpack_require__(/*! ../State/MonthState */ "./src/js/State/MonthState.ts");
 const Publisher_1 = __webpack_require__(/*! ../Publisher/Publisher */ "./src/js/Publisher/Publisher.ts");
@@ -10132,15 +10207,14 @@ class Calendar {
             if (event.target !== undefined) {
                 if (event.target.classList.contains('pc-pointer-left')) {
                     this.state.handleLeftClick();
-                    this.publisher.notify('prev-clicked');
+                    this.publisher.notify('prev');
                 }
                 if (event.target.classList.contains('pc-pointer-right')) {
                     this.state.handleRightClick();
-                    this.publisher.notify('next-clicked');
+                    this.publisher.notify('next');
                 }
                 if (event.target.classList.contains('pc-title')) {
                     this.state.handleCenterClick();
-                    this.publisher.notify('center-clicked');
                 }
                 if (event.target.classList.contains('pc-cell')) {
                     this.state.handleDateClick(event.target);
@@ -10151,8 +10225,9 @@ class Calendar {
         this.grid = new Grid_1.default({
             firstDay: this.options.firstDay
         });
-        this.state = new MonthState_1.default(this);
+        this.api = new API_1.default(this);
         this.publisher = new Publisher_1.default();
+        this.state = new MonthState_1.default(this);
         this.scope = this.options.selectedDate || new Date;
         this.root = this.findRoot(node);
         this.updateRoot();
@@ -10173,7 +10248,10 @@ class Calendar {
             }
             return findedNode;
         }
-        return node;
+        if (node instanceof HTMLElement) {
+            return node;
+        }
+        throw new Error('Invalid type');
     }
     /**
      * Initialization event listeners.
@@ -10191,7 +10269,6 @@ class Calendar {
         this.state = state;
         this.updateRoot();
         this.updateEventListeners();
-        this.publisher.notify('state-updated');
     }
     /**
      * Updating the root HTML node by a content coming from the render() method.
@@ -10233,20 +10310,27 @@ class Calendar {
         return `
       <div class="pc-wrapper">
         <div class="pc-container">
-          <div class="pc-row">
-            <label class="pc-form-group">
-              Date
-              <input type="text" class="pc-input" value="03.04.2019">
-            </label>
-            <label class="pc-form-group">
-              Time
-              <input type="text" class="pc-input" placeholder="00:00:00">
-            </label>
-          </div>
           ${this.state.render()}
         </div>
       </div>
     `;
+        // return `
+        //   <div class="pc-wrapper">
+        //     <div class="pc-container">
+        //       <div class="pc-row">
+        //         <label class="pc-form-group">
+        //           Date
+        //           <input type="text" class="pc-input" value="03.04.2019">
+        //         </label>
+        //         <label class="pc-form-group">
+        //           Time
+        //           <input type="text" class="pc-input" placeholder="00:00:00">
+        //         </label>
+        //       </div>
+        //       ${this.state.render()}
+        //     </div>
+        //   </div>
+        // `;
     }
 }
 /**
@@ -10656,7 +10740,6 @@ class DecadeState extends State_1.default {
         }
         const date = new Date(parseInt(timestamp));
         this.calendar.scope = date;
-        this.calendar.publisher.notify('year-changed', date.getFullYear());
         this.calendar.updateState(new YearState_1.default(this.calendar));
     }
     /**
@@ -10709,7 +10792,7 @@ class MonthState extends State_1.default {
      * Handling left switcher click.
      */
     handleLeftClick() {
-        let newScope = this.calendar.scope;
+        let newScope = new Date(this.calendar.scope);
         // TODO: create reset date method in this class.
         newScope = new Date(newScope.setDate(1));
         newScope = new Date(newScope.setMonth(newScope.getMonth() - 1));
@@ -10720,7 +10803,7 @@ class MonthState extends State_1.default {
      * Handling right switcher click.
      */
     handleRightClick() {
-        let newScope = this.calendar.scope;
+        let newScope = new Date(this.calendar.scope);
         // TODO: create reset date method in this class.
         newScope = new Date(newScope.setDate(1));
         newScope = new Date(newScope.setMonth(newScope.getMonth() + 1));
@@ -10745,9 +10828,8 @@ class MonthState extends State_1.default {
         }
         const date = new Date(parseInt(timestamp));
         this.calendar.scope = date;
-        this.calendar.publisher.notify('day-changed', date.getDay());
         this.calendar.options.selectedDate = date;
-        this.calendar.publisher.notify('date-selected', date);
+        this.calendar.publisher.notify('date-changed', date);
         this.calendar.updateState(this);
     }
     /**
@@ -10810,6 +10892,7 @@ class State {
      */
     constructor(calendar) {
         this.calendar = calendar;
+        this.calendar.publisher.notify('state-changed', this.constructor.name);
     }
 }
 exports.default = State;
@@ -10881,7 +10964,6 @@ class YearState extends State_1.default {
         }
         const date = new Date(parseInt(timestamp));
         this.calendar.scope = date;
-        this.calendar.publisher.notify('month-changed', date.getMonth());
         this.calendar.updateState(new MonthState_1.default(this.calendar));
     }
     /**
@@ -10931,23 +11013,36 @@ const Calendar_1 = __webpack_require__(/*! ./Calendar/Calendar */ "./src/js/Cale
 const calendar = new Calendar_1.default('#pc', {
     selectedDate: new Date('2019-02-05')
 });
-calendar.on('state-updated', () => console.log('state updated'));
-calendar.on('prev-clicked', () => console.log('prev clicked'));
-calendar.on('next-clicked', () => console.log('next clicked'));
-calendar.on('center-clicked', () => console.log('center clicked'));
-calendar.on('year-changed', (date) => console.log('year changed - ' + date));
-calendar.on('month-changed', (date) => console.log('month changed - ' + date));
-calendar.on('day-changed', (date) => console.log('day changed - ' + date));
-calendar.on('date-selected', (date) => console.log('date selected - ' + date));
+calendar.on('prev', () => console.log('prev clicked'));
+calendar.on('next', () => console.log('next clicked'));
+calendar.on('state-changed', (state) => console.log('state changed ' + state));
+calendar.on('date-changed', (date) => console.log('date selected - ' + date));
+document.addEventListener('keyup', ({ keyCode }) => {
+    if (keyCode === 81) {
+        calendar.api.prev();
+    }
+    if (keyCode === 87) {
+        calendar.api.next();
+    }
+    if (keyCode === 69) {
+        calendar.api.changeState('YearState');
+    }
+    if (keyCode === 82) {
+        calendar.api.changeScope(new Date('2019-01-01'));
+    }
+    if (keyCode === 84) {
+        calendar.api.changeDate(new Date('2019-01-05'));
+    }
+});
 // OR
-// calendar.on('update.state', () => console.log('state updated'));
 // calendar.on('prev', () => console.log('prev clicked'));
 // calendar.on('next', () => console.log('next clicked'));
-// calendar.on('update.grid', () => console.log('grid updated'));
-// calendar.on('change.year', (date: any) => console.log('year changed - ' + date));
-// calendar.on('change.month', (date: any) => console.log('month changed - ' + date));
-// calendar.on('change.day', (date: any) => console.log('day changed - ' + date));
-// calendar.on('change.date', (date: any) => console.log('date changed - ' + date));
+// calendar.on('updated.state', () => console.log('state updated'));
+// calendar.on('updated.grid', () => console.log('grid updated'));
+// calendar.on('year.change', (date: any) => console.log('year changed - ' + date));
+// calendar.on('month.change', (date: any) => console.log('month changed - ' + date));
+// calendar.on('day.change', (date: any) => console.log('day changed - ' + date));
+// calendar.on('date.change', (date: any) => console.log('date changed - ' + date));
 
 
 /***/ }),

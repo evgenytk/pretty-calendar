@@ -17,6 +17,7 @@ abstract class State {
    */
   constructor(calendar: Calendar) {
     this.calendar = calendar;
+    this.calendar.publisher.notify('state-changed', this.constructor.name);
   }
 
   /**

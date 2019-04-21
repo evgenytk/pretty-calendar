@@ -25,6 +25,15 @@ describe('Publisher.ts', () => {
     expect(mock3).not.toBeCalled();
   });
 
+  it('it should notify subscribers with some data', () => {
+    const mock1 = jest.fn((data) => data);
+
+    const publisher = new Publisher();
+    publisher.subscribe('event1', mock1);
+    publisher.notify('event1', 'some data');
+    expect(mock1.mock.calls[0][0]).toBe('some data');
+  });
+
   it('it should unsubscribe', () => {
     const mock1 = jest.fn();
     const mock2 = jest.fn();

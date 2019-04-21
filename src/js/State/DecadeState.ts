@@ -62,7 +62,6 @@ class DecadeState extends State {
     const date = new Date(parseInt(timestamp));
 
     this.calendar.scope = date;
-    this.calendar.publisher.notify('year-changed', date.getFullYear());
     this.calendar.updateState(new YearState(this.calendar));
   }
 

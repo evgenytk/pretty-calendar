@@ -17,7 +17,7 @@ class MonthState extends State {
    * Handling left switcher click.
    */
   public handleLeftClick(): void {
-    let newScope = this.calendar.scope;
+    let newScope = new Date(this.calendar.scope);
         // TODO: create reset date method in this class.
         newScope = new Date(newScope.setDate(1));
         newScope = new Date(newScope.setMonth(newScope.getMonth() - 1));
@@ -30,7 +30,7 @@ class MonthState extends State {
    * Handling right switcher click.
    */
   public handleRightClick(): void {
-    let newScope = this.calendar.scope;
+    let newScope = new Date(this.calendar.scope);
         // TODO: create reset date method in this class.
         newScope = new Date(newScope.setDate(1));
         newScope = new Date(newScope.setMonth(newScope.getMonth() + 1));
@@ -61,9 +61,8 @@ class MonthState extends State {
     const date = new Date(parseInt(timestamp));
 
     this.calendar.scope = date;
-    this.calendar.publisher.notify('day-changed', date.getDay());
     this.calendar.options.selectedDate = date;
-    this.calendar.publisher.notify('date-selected', date);
+    this.calendar.publisher.notify('date-changed', date);
     this.calendar.updateState(this);
   }
 

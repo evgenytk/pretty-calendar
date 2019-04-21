@@ -1,4 +1,5 @@
 import '../Extensions/Date';
+import API from './API';
 import Grid from '../Grid/Grid';
 import State from '../State/State';
 import MonthState from '../State/MonthState';
@@ -53,6 +54,13 @@ class Calendar {
   public publisher: Publisher;
 
   /**
+   * Calendar API.
+   * 
+   * @type {API}
+   */
+  public api: API;
+
+  /**
    * Root HTML node.
    * 
    * @type {Element}
@@ -65,7 +73,7 @@ class Calendar {
    * @param {string | Element} node
    * @param {object = {}}    options
    */
-  constructor(node: string | Element, options: object = {}) {
+  constructor(node: any, options: object = {}) {
     this.options = {
       ...Calendar.defaultOptions,
       ...options
@@ -74,8 +82,9 @@ class Calendar {
     this.grid = new Grid({
       firstDay: this.options.firstDay
     });
-    this.state = new MonthState(this);
+    this.api = new API(this);
     this.publisher = new Publisher();
+    this.state = new MonthState(this);
     this.scope = this.options.selectedDate || new Date;
     this.root = this.findRoot(node);
     this.updateRoot();
@@ -90,7 +99,7 @@ class Calendar {
    * @param  {string | Element}     node [description]
    * @return {Element}     [description]
    */
-  private findRoot(node: string | Element): Element {
+  private findRoot(node: any): Element {
     if(typeof node === 'string') {
       const findedNode = document.querySelector(node);
 
@@ -101,7 +110,11 @@ class Calendar {
       return findedNode;
     }
 
-    return node;
+    if(node instanceof HTMLElement) {
+      return node;
+    }
+
+    throw new Error('Invalid type');
   }
 
   /**
@@ -122,17 +135,16 @@ class Calendar {
     if(event.target !== undefined) {
       if(event.target.classList.contains('pc-pointer-left')) {
         this.state.handleLeftClick();
-        this.publisher.notify('prev-clicked');
+        this.publisher.notify('prev');
       }
 
       if(event.target.classList.contains('pc-pointer-right')) {
         this.state.handleRightClick();
-        this.publisher.notify('next-clicked');
+        this.publisher.notify('next');
       }
 
       if(event.target.classList.contains('pc-title')) {
         this.state.handleCenterClick();
-        this.publisher.notify('center-clicked');
       }
 
       if(event.target.classList.contains('pc-cell')) {
@@ -150,7 +162,6 @@ class Calendar {
     this.state = state;
     this.updateRoot();
     this.updateEventListeners();
-    this.publisher.notify('state-updated');
   }
 
   /**
