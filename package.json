@@ -44,6 +44,7 @@
   },
   "dependencies": {
     "@babel/preset-typescript": "^7.3.3",
+    "@pretty-calendar/grid": "^0.1.0",
     "@types/jest": "^24.0.11",
     "jest": "^24.7.1",
     "react": "^16.8.6",

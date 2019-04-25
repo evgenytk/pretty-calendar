@@ -1,11 +1,10 @@
 import '../Extensions/Date';
 import API from './API';
-import Grid from '../Grid/Grid';
+import Grid, { WeekdaysEnum } from '@pretty-calendar/grid';
 import State from '../State/State';
 import MonthState from '../State/MonthState';
 import Publisher from '../Publisher/Publisher';
 import { CalendarOptions } from './CalendarOptions';
-import { WeekdaysEnum } from '../Grid/WeekdaysEnum';
 
 class Calendar {
 

@@ -1,5 +1,5 @@
-import { GridOptions } from '../Grid/GridOptions';
+import { IGridOptions } from '@pretty-calendar/grid';
 
-export interface CalendarOptions extends GridOptions {
-  selectedDate?: Date
+export interface CalendarOptions extends IGridOptions {
+  selectedDate?: Date,
 }
