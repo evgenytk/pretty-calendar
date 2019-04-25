@@ -17,7 +17,7 @@ class DecadeState extends State {
    * Handling left switcher click.
    */
   public handleLeftClick(): void {
-    let newScope = this.calendar.scope;
+    let newScope = new Date(this.calendar.scope);
         // TODO: create reset date method in this class.
         newScope = new Date(newScope.setDate(1));
         newScope = new Date(newScope.setMonth(0));
@@ -33,7 +33,7 @@ class DecadeState extends State {
    * Handling right switcher click.
    */
   public handleRightClick(): void {
-    let newScope = this.calendar.scope;
+    let newScope = new Date(this.calendar.scope);
         // TODO: create reset date method in this class.
         newScope = new Date(newScope.setDate(1));
         newScope = new Date(newScope.setMonth(0));

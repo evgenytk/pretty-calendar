@@ -175,7 +175,7 @@ describe('Mouse clicks', () => {
     eventFire(document.querySelector('.pc-title'), 'click');
     eventFire(document.querySelectorAll('[data-pc-timestamp]')[2], 'click');
     expect(calendar.state instanceof MonthState).toBe(true);
-    expect(calendar.scope.getTime() === new Date('2019-03-01').getTime()).toBe(true);
+    expect((calendar.scope.getTime() + 10800 * 1000) === new Date('2019-03-01').getTime()).toBe(true);
     expect(document.body).toMatchSnapshot();
   });
 
@@ -216,7 +216,8 @@ describe('Mouse clicks', () => {
     eventFire(document.querySelector('.pc-title'), 'click');
     eventFire(document.querySelectorAll('[data-pc-timestamp]')[0], 'click');
     expect(calendar.state instanceof YearState).toBe(true);
-    expect(calendar.scope.getTime() === new Date('2010-02-01').getTime()).toBe(true);
+    // >>>>
+    expect((calendar.scope.getTime() + 10800 * 1000) === new Date('2010-01-01').getTime()).toBe(true);
     expect(document.body).toMatchSnapshot();
   });
 })
