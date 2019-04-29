@@ -12,6 +12,7 @@
     "typescript": "^3.4.4"
   },
   "scripts": {
+    "build": "lerna run build",
     "publish": "lerna run tsc && lerna publish"
   }
 }
