@@ -1,6 +1,6 @@
 {
   "name": "@pretty-calendar/js",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Pretty Calendar JS Library",
   "main": "lib/index.js",
   "scripts": {
