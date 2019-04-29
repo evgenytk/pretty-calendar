@@ -1,6 +1,6 @@
 {
   "name": "@pretty-calendar/js",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Pretty Calendar JS Library",
   "main": "lib/index.js",
   "scripts": {
@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/evgenytk/pretty-calendar#readme",
   "devDependencies": {
-    "@pretty-calendar/core": "^0.1.2",
+    "@pretty-calendar/core": "^0.1.3",
     "node-sass": "^4.11.0"
   },
   "gitHead": "4a7e62952d661ee0b0665a354f6f1f8f88323803"

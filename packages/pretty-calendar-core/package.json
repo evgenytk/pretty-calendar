@@ -1,6 +1,6 @@
 {
   "name": "@pretty-calendar/core",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Pretty Calendar Core",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
