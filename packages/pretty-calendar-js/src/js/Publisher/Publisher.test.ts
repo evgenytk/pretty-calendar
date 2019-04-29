@@ -26,7 +26,7 @@ describe('Publisher.ts', () => {
   });
 
   it('it should notify subscribers with some data', () => {
-    const mock1 = jest.fn((data) => data);
+    const mock1 = jest.fn(data => data);
 
     const publisher = new Publisher();
     publisher.subscribe('event1', mock1);
@@ -48,11 +48,11 @@ describe('Publisher.ts', () => {
 
     publisher.unsubscribe('event1', mock2);
     unsubscribe();
-    
+
     publisher.notify('event1');
 
     expect(mock1).toBeCalledTimes(2);
     expect(mock2).toBeCalledTimes(1);
     expect(mock3).toBeCalledTimes(1);
   });
-})
+});

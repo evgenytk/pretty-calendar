@@ -4,10 +4,9 @@ import DecadeState from './DecadeState';
 import Calendar from '../Calendar/Calendar';
 
 class YearState extends State {
-
   /**
    * Initialization.
-   * 
+   *
    * @param {Calendar} calendar
    */
   constructor(calendar: Calendar) {
@@ -19,13 +18,12 @@ class YearState extends State {
    */
   public handleLeftClick(): void {
     let newScope = new Date(this.calendar.scope);
-        // TODO: create reset date method in this class.
-        newScope = new Date(newScope.setDate(1));
-        newScope = new Date(newScope.setMonth(0));
-        newScope = new Date(newScope.setFullYear(newScope.getFullYear() - 1));
+    // TODO: create reset date method in this class.
+    newScope = new Date(newScope.setDate(1));
+    newScope = new Date(newScope.setMonth(0));
+    newScope = new Date(newScope.setFullYear(newScope.getFullYear() - 1));
 
-    this.calendar.scope = newScope;
-    this.calendar.updateState(this);
+    this.calendar.changeScope(newScope);
   }
 
   /**
@@ -33,20 +31,19 @@ class YearState extends State {
    */
   public handleRightClick(): void {
     let newScope = new Date(this.calendar.scope);
-        // TODO: create reset date method in this class.
-        newScope = new Date(newScope.setDate(1));
-        newScope = new Date(newScope.setMonth(0));
-        newScope = new Date(newScope.setFullYear(newScope.getFullYear() + 1));
+    // TODO: create reset date method in this class.
+    newScope = new Date(newScope.setDate(1));
+    newScope = new Date(newScope.setMonth(0));
+    newScope = new Date(newScope.setFullYear(newScope.getFullYear() + 1));
 
-    this.calendar.scope = newScope;
-    this.calendar.updateState(this);
+    this.calendar.changeScope(newScope);
   }
 
   /**
    * Handling center switcher click.
    */
   public handleCenterClick(): void {
-    this.calendar.updateState(new DecadeState(this.calendar));
+    this.calendar.changeState(new DecadeState(this.calendar));
   }
 
   /**
@@ -55,28 +52,23 @@ class YearState extends State {
    * @param {Element} element
    */
   public handleDateClick(element: Element): void {
-    const timestamp = element.getAttribute('data-pc-timestamp');
+    const timestamp = element.getAttribute('data-pc-timestamp') as string;
+    const scope = new Date(parseInt(timestamp, 10));
 
-    if(timestamp === null) {
-      throw new Error('Required data-pc-timestamp attribute');
-    }
-
-    const date = new Date(parseInt(timestamp));
-
-    this.calendar.scope = date;
-    this.calendar.updateState(new MonthState(this.calendar));
+    this.calendar.changeScope(scope);
+    this.calendar.changeState(new MonthState(this.calendar));
   }
 
   /**
    * Rendering HTML content.
-   * 
+   *
    * @return {string}
    */
   public render(): string {
     const { grid, scope } = this.calendar;
 
-    const dates: Array<Date> = grid.getMonths(scope),
-          months: Array<string> = grid.getMonthNames();
+    const dates: Date[] = grid.getMonths(scope);
+    const months: string[] = grid.getMonthNames();
 
     return `
       <nav class="pc-controls">
@@ -85,7 +77,11 @@ class YearState extends State {
         <button type="button" class="pc-pointer pc-pointer-right"></button>
       </nav>
       <div class="pc-plate pc-plate-months">
-        ${dates.map(date => `<button data-pc-timestamp="${date.getTime()}" class="pc-cell">${months[date.getMonth()]}</button>`).join('')}
+        ${dates
+          .map(
+            date => `<button data-pc-timestamp="${date.getTime()}" class="pc-cell">${months[date.getMonth()]}</button>`,
+          )
+          .join('')}
       </div>
     `;
   }

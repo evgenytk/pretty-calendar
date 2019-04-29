@@ -1,9 +1,9 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "./public/js",
+    "outDir": "./lib"
   },
   "include": [
-    "./resources/js/**/*"
+    "./src"
   ]
 }

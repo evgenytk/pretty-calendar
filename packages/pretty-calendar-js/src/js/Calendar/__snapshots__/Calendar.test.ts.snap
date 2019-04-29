@@ -1,362 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`API it should call the changeDate() method 1`] = `
-<body>
-  <div
-    id="root"
-  >
-    
-      
-    <div
-      class="pc-wrapper"
-    >
-      
-        
-      <div
-        class="pc-container"
-      >
-        
-          
-      
-        <nav
-          class="pc-controls"
-        >
-          
-        
-          <button
-            class="pc-pointer pc-pointer-left"
-            type="button"
-          />
-          
-        
-          <button
-            class="pc-title"
-            type="button"
-          >
-            February, 2019
-          </button>
-          
-        
-          <button
-            class="pc-pointer pc-pointer-right"
-            type="button"
-          />
-          
-      
-        </nav>
-        
-      
-        <div
-          class="pc-plate pc-plate-days"
-        >
-          
-        
-          <span
-            class="pc-cell light"
-          >
-            Mo
-          </span>
-          <span
-            class="pc-cell light"
-          >
-            Tu
-          </span>
-          <span
-            class="pc-cell light"
-          >
-            We
-          </span>
-          <span
-            class="pc-cell light"
-          >
-            Th
-          </span>
-          <span
-            class="pc-cell light"
-          >
-            Fr
-          </span>
-          <span
-            class="pc-cell light"
-          >
-            Sa
-          </span>
-          <span
-            class="pc-cell light"
-          >
-            Su
-          </span>
-          
-        
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1548633600000"
-          >
-            28
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1548720000000"
-          >
-            29
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1548806400000"
-          >
-            30
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1548892800000"
-          >
-            31
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1548979200000"
-          >
-            1
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1549065600000"
-          >
-            2
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1549152000000"
-          >
-            3
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1549238400000"
-          >
-            4
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1549324800000"
-          >
-            5
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1549411200000"
-          >
-            6
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1549497600000"
-          >
-            7
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1549584000000"
-          >
-            8
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1549670400000"
-          >
-            9
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1549756800000"
-          >
-            10
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1549843200000"
-          >
-            11
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1549929600000"
-          >
-            12
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1550016000000"
-          >
-            13
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1550102400000"
-          >
-            14
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1550188800000"
-          >
-            15
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1550275200000"
-          >
-            16
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1550361600000"
-          >
-            17
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1550448000000"
-          >
-            18
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1550534400000"
-          >
-            19
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1550620800000"
-          >
-            20
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1550707200000"
-          >
-            21
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1550793600000"
-          >
-            22
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1550880000000"
-          >
-            23
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1550966400000"
-          >
-            24
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1551052800000"
-          >
-            25
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1551139200000"
-          >
-            26
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1551225600000"
-          >
-            27
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1551312000000"
-          >
-            28
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1551398400000"
-          >
-            1
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1551484800000"
-          >
-            2
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1551571200000"
-          >
-            3
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1551657600000"
-          >
-            4
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1551744000000"
-          >
-            5
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1551830400000"
-          >
-            6
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1551916800000"
-          >
-            7
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1552003200000"
-          >
-            8
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1552089600000"
-          >
-            9
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1552176000000"
-          >
-            10
-          </button>
-          
-      
-        </div>
-        
-    
-        
-      </div>
-      
-      
-    </div>
-    
-    
-  </div>
-</body>
-`;
-
-exports[`API it should call the changeScope() method 1`] = `
+exports[`API it should change scope 1`] = `
 <body>
   <div
     id="root"
@@ -712,7 +356,7 @@ exports[`API it should call the changeScope() method 1`] = `
 </body>
 `;
 
-exports[`API it should call the changeState() method 1`] = `
+exports[`API it should change scope 2`] = `
 <body>
   <div
     id="root"
@@ -745,7 +389,7 @@ exports[`API it should call the changeState() method 1`] = `
             class="pc-title"
             type="button"
           >
-            February, 2019
+            May, 2019
           </button>
           
         
@@ -801,878 +445,256 @@ exports[`API it should call the changeState() method 1`] = `
           
         
           <button
-            class="pc-cell light"
-            data-pc-timestamp="1548633600000"
-          >
-            28
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1548720000000"
-          >
-            29
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1548806400000"
-          >
-            30
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1548892800000"
-          >
-            31
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1548979200000"
-          >
-            1
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1549065600000"
-          >
-            2
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1549152000000"
-          >
-            3
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1549238400000"
-          >
-            4
-          </button>
-          <button
-            class="pc-cell selected"
-            data-pc-timestamp="1549324800000"
-          >
-            5
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1549411200000"
-          >
-            6
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1549497600000"
-          >
-            7
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1549584000000"
-          >
-            8
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1549670400000"
-          >
-            9
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1549756800000"
-          >
-            10
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1549843200000"
-          >
-            11
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1549929600000"
-          >
-            12
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1550016000000"
-          >
-            13
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1550102400000"
-          >
-            14
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1550188800000"
-          >
-            15
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1550275200000"
-          >
-            16
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1550361600000"
-          >
-            17
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1550448000000"
-          >
-            18
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1550534400000"
-          >
-            19
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1550620800000"
-          >
-            20
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1550707200000"
-          >
-            21
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1550793600000"
-          >
-            22
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1550880000000"
-          >
-            23
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1550966400000"
-          >
-            24
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1551052800000"
-          >
-            25
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1551139200000"
-          >
-            26
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1551225600000"
-          >
-            27
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1551312000000"
-          >
-            28
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1551398400000"
-          >
-            1
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1551484800000"
-          >
-            2
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1551571200000"
-          >
-            3
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1551657600000"
-          >
-            4
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1551744000000"
-          >
-            5
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1551830400000"
-          >
-            6
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1551916800000"
-          >
-            7
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1552003200000"
-          >
-            8
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1552089600000"
-          >
-            9
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1552176000000"
-          >
-            10
-          </button>
-          
-      
-        </div>
-        
-    
-        
-      </div>
-      
-      
-    </div>
-    
-    
-  </div>
-</body>
-`;
-
-exports[`API it should call the changeState() method 2`] = `
-<body>
-  <div
-    id="root"
-  >
-    
-      
-    <div
-      class="pc-wrapper"
-    >
-      
-        
-      <div
-        class="pc-container"
-      >
-        
-          
-      
-        <nav
-          class="pc-controls"
-        >
-          
-        
-          <button
-            class="pc-pointer pc-pointer-left"
-            type="button"
-          />
-          
-        
-          <button
-            class="pc-title"
-            type="button"
-          >
-            2019
-          </button>
-          
-        
-          <button
-            class="pc-pointer pc-pointer-right"
-            type="button"
-          />
-          
-      
-        </nav>
-        
-      
-        <div
-          class="pc-plate pc-plate-months"
-        >
-          
-        
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1546290000000"
-          >
-            January
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1548968400000"
-          >
-            February
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1551387600000"
-          >
-            March
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1554066000000"
-          >
-            April
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1556658000000"
-          >
-            May
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1559336400000"
-          >
-            June
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1561928400000"
-          >
-            Jule
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1564606800000"
-          >
-            August
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1567285200000"
-          >
-            September
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1569877200000"
-          >
-            October
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1572555600000"
-          >
-            November
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1575147600000"
-          >
-            December
-          </button>
-          
-      
-        </div>
-        
-    
-        
-      </div>
-      
-      
-    </div>
-    
-    
-  </div>
-</body>
-`;
-
-exports[`API it should call the changeState() method 3`] = `
-<body>
-  <div
-    id="root"
-  >
-    
-      
-    <div
-      class="pc-wrapper"
-    >
-      
-        
-      <div
-        class="pc-container"
-      >
-        
-          
-      
-        <nav
-          class="pc-controls"
-        >
-          
-        
-          <button
-            class="pc-pointer pc-pointer-left"
-            type="button"
-          />
-          
-        
-          <button
-            class="pc-title"
-            type="button"
-          >
-            2010 - 2019
-          </button>
-          
-        
-          <button
-            class="pc-pointer pc-pointer-right"
-            type="button"
-          />
-          
-      
-        </nav>
-        
-      
-        <div
-          class="pc-plate pc-plate-months"
-        >
-          
-        
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1262293200000"
-          >
-            2010
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1293829200000"
-          >
-            2011
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1325361600000"
-          >
-            2012
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1356984000000"
-          >
-            2013
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1388520000000"
-          >
-            2014
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1420059600000"
-          >
-            2015
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1451595600000"
-          >
-            2016
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1483218000000"
-          >
-            2017
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1514754000000"
-          >
-            2018
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1546290000000"
-          >
-            2019
-          </button>
-          
-      
-        </div>
-        
-    
-        
-      </div>
-      
-      
-    </div>
-    
-    
-  </div>
-</body>
-`;
-
-exports[`API it should call the next() method 1`] = `
-<body>
-  <div
-    id="root"
-  >
-    
-      
-    <div
-      class="pc-wrapper"
-    >
-      
-        
-      <div
-        class="pc-container"
-      >
-        
-          
-      
-        <nav
-          class="pc-controls"
-        >
-          
-        
-          <button
-            class="pc-pointer pc-pointer-left"
-            type="button"
-          />
-          
-        
-          <button
-            class="pc-title"
-            type="button"
-          >
-            April, 2019
-          </button>
-          
-        
-          <button
-            class="pc-pointer pc-pointer-right"
-            type="button"
-          />
-          
-      
-        </nav>
-        
-      
-        <div
-          class="pc-plate pc-plate-days"
-        >
-          
-        
-          <span
-            class="pc-cell light"
-          >
-            Mo
-          </span>
-          <span
-            class="pc-cell light"
-          >
-            Tu
-          </span>
-          <span
-            class="pc-cell light"
-          >
-            We
-          </span>
-          <span
-            class="pc-cell light"
-          >
-            Th
-          </span>
-          <span
-            class="pc-cell light"
-          >
-            Fr
-          </span>
-          <span
-            class="pc-cell light"
-          >
-            Sa
-          </span>
-          <span
-            class="pc-cell light"
-          >
-            Su
-          </span>
-          
-        
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1554076800000"
-          >
-            1
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1554163200000"
-          >
-            2
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1554249600000"
-          >
-            3
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1554336000000"
-          >
-            4
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1554422400000"
-          >
-            5
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1554508800000"
-          >
-            6
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1554595200000"
-          >
-            7
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1554681600000"
-          >
-            8
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1554768000000"
-          >
-            9
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1554854400000"
-          >
-            10
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1554940800000"
-          >
-            11
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1555027200000"
-          >
-            12
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1555113600000"
-          >
-            13
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1555200000000"
-          >
-            14
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1555286400000"
-          >
-            15
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1555372800000"
-          >
-            16
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1555459200000"
-          >
-            17
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1555545600000"
-          >
-            18
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1555632000000"
-          >
-            19
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1555718400000"
-          >
-            20
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1555804800000"
-          >
-            21
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1555891200000"
-          >
-            22
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1555977600000"
-          >
-            23
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1556064000000"
-          >
-            24
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1556150400000"
-          >
-            25
-          </button>
-          <button
-            class="pc-cell active"
-            data-pc-timestamp="1556236800000"
-          >
-            26
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1556323200000"
-          >
-            27
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1556409600000"
-          >
-            28
-          </button>
-          <button
-            class="pc-cell"
+            class="pc-cell light active"
             data-pc-timestamp="1556496000000"
           >
             29
           </button>
           <button
-            class="pc-cell"
+            class="pc-cell light"
             data-pc-timestamp="1556582400000"
           >
             30
           </button>
           <button
-            class="pc-cell light"
+            class="pc-cell"
             data-pc-timestamp="1556668800000"
           >
             1
           </button>
           <button
-            class="pc-cell light"
+            class="pc-cell"
             data-pc-timestamp="1556755200000"
           >
             2
           </button>
           <button
-            class="pc-cell light"
+            class="pc-cell"
             data-pc-timestamp="1556841600000"
           >
             3
           </button>
           <button
-            class="pc-cell light"
+            class="pc-cell"
             data-pc-timestamp="1556928000000"
           >
             4
           </button>
           <button
-            class="pc-cell light"
+            class="pc-cell"
             data-pc-timestamp="1557014400000"
           >
             5
           </button>
           <button
-            class="pc-cell light"
+            class="pc-cell"
             data-pc-timestamp="1557100800000"
           >
             6
           </button>
           <button
-            class="pc-cell light"
+            class="pc-cell"
             data-pc-timestamp="1557187200000"
           >
             7
           </button>
           <button
-            class="pc-cell light"
+            class="pc-cell"
             data-pc-timestamp="1557273600000"
           >
             8
           </button>
           <button
-            class="pc-cell light"
+            class="pc-cell"
             data-pc-timestamp="1557360000000"
           >
             9
           </button>
           <button
-            class="pc-cell light"
+            class="pc-cell"
             data-pc-timestamp="1557446400000"
           >
             10
           </button>
           <button
-            class="pc-cell light"
+            class="pc-cell"
             data-pc-timestamp="1557532800000"
           >
             11
           </button>
           <button
-            class="pc-cell light"
+            class="pc-cell"
             data-pc-timestamp="1557619200000"
           >
             12
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1557705600000"
+          >
+            13
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1557792000000"
+          >
+            14
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1557878400000"
+          >
+            15
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1557964800000"
+          >
+            16
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1558051200000"
+          >
+            17
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1558137600000"
+          >
+            18
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1558224000000"
+          >
+            19
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1558310400000"
+          >
+            20
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1558396800000"
+          >
+            21
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1558483200000"
+          >
+            22
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1558569600000"
+          >
+            23
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1558656000000"
+          >
+            24
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1558742400000"
+          >
+            25
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1558828800000"
+          >
+            26
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1558915200000"
+          >
+            27
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1559001600000"
+          >
+            28
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1559088000000"
+          >
+            29
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1559174400000"
+          >
+            30
+          </button>
+          <button
+            class="pc-cell"
+            data-pc-timestamp="1559260800000"
+          >
+            31
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1559347200000"
+          >
+            1
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1559433600000"
+          >
+            2
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1559520000000"
+          >
+            3
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1559606400000"
+          >
+            4
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1559692800000"
+          >
+            5
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1559779200000"
+          >
+            6
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1559865600000"
+          >
+            7
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1559952000000"
+          >
+            8
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1560038400000"
+          >
+            9
           </button>
           
       
@@ -1690,7 +712,7 @@ exports[`API it should call the next() method 1`] = `
 </body>
 `;
 
-exports[`API it should call the prev() method 1`] = `
+exports[`API it should change scope 3`] = `
 <body>
   <div
     id="root"
@@ -1723,7 +745,7 @@ exports[`API it should call the prev() method 1`] = `
             class="pc-title"
             type="button"
           >
-            December, 2018
+            December, 2020
           </button>
           
         
@@ -1780,255 +802,255 @@ exports[`API it should call the prev() method 1`] = `
         
           <button
             class="pc-cell light"
-            data-pc-timestamp="1543190400000"
-          >
-            26
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1543276800000"
-          >
-            27
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1543363200000"
-          >
-            28
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1543449600000"
-          >
-            29
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1543536000000"
+            data-pc-timestamp="1606694400000"
           >
             30
           </button>
           <button
             class="pc-cell"
-            data-pc-timestamp="1543622400000"
+            data-pc-timestamp="1606780800000"
           >
             1
           </button>
           <button
             class="pc-cell"
-            data-pc-timestamp="1543708800000"
+            data-pc-timestamp="1606867200000"
           >
             2
           </button>
           <button
             class="pc-cell"
-            data-pc-timestamp="1543795200000"
+            data-pc-timestamp="1606953600000"
           >
             3
           </button>
           <button
             class="pc-cell"
-            data-pc-timestamp="1543881600000"
+            data-pc-timestamp="1607040000000"
           >
             4
           </button>
           <button
             class="pc-cell"
-            data-pc-timestamp="1543968000000"
+            data-pc-timestamp="1607126400000"
           >
             5
           </button>
           <button
             class="pc-cell"
-            data-pc-timestamp="1544054400000"
+            data-pc-timestamp="1607212800000"
           >
             6
           </button>
           <button
             class="pc-cell"
-            data-pc-timestamp="1544140800000"
+            data-pc-timestamp="1607299200000"
           >
             7
           </button>
           <button
             class="pc-cell"
-            data-pc-timestamp="1544227200000"
+            data-pc-timestamp="1607385600000"
           >
             8
           </button>
           <button
             class="pc-cell"
-            data-pc-timestamp="1544313600000"
+            data-pc-timestamp="1607472000000"
           >
             9
           </button>
           <button
             class="pc-cell"
-            data-pc-timestamp="1544400000000"
+            data-pc-timestamp="1607558400000"
           >
             10
           </button>
           <button
             class="pc-cell"
-            data-pc-timestamp="1544486400000"
+            data-pc-timestamp="1607644800000"
           >
             11
           </button>
           <button
             class="pc-cell"
-            data-pc-timestamp="1544572800000"
+            data-pc-timestamp="1607731200000"
           >
             12
           </button>
           <button
             class="pc-cell"
-            data-pc-timestamp="1544659200000"
+            data-pc-timestamp="1607817600000"
           >
             13
           </button>
           <button
             class="pc-cell"
-            data-pc-timestamp="1544745600000"
+            data-pc-timestamp="1607904000000"
           >
             14
           </button>
           <button
             class="pc-cell"
-            data-pc-timestamp="1544832000000"
+            data-pc-timestamp="1607990400000"
           >
             15
           </button>
           <button
             class="pc-cell"
-            data-pc-timestamp="1544918400000"
+            data-pc-timestamp="1608076800000"
           >
             16
           </button>
           <button
             class="pc-cell"
-            data-pc-timestamp="1545004800000"
+            data-pc-timestamp="1608163200000"
           >
             17
           </button>
           <button
             class="pc-cell"
-            data-pc-timestamp="1545091200000"
+            data-pc-timestamp="1608249600000"
           >
             18
           </button>
           <button
             class="pc-cell"
-            data-pc-timestamp="1545177600000"
+            data-pc-timestamp="1608336000000"
           >
             19
           </button>
           <button
             class="pc-cell"
-            data-pc-timestamp="1545264000000"
+            data-pc-timestamp="1608422400000"
           >
             20
           </button>
           <button
             class="pc-cell"
-            data-pc-timestamp="1545350400000"
+            data-pc-timestamp="1608508800000"
           >
             21
           </button>
           <button
             class="pc-cell"
-            data-pc-timestamp="1545436800000"
+            data-pc-timestamp="1608595200000"
           >
             22
           </button>
           <button
             class="pc-cell"
-            data-pc-timestamp="1545523200000"
+            data-pc-timestamp="1608681600000"
           >
             23
           </button>
           <button
             class="pc-cell"
-            data-pc-timestamp="1545609600000"
+            data-pc-timestamp="1608768000000"
           >
             24
           </button>
           <button
             class="pc-cell"
-            data-pc-timestamp="1545696000000"
+            data-pc-timestamp="1608854400000"
           >
             25
           </button>
           <button
             class="pc-cell"
-            data-pc-timestamp="1545782400000"
+            data-pc-timestamp="1608940800000"
           >
             26
           </button>
           <button
             class="pc-cell"
-            data-pc-timestamp="1545868800000"
+            data-pc-timestamp="1609027200000"
           >
             27
           </button>
           <button
             class="pc-cell"
-            data-pc-timestamp="1545955200000"
+            data-pc-timestamp="1609113600000"
           >
             28
           </button>
           <button
             class="pc-cell"
-            data-pc-timestamp="1546041600000"
+            data-pc-timestamp="1609200000000"
           >
             29
           </button>
           <button
             class="pc-cell"
-            data-pc-timestamp="1546128000000"
+            data-pc-timestamp="1609286400000"
           >
             30
           </button>
           <button
             class="pc-cell"
-            data-pc-timestamp="1546214400000"
+            data-pc-timestamp="1609372800000"
           >
             31
           </button>
           <button
             class="pc-cell light"
-            data-pc-timestamp="1546300800000"
+            data-pc-timestamp="1609459200000"
           >
             1
           </button>
           <button
             class="pc-cell light"
-            data-pc-timestamp="1546387200000"
+            data-pc-timestamp="1609545600000"
           >
             2
           </button>
           <button
             class="pc-cell light"
-            data-pc-timestamp="1546473600000"
+            data-pc-timestamp="1609632000000"
           >
             3
           </button>
           <button
             class="pc-cell light"
-            data-pc-timestamp="1546560000000"
+            data-pc-timestamp="1609718400000"
           >
             4
           </button>
           <button
             class="pc-cell light"
-            data-pc-timestamp="1546646400000"
+            data-pc-timestamp="1609804800000"
           >
             5
           </button>
           <button
             class="pc-cell light"
-            data-pc-timestamp="1546732800000"
+            data-pc-timestamp="1609891200000"
           >
             6
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1609977600000"
+          >
+            7
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1610064000000"
+          >
+            8
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1610150400000"
+          >
+            9
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1610236800000"
+          >
+            10
           </button>
           
       
@@ -2046,7 +1068,7 @@ exports[`API it should call the prev() method 1`] = `
 </body>
 `;
 
-exports[`Initialization it should initialize with MonthState 1`] = `
+exports[`API it should change state 1`] = `
 <body>
   <div
     id="root"
@@ -2402,1468 +1424,7 @@ exports[`Initialization it should initialize with MonthState 1`] = `
 </body>
 `;
 
-exports[`Mouse clicks (DecadeState) it should change the scope to left 1`] = `
-<body>
-  <div
-    id="root"
-  >
-    
-      
-    <div
-      class="pc-wrapper"
-    >
-      
-        
-      <div
-        class="pc-container"
-      >
-        
-          
-      
-        <nav
-          class="pc-controls"
-        >
-          
-        
-          <button
-            class="pc-pointer pc-pointer-left"
-            type="button"
-          />
-          
-        
-          <button
-            class="pc-title"
-            type="button"
-          >
-            2000 - 2009
-          </button>
-          
-        
-          <button
-            class="pc-pointer pc-pointer-right"
-            type="button"
-          />
-          
-      
-        </nav>
-        
-      
-        <div
-          class="pc-plate pc-plate-months"
-        >
-          
-        
-          <button
-            class="pc-cell"
-            data-pc-timestamp="946674000000"
-          >
-            2000
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="978296400000"
-          >
-            2001
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1009832400000"
-          >
-            2002
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1041368400000"
-          >
-            2003
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1072904400000"
-          >
-            2004
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1104526800000"
-          >
-            2005
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1136062800000"
-          >
-            2006
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1167598800000"
-          >
-            2007
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1199134800000"
-          >
-            2008
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1230757200000"
-          >
-            2009
-          </button>
-          
-      
-        </div>
-        
-    
-        
-      </div>
-      
-      
-    </div>
-    
-    
-  </div>
-</body>
-`;
-
-exports[`Mouse clicks (DecadeState) it should change the scope to right 1`] = `
-<body>
-  <div
-    id="root"
-  >
-    
-      
-    <div
-      class="pc-wrapper"
-    >
-      
-        
-      <div
-        class="pc-container"
-      >
-        
-          
-      
-        <nav
-          class="pc-controls"
-        >
-          
-        
-          <button
-            class="pc-pointer pc-pointer-left"
-            type="button"
-          />
-          
-        
-          <button
-            class="pc-title"
-            type="button"
-          >
-            2020 - 2029
-          </button>
-          
-        
-          <button
-            class="pc-pointer pc-pointer-right"
-            type="button"
-          />
-          
-      
-        </nav>
-        
-      
-        <div
-          class="pc-plate pc-plate-months"
-        >
-          
-        
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1577826000000"
-          >
-            2020
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1609448400000"
-          >
-            2021
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1640984400000"
-          >
-            2022
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1672520400000"
-          >
-            2023
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1704056400000"
-          >
-            2024
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1735678800000"
-          >
-            2025
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1767214800000"
-          >
-            2026
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1798750800000"
-          >
-            2027
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1830286800000"
-          >
-            2028
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1861909200000"
-          >
-            2029
-          </button>
-          
-      
-        </div>
-        
-    
-        
-      </div>
-      
-      
-    </div>
-    
-    
-  </div>
-</body>
-`;
-
-exports[`Mouse clicks (DecadeState) it should update the state to YearState 1`] = `
-<body>
-  <div
-    id="root"
-  >
-    
-      
-    <div
-      class="pc-wrapper"
-    >
-      
-        
-      <div
-        class="pc-container"
-      >
-        
-          
-      
-        <nav
-          class="pc-controls"
-        >
-          
-        
-          <button
-            class="pc-pointer pc-pointer-left"
-            type="button"
-          />
-          
-        
-          <button
-            class="pc-title"
-            type="button"
-          >
-            2010
-          </button>
-          
-        
-          <button
-            class="pc-pointer pc-pointer-right"
-            type="button"
-          />
-          
-      
-        </nav>
-        
-      
-        <div
-          class="pc-plate pc-plate-months"
-        >
-          
-        
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1262293200000"
-          >
-            January
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1264971600000"
-          >
-            February
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1267390800000"
-          >
-            March
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1270065600000"
-          >
-            April
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1272657600000"
-          >
-            May
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1275336000000"
-          >
-            June
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1277928000000"
-          >
-            Jule
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1280606400000"
-          >
-            August
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1283284800000"
-          >
-            September
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1285876800000"
-          >
-            October
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1288558800000"
-          >
-            November
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1291150800000"
-          >
-            December
-          </button>
-          
-      
-        </div>
-        
-    
-        
-      </div>
-      
-      
-    </div>
-    
-    
-  </div>
-</body>
-`;
-
-exports[`Mouse clicks (MonthState) it should change selectedDate 1`] = `
-<body>
-  <div
-    id="root"
-  >
-    
-      
-    <div
-      class="pc-wrapper"
-    >
-      
-        
-      <div
-        class="pc-container"
-      >
-        
-          
-      
-        <nav
-          class="pc-controls"
-        >
-          
-        
-          <button
-            class="pc-pointer pc-pointer-left"
-            type="button"
-          />
-          
-        
-          <button
-            class="pc-title"
-            type="button"
-          >
-            January, 2019
-          </button>
-          
-        
-          <button
-            class="pc-pointer pc-pointer-right"
-            type="button"
-          />
-          
-      
-        </nav>
-        
-      
-        <div
-          class="pc-plate pc-plate-days"
-        >
-          
-        
-          <span
-            class="pc-cell light"
-          >
-            Mo
-          </span>
-          <span
-            class="pc-cell light"
-          >
-            Tu
-          </span>
-          <span
-            class="pc-cell light"
-          >
-            We
-          </span>
-          <span
-            class="pc-cell light"
-          >
-            Th
-          </span>
-          <span
-            class="pc-cell light"
-          >
-            Fr
-          </span>
-          <span
-            class="pc-cell light"
-          >
-            Sa
-          </span>
-          <span
-            class="pc-cell light"
-          >
-            Su
-          </span>
-          
-        
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1546214400000"
-          >
-            31
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1546300800000"
-          >
-            1
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1546387200000"
-          >
-            2
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1546473600000"
-          >
-            3
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1546560000000"
-          >
-            4
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1546646400000"
-          >
-            5
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1546732800000"
-          >
-            6
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1546819200000"
-          >
-            7
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1546905600000"
-          >
-            8
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1546992000000"
-          >
-            9
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1547078400000"
-          >
-            10
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1547164800000"
-          >
-            11
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1547251200000"
-          >
-            12
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1547337600000"
-          >
-            13
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1547424000000"
-          >
-            14
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1547510400000"
-          >
-            15
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1547596800000"
-          >
-            16
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1547683200000"
-          >
-            17
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1547769600000"
-          >
-            18
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1547856000000"
-          >
-            19
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1547942400000"
-          >
-            20
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1548028800000"
-          >
-            21
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1548115200000"
-          >
-            22
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1548201600000"
-          >
-            23
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1548288000000"
-          >
-            24
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1548374400000"
-          >
-            25
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1548460800000"
-          >
-            26
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1548547200000"
-          >
-            27
-          </button>
-          <button
-            class="pc-cell selected"
-            data-pc-timestamp="1548633600000"
-          >
-            28
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1548720000000"
-          >
-            29
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1548806400000"
-          >
-            30
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1548892800000"
-          >
-            31
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1548979200000"
-          >
-            1
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1549065600000"
-          >
-            2
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1549152000000"
-          >
-            3
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1549238400000"
-          >
-            4
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1549324800000"
-          >
-            5
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1549411200000"
-          >
-            6
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1549497600000"
-          >
-            7
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1549584000000"
-          >
-            8
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1549670400000"
-          >
-            9
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1549756800000"
-          >
-            10
-          </button>
-          
-      
-        </div>
-        
-    
-        
-      </div>
-      
-      
-    </div>
-    
-    
-  </div>
-</body>
-`;
-
-exports[`Mouse clicks (MonthState) it should change the scope to left 1`] = `
-<body>
-  <div
-    id="root"
-  >
-    
-      
-    <div
-      class="pc-wrapper"
-    >
-      
-        
-      <div
-        class="pc-container"
-      >
-        
-          
-      
-        <nav
-          class="pc-controls"
-        >
-          
-        
-          <button
-            class="pc-pointer pc-pointer-left"
-            type="button"
-          />
-          
-        
-          <button
-            class="pc-title"
-            type="button"
-          >
-            January, 2019
-          </button>
-          
-        
-          <button
-            class="pc-pointer pc-pointer-right"
-            type="button"
-          />
-          
-      
-        </nav>
-        
-      
-        <div
-          class="pc-plate pc-plate-days"
-        >
-          
-        
-          <span
-            class="pc-cell light"
-          >
-            Mo
-          </span>
-          <span
-            class="pc-cell light"
-          >
-            Tu
-          </span>
-          <span
-            class="pc-cell light"
-          >
-            We
-          </span>
-          <span
-            class="pc-cell light"
-          >
-            Th
-          </span>
-          <span
-            class="pc-cell light"
-          >
-            Fr
-          </span>
-          <span
-            class="pc-cell light"
-          >
-            Sa
-          </span>
-          <span
-            class="pc-cell light"
-          >
-            Su
-          </span>
-          
-        
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1546214400000"
-          >
-            31
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1546300800000"
-          >
-            1
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1546387200000"
-          >
-            2
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1546473600000"
-          >
-            3
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1546560000000"
-          >
-            4
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1546646400000"
-          >
-            5
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1546732800000"
-          >
-            6
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1546819200000"
-          >
-            7
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1546905600000"
-          >
-            8
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1546992000000"
-          >
-            9
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1547078400000"
-          >
-            10
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1547164800000"
-          >
-            11
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1547251200000"
-          >
-            12
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1547337600000"
-          >
-            13
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1547424000000"
-          >
-            14
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1547510400000"
-          >
-            15
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1547596800000"
-          >
-            16
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1547683200000"
-          >
-            17
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1547769600000"
-          >
-            18
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1547856000000"
-          >
-            19
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1547942400000"
-          >
-            20
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1548028800000"
-          >
-            21
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1548115200000"
-          >
-            22
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1548201600000"
-          >
-            23
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1548288000000"
-          >
-            24
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1548374400000"
-          >
-            25
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1548460800000"
-          >
-            26
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1548547200000"
-          >
-            27
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1548633600000"
-          >
-            28
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1548720000000"
-          >
-            29
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1548806400000"
-          >
-            30
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1548892800000"
-          >
-            31
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1548979200000"
-          >
-            1
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1549065600000"
-          >
-            2
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1549152000000"
-          >
-            3
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1549238400000"
-          >
-            4
-          </button>
-          <button
-            class="pc-cell light selected"
-            data-pc-timestamp="1549324800000"
-          >
-            5
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1549411200000"
-          >
-            6
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1549497600000"
-          >
-            7
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1549584000000"
-          >
-            8
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1549670400000"
-          >
-            9
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1549756800000"
-          >
-            10
-          </button>
-          
-      
-        </div>
-        
-    
-        
-      </div>
-      
-      
-    </div>
-    
-    
-  </div>
-</body>
-`;
-
-exports[`Mouse clicks (MonthState) it should change the scope to right 1`] = `
-<body>
-  <div
-    id="root"
-  >
-    
-      
-    <div
-      class="pc-wrapper"
-    >
-      
-        
-      <div
-        class="pc-container"
-      >
-        
-          
-      
-        <nav
-          class="pc-controls"
-        >
-          
-        
-          <button
-            class="pc-pointer pc-pointer-left"
-            type="button"
-          />
-          
-        
-          <button
-            class="pc-title"
-            type="button"
-          >
-            March, 2019
-          </button>
-          
-        
-          <button
-            class="pc-pointer pc-pointer-right"
-            type="button"
-          />
-          
-      
-        </nav>
-        
-      
-        <div
-          class="pc-plate pc-plate-days"
-        >
-          
-        
-          <span
-            class="pc-cell light"
-          >
-            Mo
-          </span>
-          <span
-            class="pc-cell light"
-          >
-            Tu
-          </span>
-          <span
-            class="pc-cell light"
-          >
-            We
-          </span>
-          <span
-            class="pc-cell light"
-          >
-            Th
-          </span>
-          <span
-            class="pc-cell light"
-          >
-            Fr
-          </span>
-          <span
-            class="pc-cell light"
-          >
-            Sa
-          </span>
-          <span
-            class="pc-cell light"
-          >
-            Su
-          </span>
-          
-        
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1551052800000"
-          >
-            25
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1551139200000"
-          >
-            26
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1551225600000"
-          >
-            27
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1551312000000"
-          >
-            28
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1551398400000"
-          >
-            1
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1551484800000"
-          >
-            2
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1551571200000"
-          >
-            3
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1551657600000"
-          >
-            4
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1551744000000"
-          >
-            5
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1551830400000"
-          >
-            6
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1551916800000"
-          >
-            7
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1552003200000"
-          >
-            8
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1552089600000"
-          >
-            9
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1552176000000"
-          >
-            10
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1552262400000"
-          >
-            11
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1552348800000"
-          >
-            12
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1552435200000"
-          >
-            13
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1552521600000"
-          >
-            14
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1552608000000"
-          >
-            15
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1552694400000"
-          >
-            16
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1552780800000"
-          >
-            17
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1552867200000"
-          >
-            18
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1552953600000"
-          >
-            19
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1553040000000"
-          >
-            20
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1553126400000"
-          >
-            21
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1553212800000"
-          >
-            22
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1553299200000"
-          >
-            23
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1553385600000"
-          >
-            24
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1553472000000"
-          >
-            25
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1553558400000"
-          >
-            26
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1553644800000"
-          >
-            27
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1553731200000"
-          >
-            28
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1553817600000"
-          >
-            29
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1553904000000"
-          >
-            30
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1553990400000"
-          >
-            31
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1554076800000"
-          >
-            1
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1554163200000"
-          >
-            2
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1554249600000"
-          >
-            3
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1554336000000"
-          >
-            4
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1554422400000"
-          >
-            5
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1554508800000"
-          >
-            6
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1554595200000"
-          >
-            7
-          </button>
-          
-      
-        </div>
-        
-    
-        
-      </div>
-      
-      
-    </div>
-    
-    
-  </div>
-</body>
-`;
-
-exports[`Mouse clicks (MonthState) it should update the state to YearState 1`] = `
+exports[`API it should change state 2`] = `
 <body>
   <div
     id="root"
@@ -4002,285 +1563,7 @@ exports[`Mouse clicks (MonthState) it should update the state to YearState 1`] =
 </body>
 `;
 
-exports[`Mouse clicks (YearState) it should change the scope to left 1`] = `
-<body>
-  <div
-    id="root"
-  >
-    
-      
-    <div
-      class="pc-wrapper"
-    >
-      
-        
-      <div
-        class="pc-container"
-      >
-        
-          
-      
-        <nav
-          class="pc-controls"
-        >
-          
-        
-          <button
-            class="pc-pointer pc-pointer-left"
-            type="button"
-          />
-          
-        
-          <button
-            class="pc-title"
-            type="button"
-          >
-            2018
-          </button>
-          
-        
-          <button
-            class="pc-pointer pc-pointer-right"
-            type="button"
-          />
-          
-      
-        </nav>
-        
-      
-        <div
-          class="pc-plate pc-plate-months"
-        >
-          
-        
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1514754000000"
-          >
-            January
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1517432400000"
-          >
-            February
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1519851600000"
-          >
-            March
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1522530000000"
-          >
-            April
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1525122000000"
-          >
-            May
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1527800400000"
-          >
-            June
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1530392400000"
-          >
-            Jule
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1533070800000"
-          >
-            August
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1535749200000"
-          >
-            September
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1538341200000"
-          >
-            October
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1541019600000"
-          >
-            November
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1543611600000"
-          >
-            December
-          </button>
-          
-      
-        </div>
-        
-    
-        
-      </div>
-      
-      
-    </div>
-    
-    
-  </div>
-</body>
-`;
-
-exports[`Mouse clicks (YearState) it should change the scope to right 1`] = `
-<body>
-  <div
-    id="root"
-  >
-    
-      
-    <div
-      class="pc-wrapper"
-    >
-      
-        
-      <div
-        class="pc-container"
-      >
-        
-          
-      
-        <nav
-          class="pc-controls"
-        >
-          
-        
-          <button
-            class="pc-pointer pc-pointer-left"
-            type="button"
-          />
-          
-        
-          <button
-            class="pc-title"
-            type="button"
-          >
-            2020
-          </button>
-          
-        
-          <button
-            class="pc-pointer pc-pointer-right"
-            type="button"
-          />
-          
-      
-        </nav>
-        
-      
-        <div
-          class="pc-plate pc-plate-months"
-        >
-          
-        
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1577826000000"
-          >
-            January
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1580504400000"
-          >
-            February
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1583010000000"
-          >
-            March
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1585688400000"
-          >
-            April
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1588280400000"
-          >
-            May
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1590958800000"
-          >
-            June
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1593550800000"
-          >
-            Jule
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1596229200000"
-          >
-            August
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1598907600000"
-          >
-            September
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1601499600000"
-          >
-            October
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1604178000000"
-          >
-            November
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1606770000000"
-          >
-            December
-          </button>
-          
-      
-        </div>
-        
-    
-        
-      </div>
-      
-      
-    </div>
-    
-    
-  </div>
-</body>
-`;
-
-exports[`Mouse clicks (YearState) it should update the state to DecadeState 1`] = `
+exports[`API it should change state 3`] = `
 <body>
   <div
     id="root"
@@ -4407,7 +1690,7 @@ exports[`Mouse clicks (YearState) it should update the state to DecadeState 1`] 
 </body>
 `;
 
-exports[`Mouse clicks (YearState) it should update the state to MonthState 1`] = `
+exports[`API it should change state 4`] = `
 <body>
   <div
     id="root"
@@ -4440,7 +1723,7 @@ exports[`Mouse clicks (YearState) it should update the state to MonthState 1`] =
             class="pc-title"
             type="button"
           >
-            March, 2019
+            February, 2019
           </button>
           
         
@@ -4497,255 +1780,255 @@ exports[`Mouse clicks (YearState) it should update the state to MonthState 1`] =
         
           <button
             class="pc-cell light"
-            data-pc-timestamp="1551042000000"
-          >
-            25
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1551128400000"
-          >
-            26
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1551214800000"
-          >
-            27
-          </button>
-          <button
-            class="pc-cell light"
-            data-pc-timestamp="1551301200000"
+            data-pc-timestamp="1548633600000"
           >
             28
           </button>
           <button
+            class="pc-cell light"
+            data-pc-timestamp="1548720000000"
+          >
+            29
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1548806400000"
+          >
+            30
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1548892800000"
+          >
+            31
+          </button>
+          <button
             class="pc-cell"
-            data-pc-timestamp="1551387600000"
+            data-pc-timestamp="1548979200000"
           >
             1
           </button>
           <button
             class="pc-cell"
-            data-pc-timestamp="1551474000000"
+            data-pc-timestamp="1549065600000"
           >
             2
           </button>
           <button
             class="pc-cell"
-            data-pc-timestamp="1551560400000"
+            data-pc-timestamp="1549152000000"
           >
             3
           </button>
           <button
             class="pc-cell"
-            data-pc-timestamp="1551646800000"
+            data-pc-timestamp="1549238400000"
           >
             4
           </button>
           <button
-            class="pc-cell"
-            data-pc-timestamp="1551733200000"
+            class="pc-cell selected"
+            data-pc-timestamp="1549324800000"
           >
             5
           </button>
           <button
             class="pc-cell"
-            data-pc-timestamp="1551819600000"
+            data-pc-timestamp="1549411200000"
           >
             6
           </button>
           <button
             class="pc-cell"
-            data-pc-timestamp="1551906000000"
+            data-pc-timestamp="1549497600000"
           >
             7
           </button>
           <button
             class="pc-cell"
-            data-pc-timestamp="1551992400000"
+            data-pc-timestamp="1549584000000"
           >
             8
           </button>
           <button
             class="pc-cell"
-            data-pc-timestamp="1552078800000"
+            data-pc-timestamp="1549670400000"
           >
             9
           </button>
           <button
             class="pc-cell"
-            data-pc-timestamp="1552165200000"
+            data-pc-timestamp="1549756800000"
           >
             10
           </button>
           <button
             class="pc-cell"
-            data-pc-timestamp="1552251600000"
+            data-pc-timestamp="1549843200000"
           >
             11
           </button>
           <button
             class="pc-cell"
-            data-pc-timestamp="1552338000000"
+            data-pc-timestamp="1549929600000"
           >
             12
           </button>
           <button
             class="pc-cell"
-            data-pc-timestamp="1552424400000"
+            data-pc-timestamp="1550016000000"
           >
             13
           </button>
           <button
             class="pc-cell"
-            data-pc-timestamp="1552510800000"
+            data-pc-timestamp="1550102400000"
           >
             14
           </button>
           <button
             class="pc-cell"
-            data-pc-timestamp="1552597200000"
+            data-pc-timestamp="1550188800000"
           >
             15
           </button>
           <button
             class="pc-cell"
-            data-pc-timestamp="1552683600000"
+            data-pc-timestamp="1550275200000"
           >
             16
           </button>
           <button
             class="pc-cell"
-            data-pc-timestamp="1552770000000"
+            data-pc-timestamp="1550361600000"
           >
             17
           </button>
           <button
             class="pc-cell"
-            data-pc-timestamp="1552856400000"
+            data-pc-timestamp="1550448000000"
           >
             18
           </button>
           <button
             class="pc-cell"
-            data-pc-timestamp="1552942800000"
+            data-pc-timestamp="1550534400000"
           >
             19
           </button>
           <button
             class="pc-cell"
-            data-pc-timestamp="1553029200000"
+            data-pc-timestamp="1550620800000"
           >
             20
           </button>
           <button
             class="pc-cell"
-            data-pc-timestamp="1553115600000"
+            data-pc-timestamp="1550707200000"
           >
             21
           </button>
           <button
             class="pc-cell"
-            data-pc-timestamp="1553202000000"
+            data-pc-timestamp="1550793600000"
           >
             22
           </button>
           <button
             class="pc-cell"
-            data-pc-timestamp="1553288400000"
+            data-pc-timestamp="1550880000000"
           >
             23
           </button>
           <button
             class="pc-cell"
-            data-pc-timestamp="1553374800000"
+            data-pc-timestamp="1550966400000"
           >
             24
           </button>
           <button
             class="pc-cell"
-            data-pc-timestamp="1553461200000"
+            data-pc-timestamp="1551052800000"
           >
             25
           </button>
           <button
             class="pc-cell"
-            data-pc-timestamp="1553547600000"
+            data-pc-timestamp="1551139200000"
           >
             26
           </button>
           <button
             class="pc-cell"
-            data-pc-timestamp="1553634000000"
+            data-pc-timestamp="1551225600000"
           >
             27
           </button>
           <button
             class="pc-cell"
-            data-pc-timestamp="1553720400000"
+            data-pc-timestamp="1551312000000"
           >
             28
           </button>
           <button
-            class="pc-cell"
-            data-pc-timestamp="1553806800000"
-          >
-            29
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1553893200000"
-          >
-            30
-          </button>
-          <button
-            class="pc-cell"
-            data-pc-timestamp="1553979600000"
-          >
-            31
-          </button>
-          <button
             class="pc-cell light"
-            data-pc-timestamp="1554066000000"
+            data-pc-timestamp="1551398400000"
           >
             1
           </button>
           <button
             class="pc-cell light"
-            data-pc-timestamp="1554152400000"
+            data-pc-timestamp="1551484800000"
           >
             2
           </button>
           <button
             class="pc-cell light"
-            data-pc-timestamp="1554238800000"
+            data-pc-timestamp="1551571200000"
           >
             3
           </button>
           <button
             class="pc-cell light"
-            data-pc-timestamp="1554325200000"
+            data-pc-timestamp="1551657600000"
           >
             4
           </button>
           <button
             class="pc-cell light"
-            data-pc-timestamp="1554411600000"
+            data-pc-timestamp="1551744000000"
           >
             5
           </button>
           <button
             class="pc-cell light"
-            data-pc-timestamp="1554498000000"
+            data-pc-timestamp="1551830400000"
           >
             6
           </button>
           <button
             class="pc-cell light"
-            data-pc-timestamp="1554584400000"
+            data-pc-timestamp="1551916800000"
           >
             7
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1552003200000"
+          >
+            8
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1552089600000"
+          >
+            9
+          </button>
+          <button
+            class="pc-cell light"
+            data-pc-timestamp="1552176000000"
+          >
+            10
           </button>
           
       

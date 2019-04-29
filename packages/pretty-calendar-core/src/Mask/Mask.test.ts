@@ -10,13 +10,13 @@ describe('Initialization', () => {
 
     expect(() => {
       const mask = new Mask(pattern, {
-        placeholder: 'x'
+        placeholder: 'x',
       });
     }).not.toThrow();
   });
 
   it('it should mask value', () => {
-    let value = '123456789098765432101234567890'
+    let value = '123456789098765432101234567890';
     let pattern = 'Ax±x§x!x@x#x$x%x^x&x*x(x)x_x+x{x}x[x]x;x:x\\x|x/x?x.x,x>x<x~xZ';
     let mask = new Mask(pattern);
 
@@ -24,7 +24,7 @@ describe('Initialization', () => {
   });
 
   it('it should unmask value', () => {
-    let value = 'A1±2§3!4@5#6$7%8^9&0*9(8)7_6+5{4}3[2]1;0:1\\2|3/4?5.6,7>8<9~0Z'
+    let value = 'A1±2§3!4@5#6$7%8^9&0*9(8)7_6+5{4}3[2]1;0:1\\2|3/4?5.6,7>8<9~0Z';
     let pattern = 'Ax±x§x!x@x#x$x%x^x&x*x(x)x_x+x{x}x[x]x;x:x\\x|x/x?x.x,x>x<x~xZ';
     let mask = new Mask(pattern);
 
@@ -32,7 +32,7 @@ describe('Initialization', () => {
   });
 
   it('it should remask value', () => {
-    let value = '123456789098765432101234567890'
+    let value = '123456789098765432101234567890';
     let pattern = 'Ax±x§x!x@x#x$x%x^x&x*x(x)x_x+x{x}x[x]x;x:x\\x|x/x?x.x,x>x<x~xZ';
     let mask = new Mask(pattern);
 
@@ -61,7 +61,7 @@ describe('Initialization', () => {
     const pattern = 'xx.xx.xxxx';
     expect(() => {
       const mask = new Mask(pattern, {
-        placeholder: 'xx'
+        placeholder: 'xx',
       });
     }).toThrow();
   });
@@ -70,8 +70,8 @@ describe('Initialization', () => {
     const pattern = 'xx.xx.xxxx';
     expect(() => {
       const mask = new Mask(pattern, {
-        placeholder: 'z'
+        placeholder: 'z',
       });
     }).toThrow();
   });
-})
+});

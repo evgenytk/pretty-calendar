@@ -4,7 +4,6 @@ import Calendar from '../Calendar/Calendar';
  * State pattern implementation.
  */
 abstract class State {
-
   /**
    * @type {Calendar}
    */
@@ -12,17 +11,16 @@ abstract class State {
 
   /**
    * Initialization.
-   * 
+   *
    * @param {Calendar} calendar [description]
    */
   constructor(calendar: Calendar) {
     this.calendar = calendar;
-    this.calendar.publisher.notify('state-changed', this.constructor.name);
   }
 
   /**
    * Rendering HTML content.
-   * 
+   *
    * @return {string} [description]
    */
   public abstract render(): string;
@@ -44,7 +42,7 @@ abstract class State {
 
   /**
    * Handling date cell click.
-   * 
+   *
    * @param {Element} element [description]
    */
   public abstract handleDateClick(element: Element): void;

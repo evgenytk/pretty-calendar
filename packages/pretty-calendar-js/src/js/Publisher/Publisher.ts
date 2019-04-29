@@ -1,27 +1,15 @@
-import Subscriber from "./Subscriber";
+import ISubscriber from './ISubscriber';
 
 /**
- * Available event types:
  *
- * *mounted*, 
- * state-updated, 
- * prev-clicked, 
- * next-clicked, 
- * center-clicked, 
- * 
- * year-changed, 
- * month-changed, 
- * day-changed,
- * date-selected,
- * 
  */
 class Publisher {
   /**
    * Array of subscribers.
    *
-   * @type {Array<Subscriber>}
+   * @type {ISubscriber[]}
    */
-  private subscribers: Array<Subscriber>;
+  private subscribers: ISubscriber[];
 
   /**
    * Initialization.
@@ -34,19 +22,19 @@ class Publisher {
    * Adding a new subscriber to the list.
    * Return an unsubscribing function.
    *
-   * Example: 
+   * Example:
    * const unsubscribe = publisher.subscribe('eventName', () => console.log('Triggered!'));
    * unsubscribe();
    *
    * @param {string}   eventType
    * @param {Function} callback
    */
-  public subscribe(eventType: string, callback: Function): Function {
+  public subscribe(eventType: string, callback: () => void): () => void {
     this.subscribers = [...this.subscribers, { eventType, callback }];
 
     return () => {
       this.unsubscribe(eventType, callback);
-    }
+    };
   }
 
   /**
@@ -55,10 +43,8 @@ class Publisher {
    * @param {string}   eventType
    * @param {Function} callback
    */
-  public unsubscribe(eventType: string, callback: Function): void {
-    this.subscribers = this.subscribers.filter(
-      (s: Subscriber) => s.eventType === eventType && s.callback !== callback
-    );
+  public unsubscribe(eventType: string, callback: () => void): void {
+    this.subscribers = this.subscribers.filter((s: ISubscriber) => s.eventType === eventType && s.callback !== callback);
   }
 
   /**
@@ -68,8 +54,8 @@ class Publisher {
    */
   public notify(eventType: string, payload: any = null) {
     this.subscribers
-      .filter((s: Subscriber) => s.eventType === eventType)
-      .forEach((s: Subscriber) => (payload ? s.callback(payload) : s.callback()));
+      .filter((s: ISubscriber) => s.eventType === eventType)
+      .forEach((s: ISubscriber) => (payload ? s.callback(payload) : s.callback()));
   }
 }
 
