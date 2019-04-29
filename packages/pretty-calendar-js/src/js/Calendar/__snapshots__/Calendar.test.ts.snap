@@ -445,13 +445,13 @@ exports[`API it should change scope 2`] = `
           
         
           <button
-            class="pc-cell light active"
+            class="pc-cell light"
             data-pc-timestamp="1556496000000"
           >
             29
           </button>
           <button
-            class="pc-cell light"
+            class="pc-cell light active"
             data-pc-timestamp="1556582400000"
           >
             30
