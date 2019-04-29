@@ -27,7 +27,8 @@
   },
   "homepage": "https://github.com/evgenytk/pretty-calendar#readme",
   "devDependencies": {
-    "@pretty-calendar/core": "file:../pretty-calendar-core",
+    "@pretty-calendar/core": "^0.1.1",
     "node-sass": "^4.11.0"
-  }
+  },
+  "gitHead": "13a2530bdda897f815de77a6f9fb6c4be099a8c7"
 }
