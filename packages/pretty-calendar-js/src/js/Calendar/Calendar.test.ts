@@ -61,7 +61,7 @@ describe('API', () => {
   it('it should change scope', () => {
     document.body.innerHTML = `<div id="root"></div>`;
     const calendar = new Calendar('#root', {
-      selectedDate: date
+      selectedDate: date,
     });
 
     calendar.changeScope(new Date('2019-01-01'));
@@ -80,7 +80,7 @@ describe('API', () => {
   it('it should change state', () => {
     document.body.innerHTML = `<div id="root"></div>`;
     const calendar = new Calendar('#root', {
-      selectedDate: date
+      selectedDate: date,
     });
 
     expect(calendar.state instanceof MonthState).toBe(true);
@@ -109,13 +109,13 @@ describe('API', () => {
 
   it('it should throw an error of the incorrect state name', () => {
     document.body.innerHTML = `<div id="root"></div>`;
-    
+
     expect(() => {
       const calendar = new Calendar('#root');
       calendar.changeState('UnknownState');
     }).toThrow();
   });
-})
+});
 
 describe('Mouse clicks', () => {
   it('(MonthState.handleLeftClick) it should change month to prev', () => {

@@ -1,3 +1,4 @@
+/* tslint:disable:interface-name */
 interface Date {
   resetTime(): Date;
   resetMonth(): Date;
@@ -10,6 +11,7 @@ interface Date {
   isToday(): boolean;
   dayInMonth(date: Date): boolean;
 }
+/* tslint:enable:interface-name */
 
 Date.prototype.resetTime = function(): Date {
   const timestamp: number = new Date(this).setHours(0, 0, 0, 0);
@@ -18,7 +20,7 @@ Date.prototype.resetTime = function(): Date {
 };
 
 Date.prototype.resetMonth = function(): Date {
-  let timestamp: number = new Date(this).setDate(1);
+  const timestamp: number = new Date(this).setDate(1);
   return new Date(timestamp);
 };
 

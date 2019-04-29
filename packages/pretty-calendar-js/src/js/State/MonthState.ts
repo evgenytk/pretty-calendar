@@ -51,7 +51,7 @@ class MonthState extends State {
   public handleDateClick(element: Element): void {
     const timestamp = element.getAttribute('data-pc-timestamp') as string;
     const date = new Date(parseInt(timestamp, 10));
-    
+
     this.calendar.changeDate(date);
   }
 

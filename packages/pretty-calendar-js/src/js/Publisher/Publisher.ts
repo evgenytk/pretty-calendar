@@ -44,7 +44,9 @@ class Publisher {
    * @param {Function} callback
    */
   public unsubscribe(eventType: string, callback: () => void): void {
-    this.subscribers = this.subscribers.filter((s: ISubscriber) => s.eventType === eventType && s.callback !== callback);
+    this.subscribers = this.subscribers.filter(
+      (s: ISubscriber) => s.eventType === eventType && s.callback !== callback,
+    );
   }
 
   /**

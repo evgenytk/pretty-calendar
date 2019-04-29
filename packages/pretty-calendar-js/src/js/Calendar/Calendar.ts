@@ -15,10 +15,9 @@ import { ICalendarOptions } from './ICalendarOptions';
  * state-changed
  * scope-changed
  * date-changed
- * 
+ *
  */
 class Calendar {
-
   /**
    * Default calendar options.
    *
@@ -143,7 +142,7 @@ class Calendar {
   public prev = (): void => {
     this.state.handleLeftClick();
     this.publisher.notify('prev');
-  }
+  };
 
   /**
    * Move to next scope.
@@ -151,7 +150,7 @@ class Calendar {
   public next = (): void => {
     this.state.handleRightClick();
     this.publisher.notify('next');
-  }
+  };
 
   /**
    * Alias for Publisher.subscribe method.
