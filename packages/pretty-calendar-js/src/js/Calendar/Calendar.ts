@@ -165,8 +165,11 @@ class Calendar {
    */
   public show = () => {
     const root = <HTMLElement>this.root;
-    root.style.display = 'block';
-    this.publisher.notify('show');
+
+    if(root.style.display !== 'block') {
+      root.style.display = 'block';
+      this.publisher.notify('show');
+    }
   }
 
   /**
