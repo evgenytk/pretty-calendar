@@ -9,7 +9,9 @@
     "ts-jest": "^24.0.2",
     "tslint": "^5.16.0",
     "tslint-config-prettier": "^1.18.0",
-    "typescript": "^3.4.4"
+    "typescript": "^3.4.4",
+    "rollup": "^1.10.1",
+    "rollup-plugin-typescript2": "^0.21.0"
   },
   "scripts": {
     "build": "lerna run build",

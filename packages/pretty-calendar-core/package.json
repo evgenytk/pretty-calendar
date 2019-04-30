@@ -3,21 +3,17 @@
   "version": "0.1.4",
   "description": "Pretty Calendar Core",
   "main": "lib/index.js",
+  "module": "lib/index.es.js",
   "typings": "lib/index.d.ts",
-  "directories": {
-    "lib": "lib"
-  },
-  "files": [
-    "lib"
-  ],
-  "publishConfig": {
-    "access": "public"
-  },
   "scripts": {
-    "build": "tsc",
+    "dev": "rollup -cw",
+    "build": "rollup -c",
     "test": "jest --config jestconfig.json",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "tslint -p tsconfig.json"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "repository": {
     "type": "git",
@@ -32,5 +28,11 @@
     "url": "https://github.com/evgenytk/pretty-calendar/issues"
   },
   "homepage": "https://github.com/evgenytk/pretty-calendar#readme",
-  "gitHead": "e7b141b871ccd70d3df6bb6f95915dc7d25a3f1d"
+  "gitHead": "e7b141b871ccd70d3df6bb6f95915dc7d25a3f1d",
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib"
+  ]
 }
