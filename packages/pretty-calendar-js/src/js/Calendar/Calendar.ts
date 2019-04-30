@@ -15,6 +15,8 @@ import { ICalendarOptions } from './ICalendarOptions';
  * state-changed
  * scope-changed
  * date-changed
+ * show (TODO test)
+ * hide (TODO test)
  *
  */
 class Calendar {
@@ -63,6 +65,13 @@ class Calendar {
   public publisher: Publisher;
 
   /**
+   * The user node.
+   * 
+   * @type {Element}
+   */
+  public originalNode: Element;
+
+  /**
    * Root HTML node.
    *
    * @type {Element}
@@ -87,9 +96,11 @@ class Calendar {
     this.publisher = new Publisher();
     this.state = new MonthState(this);
     this.scope = this.options.selectedDate || new Date();
+    this.originalNode = this.findRoot(node);
     this.root = this.findRoot(node);
+    this.transformRoot();
     this.updateRoot();
-    this.updateEventListeners();
+    this.initEventListeners();
   }
 
   // TODO: validation for incorrect options
@@ -108,7 +119,6 @@ class Calendar {
 
     this.publisher.notify('state-changed', this.state.constructor.name);
     this.updateRoot();
-    this.updateEventListeners();
   }
 
   /**
@@ -120,7 +130,6 @@ class Calendar {
     this.scope = date;
     this.publisher.notify('scope-changed', this.scope);
     this.updateRoot();
-    this.updateEventListeners();
   };
 
   /**
@@ -133,7 +142,6 @@ class Calendar {
     this.options.selectedDate = date;
     this.publisher.notify('date-changed', date);
     this.updateRoot();
-    this.updateEventListeners();
   };
 
   /**
@@ -151,6 +159,24 @@ class Calendar {
     this.state.handleRightClick();
     this.publisher.notify('next');
   };
+
+  /**
+   * Showing calendar.
+   */
+  public show = () => {
+    const root = <HTMLElement>this.root;
+    root.style.display = 'block';
+    this.publisher.notify('show');
+  }
+
+  /**
+   * Hiding calendar.
+   */
+  public hide = () => {
+    const root = <HTMLElement>this.root;
+    root.style.display = 'none';
+    this.publisher.notify('hide');
+  }
 
   /**
    * Alias for Publisher.subscribe method.
@@ -180,8 +206,10 @@ class Calendar {
    * @param  {string | Element}     node [description]
    * @return {Element}     [description]
    */
-  private findRoot(node: any): Element {
-    if (typeof node === 'string') {
+  private findRoot(node: string | Element): Element {
+    if (node instanceof Element) {
+      return node;
+    } else {
       const findedNode = document.querySelector(node);
 
       if (findedNode === null) {
@@ -189,27 +217,67 @@ class Calendar {
       }
 
       return findedNode;
-    }
+    } 
+  }
 
-    if (node instanceof HTMLElement) {
-      return node;
-    }
+  /**
+   * Transforming the root node if initialized in <input />
+   * 
+   * @param  {Element} node [description]
+   * @return {Element}      [description]
+   */
+  private transformRoot(): void {
+    if (this.root.tagName === 'INPUT') {
+      const root = document.createElement('div');
 
-    throw new Error('Invalid type');
+      if(this.root.parentNode === null) {
+        throw new Error('...');
+      }
+
+      this.root.parentNode.insertBefore(root, this.root.nextSibling);
+      this.root = root;
+      this.hide();
+      this.updatePosition();
+    }
   }
 
   /**
    * Initialization event listeners.
    */
-  private updateEventListeners(): void {
-    this.root.removeEventListener('click', this.handleClickEvents);
+  private initEventListeners(): void {
+    if(this.originalNode.tagName === 'INPUT') {
+      window.addEventListener('resize', this.updatePosition);
+      document.addEventListener('click', this.handleOutsideClick);
+    }
+
     this.root.addEventListener('click', this.handleClickEvents);
   }
 
   /**
-   * Handling click events.
-   *
-   * @type {[type]}
+   * Update calendar position if initialized in <input />.
+   */
+  private updatePosition = (): void => {
+    const originalNode = <HTMLElement>this.originalNode;
+    const root = <HTMLElement>this.root;
+
+    root.style.position = 'absolute';
+    root.style.top = `${originalNode.offsetTop + originalNode.clientHeight + 10}px`;
+    root.style.left = `${originalNode.offsetLeft}px`;
+  }
+
+  /**
+   * Handle clicks if initialized in <input />.
+   */
+  private handleOutsideClick = (event: any): void => {
+    if (event.target.isSameNode(this.originalNode) || event.target.closest('.pc-wrapper')) {
+      this.show();
+    } else {
+      this.hide();
+    }
+  }
+
+  /**
+   * Handling this.root click events.
    */
   private handleClickEvents = (event: any): void => {
     // TODO: Do something with types...
@@ -256,11 +324,7 @@ class Calendar {
    * Updating the root HTML node by a content coming from the render() method.
    */
   private updateRoot(): void {
-    if (this.root.tagName === 'INPUT') {
-      // TODO ...
-    } else {
-      this.root.innerHTML = this.render();
-    }
+    this.root.innerHTML = this.render();
   }
 
   /**
