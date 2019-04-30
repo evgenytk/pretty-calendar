@@ -29,7 +29,7 @@ describe('Publisher.ts', () => {
     const mock1 = jest.fn(data => data);
 
     const publisher = new Publisher();
-    publisher.subscribe('event1', mock1);
+    publisher.subscribe('event1', <jest.Mock>mock1);
     publisher.notify('event1', 'some data');
     expect(mock1.mock.calls[0][0]).toBe('some data');
   });
