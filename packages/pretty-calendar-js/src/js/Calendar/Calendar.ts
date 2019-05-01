@@ -15,8 +15,8 @@ import { ICalendarOptions } from './ICalendarOptions';
  * state-changed
  * scope-changed
  * date-changed
- * show (TODO test)
- * hide (TODO test)
+ * show
+ * hide
  *
  */
 class Calendar {
@@ -175,8 +175,11 @@ class Calendar {
    */
   public hide = () => {
     const root = this.root as HTMLElement;
-    root.style.display = 'none';
-    this.publisher.notify('hide');
+
+    if(root.style.display !== 'none') {
+      root.style.display = 'none';
+      this.publisher.notify('hide');
+    }
   }
 
   /**
@@ -227,6 +230,7 @@ class Calendar {
    * @param  {Element} node [description]
    * @return {Element}      [description]
    */
+  // TODO test
   private transformRoot(): void {
     if (this.root.tagName === 'INPUT') {
       const root = document.createElement('div');
@@ -246,6 +250,7 @@ class Calendar {
    * Initialization event listeners.
    */
   private initEventListeners(): void {
+    // TODO test
     if(this.originalNode.tagName === 'INPUT') {
       window.addEventListener('resize', this.updatePosition);
       document.addEventListener('click', this.handleOutsideClick);
@@ -257,6 +262,7 @@ class Calendar {
   /**
    * Update calendar position if initialized in <input />.
    */
+  // TODO test
   private updatePosition = (): void => {
     const originalNode = this.originalNode as HTMLElement;
     const root = this.root as HTMLElement;
@@ -269,6 +275,7 @@ class Calendar {
   /**
    * Handle clicks if initialized in <input />.
    */
+  // TODO test
   private handleOutsideClick = (event: any): void => {
     if (event.target.isSameNode(this.originalNode) || event.target.closest('.pc-wrapper')) {
       this.show();

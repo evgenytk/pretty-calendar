@@ -107,6 +107,17 @@ describe('API', () => {
     expect(calendar.state instanceof YearState).toBe(true);
   });
 
+  it('it should show/hide', () => {
+    document.body.innerHTML = `<div id="root"></div>`;
+    const calendar = new Calendar('#root');
+    const root = document.querySelector('#root') as HTMLElement;
+
+    calendar.hide();
+    expect(root.style.display).toEqual('none');
+    calendar.show();
+    expect(root.style.display).toEqual('block');
+  });
+
   it('it should throw an error of the incorrect state name', () => {
     document.body.innerHTML = `<div id="root"></div>`;
 
@@ -343,6 +354,34 @@ describe('Events', () => {
     eventFire(document.querySelector('.pc-pointer-left'), 'click');
     eventFire(document.querySelector('.pc-pointer-right'), 'click');
     expect(callback).toBeCalledTimes(5);
+  });
+
+  it('it should listen the "hide" event', () => {
+    document.body.innerHTML = `<div id="root"></div>`;
+    const calendar = new Calendar('#root');
+
+    const callback = jest.fn(date => date);
+    calendar.on('hide', callback);
+
+    calendar.hide();
+    calendar.hide();
+    calendar.hide();
+    
+    expect(callback).toBeCalledTimes(1);
+  });
+
+  it('it should listen the "show" event', () => {
+    document.body.innerHTML = `<div id="root"></div>`;
+    const calendar = new Calendar('#root');
+
+    const callback = jest.fn(date => date);
+    calendar.on('show', callback);
+
+    calendar.show();
+    calendar.show();
+    calendar.show();
+    
+    expect(callback).toBeCalledTimes(1);
   });
 
   it('it should unsubscribe', () => {
