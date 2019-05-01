@@ -22,17 +22,39 @@ export const v = (type: string, props: object, ...children: any): IVDOMNode => {
  * 
  * @param {any} node  Should have an IVDOMNode type or any other primitive type.
  */
-export const createElement = (node: any): Node => {
+export const createElement = (node: any, $parent: Element | null = null): Node => {
   if(typeof node !== 'object') {
     return document.createTextNode(node);
   }
 
-  const $el: any = document.createElement(node.type);
-  setProps($el, node.props);
-  addEventListeners($el, node.props);
-  node.children.forEach((c: IVDOMNode | string) => $el.appendChild(createElement(c)));
+  if($parent !== null) {
+    node.children.forEach((c: any) => {
 
-  return $el;
+      // Recursive checking for fragment wrapper
+      if(c.type === 'fragment') {
+        createElement(c, $parent);
+      } else {
+        $parent.appendChild(createElement(c));
+      }
+    });
+
+    return $parent;
+  } else {
+    const $el: any = document.createElement(node.type);
+    setProps($el, node.props);
+    addEventListeners($el, node.props);
+    node.children.forEach((c: any) => {
+
+      // Recursive checking for fragment wrapper
+      if(c.type === 'fragment') {
+        createElement(c, $el)
+      } else {
+        $el.appendChild(createElement(c))
+      }
+    });
+
+    return $el;
+  }
 }
 
 /**
