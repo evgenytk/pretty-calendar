@@ -90,6 +90,8 @@ class Calendar {
       ...options,
     };
 
+    this.checkOptions();
+
     this.grid = new Grid(this.options.intl);
     this.publisher = new Publisher();
     this.state = new MonthState(this);
@@ -100,8 +102,6 @@ class Calendar {
     this.updateRoot();
     this.initEventListeners();
   }
-
-  // TODO: validation for incorrect options
 
   /**
    * Updating the root HTML node and reinit event listeners.
@@ -326,6 +326,15 @@ class Calendar {
     }
 
     return new states[name](this);
+  }
+
+  /**
+   * Validation rules for options.
+   */
+  private checkOptions(): void {
+    if (this.options.selectedDate && isNaN(new Date(this.options.selectedDate).getTime())) {
+      throw new Error(`"Icorrect selected date`);
+    }
   }
 
   /**
