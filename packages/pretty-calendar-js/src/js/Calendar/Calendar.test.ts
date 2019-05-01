@@ -135,7 +135,7 @@ describe('Mouse clicks', () => {
       selectedDate: date,
     });
 
-    eventFire(document.querySelector('.pc-pointer-left'), 'click');
+    document.querySelector('.pc-pointer-left').click();
     expect(calendar.options.selectedDate && calendar.options.selectedDate.getTime()).toEqual(date.getTime());
     expect(calendar.scope.getTime()).toEqual(new Date('2019-01-01').getTime());
   });
@@ -146,7 +146,7 @@ describe('Mouse clicks', () => {
       selectedDate: date,
     });
 
-    eventFire(document.querySelector('.pc-pointer-right'), 'click');
+    document.querySelector('.pc-pointer-right').click()
     expect(calendar.options.selectedDate && calendar.options.selectedDate.getTime()).toEqual(date.getTime());
     expect(calendar.scope.getTime()).toEqual(new Date('2019-03-01').getTime());
   });
@@ -157,7 +157,7 @@ describe('Mouse clicks', () => {
       selectedDate: date,
     });
 
-    eventFire(document.querySelector('.pc-title'), 'click');
+    document.querySelector('.pc-title').click();
     expect(calendar.options.selectedDate && calendar.options.selectedDate.getTime()).toEqual(date.getTime());
     expect(calendar.scope.getTime()).toEqual(date.getTime());
     expect(calendar.state instanceof YearState).toBe(true);
@@ -169,7 +169,7 @@ describe('Mouse clicks', () => {
       selectedDate: date,
     });
 
-    eventFire(document.querySelectorAll('[data-pc-timestamp]')[0], 'click');
+    document.querySelectorAll('button.pc-cell')[0].click()
     expect(calendar.options.selectedDate && calendar.options.selectedDate.getTime()).toEqual(
       new Date('2019-01-28').getTime(),
     );
@@ -182,8 +182,8 @@ describe('Mouse clicks', () => {
       selectedDate: date,
     });
 
-    eventFire(document.querySelector('.pc-title'), 'click');
-    eventFire(document.querySelector('.pc-pointer-left'), 'click');
+    document.querySelector('.pc-title').click();
+    document.querySelector('.pc-pointer-left').click();
     expect(calendar.options.selectedDate && calendar.options.selectedDate.getTime()).toEqual(date.getTime());
     expect(calendar.scope.getTime()).toEqual(new Date('2018-01-01').getTime());
   });
@@ -194,8 +194,8 @@ describe('Mouse clicks', () => {
       selectedDate: date,
     });
 
-    eventFire(document.querySelector('.pc-title'), 'click');
-    eventFire(document.querySelector('.pc-pointer-right'), 'click');
+    document.querySelector('.pc-title').click();
+    document.querySelector('.pc-pointer-right').click();
     expect(calendar.options.selectedDate && calendar.options.selectedDate.getTime()).toEqual(date.getTime());
     expect(calendar.scope.getTime()).toEqual(new Date('2020-01-01').getTime());
   });
@@ -206,8 +206,8 @@ describe('Mouse clicks', () => {
       selectedDate: date,
     });
 
-    eventFire(document.querySelector('.pc-title'), 'click');
-    eventFire(document.querySelector('.pc-title'), 'click');
+    document.querySelector('.pc-title').click();
+    document.querySelector('.pc-title').click();
     expect(calendar.options.selectedDate && calendar.options.selectedDate.getTime()).toEqual(date.getTime());
     expect(calendar.scope.getTime()).toEqual(date.getTime());
     expect(calendar.state instanceof DecadeState).toBe(true);
@@ -219,8 +219,8 @@ describe('Mouse clicks', () => {
       selectedDate: date,
     });
 
-    eventFire(document.querySelector('.pc-title'), 'click');
-    eventFire(document.querySelectorAll('[data-pc-timestamp]')[2], 'click');
+    document.querySelector('.pc-title').click();
+    document.querySelectorAll('button.pc-cell')[2].click();
     expect(calendar.options.selectedDate && calendar.options.selectedDate.getTime()).toEqual(date.getTime());
     expect(calendar.scope.getTime() + 10800 * 1000).toEqual(new Date('2019-03-01').getTime());
     expect(calendar.state instanceof MonthState).toBe(true);
@@ -232,9 +232,9 @@ describe('Mouse clicks', () => {
       selectedDate: date,
     });
 
-    eventFire(document.querySelector('.pc-title'), 'click');
-    eventFire(document.querySelector('.pc-title'), 'click');
-    eventFire(document.querySelector('.pc-pointer-left'), 'click');
+    document.querySelector('.pc-title').click();
+    document.querySelector('.pc-title').click();
+    document.querySelector('.pc-pointer-left').click();
     expect(calendar.options.selectedDate && calendar.options.selectedDate.getTime()).toEqual(date.getTime());
     expect(calendar.scope.getTime()).toEqual(new Date('2000-01-01').getTime());
   });
@@ -245,9 +245,9 @@ describe('Mouse clicks', () => {
       selectedDate: date,
     });
 
-    eventFire(document.querySelector('.pc-title'), 'click');
-    eventFire(document.querySelector('.pc-title'), 'click');
-    eventFire(document.querySelector('.pc-pointer-right'), 'click');
+    document.querySelector('.pc-title').click();
+    document.querySelector('.pc-title').click();
+    document.querySelector('.pc-pointer-right').click();
     expect(calendar.options.selectedDate && calendar.options.selectedDate.getTime()).toEqual(date.getTime());
     expect(calendar.scope.getTime()).toEqual(new Date('2020-01-01').getTime());
   });
@@ -258,9 +258,9 @@ describe('Mouse clicks', () => {
       selectedDate: date,
     });
 
-    eventFire(document.querySelector('.pc-title'), 'click');
-    eventFire(document.querySelector('.pc-title'), 'click');
-    eventFire(document.querySelectorAll('[data-pc-timestamp]')[0], 'click');
+    document.querySelector('.pc-title').click();
+    document.querySelector('.pc-title').click();
+    document.querySelectorAll('button.pc-cell')[0].click();
     expect(calendar.options.selectedDate && calendar.options.selectedDate.getTime()).toEqual(date.getTime());
     expect(calendar.scope.getTime() + 10800 * 1000).toEqual(new Date('2010-01-01').getTime());
     expect(calendar.state instanceof YearState).toBe(true);
@@ -278,7 +278,7 @@ describe('Events', () => {
     calendar.on('prev', callback);
 
     calendar.prev();
-    eventFire(document.querySelector('.pc-pointer-left'), 'click');
+    document.querySelector('.pc-pointer-left').click();
     expect(callback).toBeCalledTimes(2);
   });
 
@@ -292,7 +292,7 @@ describe('Events', () => {
     calendar.on('next', callback);
 
     calendar.next();
-    eventFire(document.querySelector('.pc-pointer-right'), 'click');
+    document.querySelector('.pc-pointer-right').click();
     expect(callback).toBeCalledTimes(2);
   });
 
@@ -305,10 +305,10 @@ describe('Events', () => {
     const callback = jest.fn(state => state);
     calendar.on('state-changed', callback);
 
-    eventFire(document.querySelector('.pc-title'), 'click');
-    eventFire(document.querySelector('.pc-title'), 'click');
-    eventFire(document.querySelectorAll('[data-pc-timestamp]')[0], 'click');
-    eventFire(document.querySelectorAll('[data-pc-timestamp]')[0], 'click');
+    document.querySelector('.pc-title').click();
+    document.querySelector('.pc-title').click();
+    document.querySelectorAll('button.pc-cell')[0].click();
+    document.querySelectorAll('button.pc-cell')[0].click();
     calendar.changeState('YearState');
     calendar.changeState('DecadeState');
     calendar.changeState('YearState');
@@ -335,7 +335,7 @@ describe('Events', () => {
     calendar.on('date-changed', callback);
 
     calendar.changeDate(new Date());
-    eventFire(document.querySelectorAll('[data-pc-timestamp]')[0], 'click');
+    document.querySelectorAll('button.pc-cell')[0].click();
     expect(callback).toBeCalledTimes(2);
   });
 
@@ -351,8 +351,8 @@ describe('Events', () => {
     calendar.changeScope(new Date('2019-01-01'));
     calendar.prev();
     calendar.prev();
-    eventFire(document.querySelector('.pc-pointer-left'), 'click');
-    eventFire(document.querySelector('.pc-pointer-right'), 'click');
+    document.querySelector('.pc-pointer-left').click();
+    document.querySelector('.pc-pointer-right').click();
     expect(callback).toBeCalledTimes(5);
   });
 

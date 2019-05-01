@@ -1,4 +1,5 @@
 import Calendar from '../Calendar/Calendar';
+import { v, IVDOMNode } from '../VDOM';
 
 /**
  * State pattern implementation.
@@ -21,9 +22,9 @@ abstract class State {
   /**
    * Rendering HTML content.
    *
-   * @return {string} [description]
+   * @return {IVDOMNode} [description]
    */
-  public abstract render(): string;
+  public abstract render(): IVDOMNode;
 
   /**
    * Handling left switcher click.
@@ -43,9 +44,9 @@ abstract class State {
   /**
    * Handling date cell click.
    *
-   * @param {Element} element [description]
+   * @param {number} element [description]
    */
-  public abstract handleDateClick(element: Element): void;
+  public abstract handleDateClick(timestamp: number): void;
 }
 
 export default State;

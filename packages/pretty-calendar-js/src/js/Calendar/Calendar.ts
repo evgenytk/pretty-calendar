@@ -6,6 +6,7 @@ import YearState from '../State/YearState';
 import DecadeState from '../State/DecadeState';
 import Publisher from '../Publisher/Publisher';
 import { ICalendarOptions } from './ICalendarOptions';
+import { v, createElement } from '../VDOM';
 
 /**
  * Events:
@@ -147,7 +148,6 @@ class Calendar {
    */
   public prev = (): void => {
     this.state.handleLeftClick();
-    this.publisher.notify('prev');
   };
 
   /**
@@ -155,7 +155,6 @@ class Calendar {
    */
   public next = (): void => {
     this.state.handleRightClick();
-    this.publisher.notify('next');
   };
 
   /**
@@ -255,8 +254,6 @@ class Calendar {
       window.addEventListener('resize', this.updatePosition);
       document.addEventListener('click', this.handleOutsideClick);
     }
-
-    this.root.addEventListener('click', this.handleClickEvents);
   }
 
   /**
@@ -283,30 +280,6 @@ class Calendar {
       this.hide();
     }
   }
-
-  /**
-   * Handling this.root click events.
-   */
-  private handleClickEvents = (event: any): void => {
-    // TODO: Do something with types...
-    if (event.target !== undefined) {
-      if (event.target.classList.contains('pc-pointer-left')) {
-        this.prev();
-      }
-
-      if (event.target.classList.contains('pc-pointer-right')) {
-        this.next();
-      }
-
-      if (event.target.classList.contains('pc-title')) {
-        this.state.handleCenterClick();
-      }
-
-      if (event.target.classList.contains('pc-cell')) {
-        this.state.handleDateClick(event.target);
-      }
-    }
-  };
 
   /**
    * Getting State class based on string.
@@ -341,7 +314,11 @@ class Calendar {
    * Updating the root HTML node by a content coming from the render() method.
    */
   private updateRoot(): void {
-    this.root.innerHTML = this.render();
+    while (this.root.firstChild) {
+      this.root.removeChild(this.root.firstChild);
+    }
+
+    this.root.appendChild(this.render());
   }
 
   /**
@@ -349,14 +326,14 @@ class Calendar {
    *
    * @return {string} [description]
    */
-  private render(): string {
-    return `
-      <div class="pc-wrapper">
-        <div class="pc-container">
-          ${this.state.render()}
-        </div>
-      </div>
-    `;
+  private render(): Node {
+    return (
+      createElement(
+        v('div', {className: 'pc-wrapper'}, 
+          v('div', {className: 'pc-container'}, this.state.render())
+        )
+      )
+    );
   }
 }
 
