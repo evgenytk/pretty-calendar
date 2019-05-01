@@ -9,6 +9,8 @@ class Grid {
    */
   private static defaultOptions: IGridOptions = {
     firstDay: WeekdaysEnum.MONDAY,
+    months: ['January', 'February', 'March', 'April', 'May', 'June', 'Jule', 'August', 'September', 'October', 'November', 'December'],
+    daysMin: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa']
   };
 
   /**
@@ -26,7 +28,7 @@ class Grid {
   constructor(options: object = {}) {
     this.options = {
       ...Grid.defaultOptions,
-      ...options,
+      ...options
     };
 
     this.checkOptions();
@@ -38,20 +40,7 @@ class Grid {
    * @return {Array<string>}
    */
   public getMonthNames(): string[] {
-    return [
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-      'Jule',
-      'August',
-      'September',
-      'October',
-      'November',
-      'December',
-    ];
+    return this.options.months;
   }
 
   /**
@@ -60,18 +49,18 @@ class Grid {
    * @return {Array<string>}
    */
   public getWeekdayNames(): string[] {
-    const weeks = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
+    const week = this.options.daysMin;
     const sorted = [];
 
     let i: WeekdaysEnum = this.options.firstDay;
 
-    for (i; i < weeks.length; i++) {
-      sorted.push(weeks[i]);
+    for (i; i < week.length; i++) {
+      sorted.push(week[i]);
     }
 
     let j: WeekdaysEnum = 0;
     for (j; j < this.options.firstDay; j++) {
-      sorted.push(weeks[j]);
+      sorted.push(week[j]);
     }
 
     return sorted;
@@ -180,6 +169,14 @@ class Grid {
 
     if (typeof this.options.firstDay !== 'number') {
       throw new Error(`"${this.options.firstDay}" must be a type of number.`);
+    }
+
+    if(this.options.months.length != 12) {
+      throw new Error(`Option months should be an array of 12 string`); 
+    }
+
+    if(this.options.daysMin.length != 7) {
+      throw new Error(`Option daysMin should be an array of 7 string`); 
     }
   }
 }

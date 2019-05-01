@@ -31,15 +31,60 @@ describe('Grid.ts', () => {
     }).toThrow();
   });
 
+  it('it should throw an error of the incorrect months length', () => {
+    expect(() => {
+      const grid = new Grid({
+        months: []
+      });
+    }).toThrow();
+  });
+
+  it('it should throw an error of the incorrect daysMin length', () => {
+    expect(() => {
+      const grid = new Grid({
+        daysMin: ['1', '2', '3']
+      });
+    }).toThrow();
+  });
+
   it('it should return month names', () => {
     const grid = new Grid();
     expect(grid.getMonthNames().length).toEqual(12);
+    expect(grid.getMonthNames()[0]).toEqual('January');
+    expect(grid.getMonthNames()[11]).toEqual('December');
+  });
+
+  it('it should return translated month names', () => {
+    const grid = new Grid({
+      months: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь']
+    });
+    expect(grid.getMonthNames().length).toEqual(12);
+    expect(grid.getMonthNames()[0]).toEqual('Январь');
+    expect(grid.getMonthNames()[11]).toEqual('Декабрь');
   });
 
   it('it should return the week names', () => {
     const grid = new Grid();
-    expect(grid.getWeekdayNames().length).toEqual(7);
     expect(grid.getWeekdayNames()[0]).toEqual('Mo');
+    expect(grid.getWeekdayNames()[1]).toEqual('Tu');
+    expect(grid.getWeekdayNames()[2]).toEqual('We');
+    expect(grid.getWeekdayNames()[3]).toEqual('Th');
+    expect(grid.getWeekdayNames()[4]).toEqual('Fr');
+    expect(grid.getWeekdayNames()[5]).toEqual('Sa');
+    expect(grid.getWeekdayNames()[6]).toEqual('Su');
+  });
+
+  it('it should return translated week names', () => {
+    const grid = new Grid({
+      daysMin: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб']
+    });
+    expect(grid.getWeekdayNames()[0]).toEqual('Пн');
+    expect(grid.getWeekdayNames()[1]).toEqual('Вт');
+    expect(grid.getWeekdayNames()[2]).toEqual('Ср');
+    expect(grid.getWeekdayNames()[3]).toEqual('Чт');
+    expect(grid.getWeekdayNames()[4]).toEqual('Пт');
+    expect(grid.getWeekdayNames()[5]).toEqual('Сб');
+    expect(grid.getWeekdayNames()[6]).toEqual('Вс');
   });
 
   it('it should return the week names with offset', () => {

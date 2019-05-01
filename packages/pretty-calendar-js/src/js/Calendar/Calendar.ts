@@ -26,7 +26,7 @@ class Calendar {
    * @type {ICalendarOptions}
    */
   private static defaultOptions: ICalendarOptions = {
-    firstDay: WeekdaysEnum.MONDAY,
+    
   };
 
   /**
@@ -90,9 +90,7 @@ class Calendar {
       ...options,
     };
 
-    this.grid = new Grid({
-      firstDay: this.options.firstDay,
-    });
+    this.grid = new Grid(this.options.intl);
     this.publisher = new Publisher();
     this.state = new MonthState(this);
     this.scope = this.options.selectedDate || new Date();
