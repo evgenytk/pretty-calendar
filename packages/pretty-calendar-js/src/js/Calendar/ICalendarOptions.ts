@@ -1,5 +1,6 @@
-import { IGridOptions } from '@pretty-calendar/core';
+import { IIntl } from '@pretty-calendar/core';
 
-export interface ICalendarOptions extends IGridOptions {
-  selectedDate?: Date;
+export interface ICalendarOptions {
+  selectedDate?: Date,
+  intl?: IIntl
 }

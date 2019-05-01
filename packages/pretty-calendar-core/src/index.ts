@@ -1,3 +1,4 @@
+export { IIntl } from './IIntl';
 export { IGridOptions } from './Grid/IGridOptions';
 export { WeekdaysEnum } from './Grid/WeekdaysEnum';
 export { default as Grid } from './Grid/Grid';
