@@ -34,7 +34,7 @@ describe('Grid.ts', () => {
   it('it should throw an error of the incorrect months length', () => {
     expect(() => {
       const grid = new Grid({
-        months: []
+        months: [],
       });
     }).toThrow();
   });
@@ -42,7 +42,7 @@ describe('Grid.ts', () => {
   it('it should throw an error of the incorrect daysMin length', () => {
     expect(() => {
       const grid = new Grid({
-        daysMin: ['1', '2', '3']
+        daysMin: ['1', '2', '3'],
       });
     }).toThrow();
   });
@@ -56,7 +56,20 @@ describe('Grid.ts', () => {
 
   it('it should return translated month names', () => {
     const grid = new Grid({
-      months: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь']
+      months: [
+        'Январь',
+        'Февраль',
+        'Март',
+        'Апрель',
+        'Май',
+        'Июнь',
+        'Июль',
+        'Август',
+        'Сентябрь',
+        'Октябрь',
+        'Ноябрь',
+        'Декабрь',
+      ],
     });
     expect(grid.getMonthNames().length).toEqual(12);
     expect(grid.getMonthNames()[0]).toEqual('Январь');
@@ -76,7 +89,7 @@ describe('Grid.ts', () => {
 
   it('it should return translated week names', () => {
     const grid = new Grid({
-      daysMin: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб']
+      daysMin: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
     });
     expect(grid.getWeekdayNames()[0]).toEqual('Пн');
     expect(grid.getWeekdayNames()[1]).toEqual('Вт');

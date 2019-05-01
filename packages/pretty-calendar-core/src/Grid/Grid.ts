@@ -9,8 +9,21 @@ class Grid {
    */
   private static defaultOptions: IGridOptions = {
     firstDay: WeekdaysEnum.MONDAY,
-    months: ['January', 'February', 'March', 'April', 'May', 'June', 'Jule', 'August', 'September', 'October', 'November', 'December'],
-    daysMin: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa']
+    months: [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'Jule',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December',
+    ],
+    daysMin: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
   };
 
   /**
@@ -28,7 +41,7 @@ class Grid {
   constructor(options: object = {}) {
     this.options = {
       ...Grid.defaultOptions,
-      ...options
+      ...options,
     };
 
     this.checkOptions();
@@ -171,12 +184,12 @@ class Grid {
       throw new Error(`"${this.options.firstDay}" must be a type of number.`);
     }
 
-    if(this.options.months.length !== 12) {
-      throw new Error(`Option months should be an array of 12 string`); 
+    if (this.options.months.length !== 12) {
+      throw new Error(`Option months should be an array of 12 string`);
     }
 
-    if(this.options.daysMin.length !== 7) {
-      throw new Error(`Option daysMin should be an array of 7 string`); 
+    if (this.options.daysMin.length !== 7) {
+      throw new Error(`Option daysMin should be an array of 7 string`);
     }
   }
 }
