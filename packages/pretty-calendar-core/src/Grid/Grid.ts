@@ -171,11 +171,11 @@ class Grid {
       throw new Error(`"${this.options.firstDay}" must be a type of number.`);
     }
 
-    if(this.options.months.length != 12) {
+    if(this.options.months.length !== 12) {
       throw new Error(`Option months should be an array of 12 string`); 
     }
 
-    if(this.options.daysMin.length != 7) {
+    if(this.options.daysMin.length !== 7) {
       throw new Error(`Option daysMin should be an array of 7 string`); 
     }
   }

@@ -162,7 +162,7 @@ class Calendar {
    * Showing calendar.
    */
   public show = () => {
-    const root = <HTMLElement>this.root;
+    const root = this.root as HTMLElement;
 
     if(root.style.display !== 'block') {
       root.style.display = 'block';
@@ -174,7 +174,7 @@ class Calendar {
    * Hiding calendar.
    */
   public hide = () => {
-    const root = <HTMLElement>this.root;
+    const root = this.root as HTMLElement;
     root.style.display = 'none';
     this.publisher.notify('hide');
   }
@@ -258,8 +258,8 @@ class Calendar {
    * Update calendar position if initialized in <input />.
    */
   private updatePosition = (): void => {
-    const originalNode = <HTMLElement>this.originalNode;
-    const root = <HTMLElement>this.root;
+    const originalNode = this.originalNode as HTMLElement;
+    const root = this.root as HTMLElement;
 
     root.style.position = 'absolute';
     root.style.top = `${originalNode.offsetTop + originalNode.clientHeight + 10}px`;
