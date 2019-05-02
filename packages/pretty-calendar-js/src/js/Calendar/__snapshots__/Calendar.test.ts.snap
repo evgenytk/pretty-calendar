@@ -362,12 +362,12 @@ exports[`API it should change scope 2`] = `
             30
           </button>
           <button
-            class="pc-cell active"
+            class="pc-cell"
           >
             1
           </button>
           <button
-            class="pc-cell"
+            class="pc-cell active"
           >
             2
           </button>

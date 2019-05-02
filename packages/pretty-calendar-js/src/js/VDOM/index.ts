@@ -42,7 +42,7 @@ export const createElement = (node: any, $parent: Element | null = null): Node =
   } else {
     const $el: any = document.createElement(node.type);
     setProps($el, node.props);
-    addEventListeners($el, node.props);
+    // addEventListeners($el, node.props);
     node.children.forEach((c: any) => {
 
       // Recursive checking for fragment wrapper
@@ -63,13 +63,13 @@ export const createElement = (node: any, $parent: Element | null = null): Node =
  * @param {Element} $el   DOM node
  * @param {object}  props Props object
  */
-export const addEventListeners = ($el: Element, props: any) => {
-  Object.keys(props).forEach((name: string) => {
-    if(isEventProp(name)) {
-      $el.addEventListener(extractEventName(name), props[name])
-    }
-  })
-}
+// export const addEventListeners = ($el: Element, props: any) => {
+//   Object.keys(props).forEach((name: string) => {
+//     if(isEventProp(name)) {
+//       $el.addEventListener(extractEventName(name), props[name])
+//     }
+//   })
+// }
 
 /**
  * Set props (attributes) to a real DOM node.
@@ -94,7 +94,11 @@ export const setProps = ($el: Element, props: any): void => {
  */
 export const setProp = ($el: Element, name: string, value: any): any => {
   if(isEventProp(name)) {
-    return null;
+    // Remember! If you'll decide to implement VDOM and props updating features, be careful with event props comparison.
+    // That's tricky because there is no easy way to compare functions.
+    // 
+    // You can handle that with event bubbling or just add event listeners only once.
+    $el.addEventListener(extractEventName(name), value);
   } else if(name === 'className') {
     $el.setAttribute('class', value);
   } else if(typeof value === 'boolean') {
@@ -115,7 +119,6 @@ export const setProp = ($el: Element, name: string, value: any): any => {
  */
 export const setBooleanProp = ($el: any, name: string, value: any): void => {
   if(value) {
-    $el.setAttribute(name, value);
     $el[name] = true;
   } else {
     $el[name] = false;

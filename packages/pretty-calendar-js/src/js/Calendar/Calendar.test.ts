@@ -41,6 +41,15 @@ describe('Initialization', () => {
     }).toThrow();
   });
 
+  it('it should throw an error of the incorrect selectedDate option', () => {
+    document.body.innerHTML = `<div id="root"></div>`;
+    expect(() => {
+      const calendar = new Calendar('#root', {
+        selectedDate: 'incorrect-date'
+      });
+    }).toThrow();
+  });
+
   it('it should initialize with Publisher', () => {
     document.body.innerHTML = `<div id="root"></div>`;
     const calendar = new Calendar('#root');
