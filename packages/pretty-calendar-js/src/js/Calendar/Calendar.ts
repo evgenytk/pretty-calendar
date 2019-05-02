@@ -45,7 +45,7 @@ class Calendar {
   public grid: Grid;
 
   /**
-   * TODO: create comment here ...
+   * Calendar view scope.
    *
    * @type {Date}
    */
@@ -96,7 +96,7 @@ class Calendar {
     this.grid = new Grid(this.options.intl);
     this.publisher = new Publisher();
     this.state = new MonthState(this);
-    this.scope = this.options.selectedDate || new Date();
+    this.scope = this.options.selectedDate || this.options.minDate || new Date();
     this.originalNode = this.findRoot(node);
     this.root = this.findRoot(node);
     this.transformRoot();
@@ -126,9 +126,11 @@ class Calendar {
    * @param {Date}  Date
    */
   public changeScope = (date: Date): void => {
-    this.scope = date;
-    this.publisher.notify('scope-changed', this.scope);
-    this.updateRoot();
+    if(this.monthIsAllowed(date)) {
+      this.scope = date;
+      this.publisher.notify('scope-changed', this.scope);
+      this.updateRoot();
+    }
   };
 
   /**
@@ -137,10 +139,12 @@ class Calendar {
    * @param {Date}  date
    */
   public changeDate = (date: Date): void => {
-    this.scope = date;
-    this.options.selectedDate = date;
-    this.publisher.notify('date-changed', date);
-    this.updateRoot();
+    if(this.dateIsAllowed(date)) {
+      this.scope = date;
+      this.options.selectedDate = date;
+      this.publisher.notify('date-changed', date);
+      this.updateRoot();
+    }
   };
 
   /**
@@ -201,6 +205,69 @@ class Calendar {
    */
   public unsubscribe(eventType: string, callback: () => void): void {
     this.publisher.unsubscribe(eventType, callback);
+  }
+
+  /**
+   * Comparing year with minDate and maxDate options.
+   * 
+   * @param {Date}  date
+   * @return {boolean}
+   */
+  public yearIsAllowed = (date: Date): boolean => {
+    const { minDate, maxDate } = this.options;
+    let allowed = true;
+
+    if(minDate !== undefined && date.getFullYear() < minDate.getFullYear()) {
+      allowed = false;
+    }
+
+    if(maxDate !== undefined && date.getFullYear() > maxDate.getFullYear()) {
+      allowed = false;
+    }
+
+    return allowed;
+  }
+
+  /**
+   * Comparing month with minDate and maxDate options.
+   * 
+   * @param {Date}  date
+   * @return {boolean}
+   */
+  public monthIsAllowed = (date: Date): boolean => {
+    const { minDate, maxDate } = this.options;
+    let allowed = true;
+
+    if(minDate !== undefined && (date.getFullYear() < minDate.getFullYear() || date.getMonth() < minDate.getMonth())) {
+      allowed = false;
+    }
+
+    if(maxDate !== undefined && (date.getFullYear() > maxDate.getFullYear() || date.getMonth() > maxDate.getMonth())) {
+      allowed = false;
+    }
+
+    return allowed;
+  }
+
+  /**
+   * Comparing date with minDate and maxDate options.
+   * 
+   * @param {Date}  date
+   * @return {boolean}
+   */
+  public dateIsAllowed = (date: Date): boolean => {
+    const { minDate, maxDate } = this.options;
+    let allowed = true;
+
+    if(minDate !== undefined && date.getTime() < minDate.getTime()) {
+      allowed = false;
+    }
+
+    if(maxDate !== undefined && date.getTime() > maxDate.getTime()) {
+      allowed = false;
+    }
+
+    return allowed;
   }
 
   /**
@@ -305,8 +372,30 @@ class Calendar {
    * Validation rules for options.
    */
   private checkOptions(): void {
-    if (this.options.selectedDate && isNaN(new Date(this.options.selectedDate).getTime())) {
-      throw new Error(`"Icorrect selected date`);
+    const { selectedDate, minDate, maxDate } = this.options;
+
+    if (selectedDate && isNaN(new Date(selectedDate).getTime())) {
+      throw new Error(`Icorrect "selectedDate" option`);
+    }
+
+    if (minDate && isNaN(new Date(minDate).getTime())) {
+      throw new Error(`Icorrect "minDate" option`);
+    }
+
+    if (maxDate && isNaN(new Date(maxDate).getTime())) {
+      throw new Error(`Icorrect "maxDate" option`);
+    }
+
+    if (minDate && maxDate && minDate.getTime() > maxDate.getTime()) {
+      throw new Error(`"minDate" can't be greater than "maxDate"`);
+    }
+
+    if(selectedDate && minDate && selectedDate.getTime() < minDate.getTime()) {
+      throw new Error(`"selectedDate" can't be less than "minDate"`);
+    }
+
+    if(selectedDate && maxDate && selectedDate.getTime() > maxDate.getTime()) {
+      throw new Error(`"selectedDate" can't be greater than "maxDate"`);
     }
   }
 
@@ -322,9 +411,9 @@ class Calendar {
   }
 
   /**
-   * Getting HTML content.
+   * Getting HTML node.
    *
-   * @return {string} [description]
+   * @return {Element}
    */
   private render(): Node {
     return (

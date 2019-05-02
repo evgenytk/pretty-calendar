@@ -62,7 +62,7 @@ class MonthState extends State {
    * @return {IVDOMNode}
    */
   public render(): IVDOMNode {
-    const { grid, scope } = this.calendar;
+    const { grid, scope, dateIsAllowed } = this.calendar;
 
     const dates: Date[] = grid.getDays(scope);
     const weekndays: string[] = grid.getWeekdayNames();
@@ -81,7 +81,7 @@ class MonthState extends State {
             const { selectedDate } = this.calendar.options;
             let className = 'pc-cell';
 
-            if (!date.dayInMonth(scope)) {
+            if (!date.dayInMonth(scope) || !dateIsAllowed(date)) {
               className += ' light';
             }
 
@@ -92,7 +92,7 @@ class MonthState extends State {
             if (selectedDate && selectedDate.diffInDays(date) === 0) {
               className += ' selected';
             }
-            return v('button', {className, onClick: () => this.handleDateClick(date.getTime())}, date.getDate())
+            return v('button', {className, disabled: !dateIsAllowed(date), onClick: () => this.handleDateClick(date.getTime())}, date.getDate())
           })
         ) 
       )

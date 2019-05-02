@@ -66,7 +66,7 @@ class YearState extends State {
    * @return {IVDOMNode}
    */
   public render(): IVDOMNode {
-    const { grid, scope } = this.calendar;
+    const { grid, scope, monthIsAllowed } = this.calendar;
 
     const dates: Date[] = grid.getMonths(scope);
     const months: string[] = grid.getMonthNames();
@@ -80,7 +80,13 @@ class YearState extends State {
         ),
         v('div', {className: 'pc-plate pc-plate-months'}, 
           ...dates.map(date => {
-            return v('button', {className: 'pc-cell', onClick: () => this.handleDateClick(date.getTime())}, months[date.getMonth()])
+            let className = 'pc-cell';
+
+            if (!monthIsAllowed(date)) {
+              className += ' light';
+            }
+
+            return v('button', {className, disabled: !monthIsAllowed(date), onClick: () => this.handleDateClick(date.getTime())}, months[date.getMonth()])
           })
         ) 
       )

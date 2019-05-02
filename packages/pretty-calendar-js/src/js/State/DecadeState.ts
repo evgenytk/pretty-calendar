@@ -69,7 +69,7 @@ class DecadeState extends State {
    * @param {IVDOMNode} element
    */
   public render(): IVDOMNode {
-    const { grid, scope } = this.calendar;
+    const { grid, scope, yearIsAllowed } = this.calendar;
 
     const dates: Date[] = grid.getYears(scope);
 
@@ -82,7 +82,13 @@ class DecadeState extends State {
         ),
         v('div', {className: 'pc-plate pc-plate-months'}, 
           ...dates.map(date => {
-            return v('button', {className: 'pc-cell', onClick: () => this.handleDateClick(date.getTime())}, date.getFullYear())
+            let className = 'pc-cell';
+
+            if (!yearIsAllowed(date)) {
+              className += ' light';
+            }
+
+            return v('button', {className, disabled: !yearIsAllowed(date), onClick: () => this.handleDateClick(date.getTime())}, date.getFullYear())
           })
         ) 
       )
