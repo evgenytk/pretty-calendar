@@ -27,6 +27,31 @@ describe('Initialization', () => {
     }).not.toThrow();
   });
 
+  it('it should initialize with Publisher', () => {
+    document.body.innerHTML = `<div id="root"></div>`;
+    const calendar = new Calendar('#root');
+    expect(calendar.publisher instanceof Publisher).toBe(true);
+  });
+
+  it('it should initialize with selected date', () => {
+    document.body.innerHTML = `<div id="root"></div>`;
+    const calendar = new Calendar('#root', {
+      selectedDate: date,
+    });
+    expect(calendar.options.selectedDate && calendar.options.selectedDate.getTime()).toEqual(date.getTime());
+    expect(calendar.scope.getTime()).toEqual(date.getTime());
+  });
+
+  it('it should show the month grid based on minDate when selectedDate is undefined', () => {
+    document.body.innerHTML = `<div id="root"></div>`;
+    const calendar = new Calendar('#root', {
+      minDate: new Date('2019-01-30')
+    });
+    expect(calendar.scope.getTime()).toEqual(new Date('2019-01-30').getTime());
+  });
+});
+
+describe('Exceptions', () => {
   it('it should throw an error of the not found root HTML node', () => {
     document.body.innerHTML = `<div id="root"></div>`;
     expect(() => {
@@ -50,27 +75,70 @@ describe('Initialization', () => {
     }).toThrow();
   });
 
-  it('it should initialize with Publisher', () => {
+  it('it should throw an error of the incorrect minDate option', () => {
     document.body.innerHTML = `<div id="root"></div>`;
-    const calendar = new Calendar('#root');
-    expect(calendar.publisher instanceof Publisher).toBe(true);
+    expect(() => {
+      const calendar = new Calendar('#root', {
+        minDate: 'incorrect-date'
+      });
+    }).toThrow();
   });
 
-  it('it should initialize with selected date', () => {
+  it('it should throw an error of the incorrect maxDate option', () => {
     document.body.innerHTML = `<div id="root"></div>`;
-    const calendar = new Calendar('#root', {
-      selectedDate: date,
-    });
-    expect(calendar.options.selectedDate && calendar.options.selectedDate.getTime()).toEqual(date.getTime());
-    expect(calendar.scope.getTime()).toEqual(date.getTime());
+    expect(() => {
+      const calendar = new Calendar('#root', {
+        maxDate: 'incorrect-date'
+      });
+    }).toThrow();
   });
-});
+
+  it('it should throw an error when minDate > maxDate', () => {
+    document.body.innerHTML = `<div id="root"></div>`;
+    expect(() => {
+      const calendar = new Calendar('#root', {
+        minDate: new Date('2019-02-01'),
+        maxDate: new Date('2019-01-01')
+      });
+    }).toThrow();
+  });
+
+  it('it should throw an error when selectedDate < minDate', () => {
+    document.body.innerHTML = `<div id="root"></div>`;
+    expect(() => {
+      const calendar = new Calendar('#root', {
+        selectedDate: new Date('2019-01-01')
+        minDate: new Date('2019-02-01'),
+      });
+    }).toThrow();
+  });
+
+  it('it should throw an error when selectedDate > maxDate', () => {
+    document.body.innerHTML = `<div id="root"></div>`;
+    expect(() => {
+      const calendar = new Calendar('#root', {
+        selectedDate: new Date('2019-03-01')
+        maxDate: new Date('2019-02-01'),
+      });
+    }).toThrow();
+  });
+
+  it('it should throw an error when selectedDate > maxDate', () => {
+    document.body.innerHTML = `<div id="root"></div>`;
+    expect(() => {
+      const calendar = new Calendar('#root', {
+        selectedDate: new Date('2019-03-01')
+        maxDate: new Date('2019-02-01'),
+      });
+    }).toThrow();
+  });
+})
 
 describe('API', () => {
   it('it should change scope', () => {
     document.body.innerHTML = `<div id="root"></div>`;
     const calendar = new Calendar('#root', {
-      selectedDate: date,
+      selectedDate: date
     });
 
     calendar.changeScope(new Date('2019-01-01'));
@@ -86,10 +154,32 @@ describe('API', () => {
     expect(document.body).toMatchSnapshot();
   });
 
+  it('it should NOT change scope (minDate & maxDate limiters)', () => {
+    document.body.innerHTML = `<div id="root"></div>`;
+    const calendar = new Calendar('#root', {
+      selectedDate: date,
+      minDate: new Date('2019-02-01'),
+      maxDate: new Date('2019-03-31')
+    });
+
+    const oldScope = calendar.scope;
+
+    calendar.changeScope(new Date('2019-01-01'));
+    expect(calendar.scope.getTime()).toEqual(oldScope.getTime());
+
+    calendar.changeScope(new Date('2019-04-01'));
+    expect(calendar.scope.getTime()).toEqual(oldScope.getTime());
+
+    calendar.changeScope(new Date('2019-02-05'));
+    expect(calendar.scope.getTime()).toEqual(new Date('2019-02-05').getTime());
+  });
+
   it('it should change state', () => {
     document.body.innerHTML = `<div id="root"></div>`;
     const calendar = new Calendar('#root', {
       selectedDate: date,
+      minDate: new Date('2019-02-03'),
+      maxDate: new Date('2019-02-25')
     });
 
     expect(calendar.state instanceof MonthState).toBe(true);
@@ -149,6 +239,20 @@ describe('Mouse clicks', () => {
     expect(calendar.scope.getTime()).toEqual(new Date('2019-01-01').getTime());
   });
 
+  it('(MonthState.handleLeftClick) it should NOT change month to prev (minDate limiter)', () => {
+    document.body.innerHTML = `<div id="root"></div>`;
+    const calendar = new Calendar('#root', {
+      selectedDate: date,
+      minDate: new Date('2019-02-01')
+    });
+
+    const oldScope = calendar.scope;
+
+    document.querySelector('.pc-pointer-left').click();
+    expect(calendar.options.selectedDate && calendar.options.selectedDate.getTime()).toEqual(date.getTime());
+    expect(calendar.scope.getTime()).toEqual(oldScope.getTime());
+  });
+
   it('(MonthState.handleRightClick) it should change month to next', () => {
     document.body.innerHTML = `<div id="root"></div>`;
     const calendar = new Calendar('#root', {
@@ -158,6 +262,19 @@ describe('Mouse clicks', () => {
     document.querySelector('.pc-pointer-right').click()
     expect(calendar.options.selectedDate && calendar.options.selectedDate.getTime()).toEqual(date.getTime());
     expect(calendar.scope.getTime()).toEqual(new Date('2019-03-01').getTime());
+  });
+
+  it('(MonthState.handleRightClick) it should NOT change month to next (maxDate limiter)', () => {
+    document.body.innerHTML = `<div id="root"></div>`;
+    const calendar = new Calendar('#root', {
+      selectedDate: date,
+      maxDate: new Date('2019-02-25')
+    });
+
+    const oldScope = calendar.scope;
+
+    document.querySelector('.pc-pointer-right').click()
+    expect(calendar.scope.getTime()).toEqual(oldScope.getTime());
   });
 
   it('(MonthState.handleCenterClick) it should show the years grid', () => {
@@ -197,6 +314,20 @@ describe('Mouse clicks', () => {
     expect(calendar.scope.getTime()).toEqual(new Date('2018-01-01').getTime());
   });
 
+  it('(YearState.handleLeftClick) it should NOT change year to prev (minDate limiter)', () => {
+    document.body.innerHTML = `<div id="root"></div>`;
+    const calendar = new Calendar('#root', {
+      selectedDate: date,
+      minDate: new Date('2019-01-01')
+    });
+
+    const oldScope = calendar.scope;
+
+    document.querySelector('.pc-title').click();
+    document.querySelector('.pc-pointer-left').click();
+    expect(calendar.scope.getTime()).toEqual(oldScope.getTime());
+  });
+
   it('(YearState.handleRightClick) it should change month to next', () => {
     document.body.innerHTML = `<div id="root"></div>`;
     const calendar = new Calendar('#root', {
@@ -207,6 +338,20 @@ describe('Mouse clicks', () => {
     document.querySelector('.pc-pointer-right').click();
     expect(calendar.options.selectedDate && calendar.options.selectedDate.getTime()).toEqual(date.getTime());
     expect(calendar.scope.getTime()).toEqual(new Date('2020-01-01').getTime());
+  });
+
+  it('(YearState.handleRightClick) it should NOT change month to next (maxDate limiter)', () => {
+    document.body.innerHTML = `<div id="root"></div>`;
+    const calendar = new Calendar('#root', {
+      selectedDate: date,
+      maxDate: new Date('2019-02-25')
+    });
+
+    const oldScope = calendar.scope;
+
+    document.querySelector('.pc-title').click();
+    document.querySelector('.pc-pointer-right').click();
+    expect(calendar.scope.getTime()).toEqual(oldScope.getTime());
   });
 
   it('(YearState.handleCenterClick) it should show the decade grid', () => {
@@ -235,6 +380,30 @@ describe('Mouse clicks', () => {
     expect(calendar.state instanceof MonthState).toBe(true);
   });
 
+  it('(YearState.handleDateClick) it should NOT show the month grid based on selected month (minDate & maxDate limiters)', () => {
+    document.body.innerHTML = `<div id="root"></div>`;
+    const calendar = new Calendar('#root', {
+      selectedDate: date,
+      minDate: new Date('2019-02-01'),
+      maxDate: new Date('2019-03-31')
+    });
+
+    const oldScope = calendar.scope;
+
+    document.querySelector('.pc-title').click();
+    document.querySelectorAll('button.pc-cell')[0].click();
+    expect(calendar.scope.getTime()).toEqual(oldScope.getTime());
+    expect(calendar.state instanceof MonthState).toBe(false);
+
+    document.querySelectorAll('button.pc-cell')[3].click();
+    expect(calendar.scope.getTime()).toEqual(oldScope.getTime());
+    expect(calendar.state instanceof MonthState).toBe(false);
+
+    document.querySelectorAll('button.pc-cell')[2].click();
+    expect(calendar.scope.getTime() + 10800 * 1000).toEqual(new Date('2019-03-01').getTime());
+    expect(calendar.state instanceof MonthState).toBe(true);
+  });
+
   it('(DecadeState.handleLeftClick) it should change decade to prev', () => {
     document.body.innerHTML = `<div id="root"></div>`;
     const calendar = new Calendar('#root', {
@@ -246,6 +415,22 @@ describe('Mouse clicks', () => {
     document.querySelector('.pc-pointer-left').click();
     expect(calendar.options.selectedDate && calendar.options.selectedDate.getTime()).toEqual(date.getTime());
     expect(calendar.scope.getTime()).toEqual(new Date('2000-01-01').getTime());
+  });
+
+  it('(DecadeState.handleLeftClick) it should NOT change decade to prev (minDate limiter)', () => {
+    document.body.innerHTML = `<div id="root"></div>`;
+    const calendar = new Calendar('#root', {
+      selectedDate: date,
+      minDate: new Date('2019-01-01'),
+      maxDate: new Date('2019-03-31')
+    });
+
+    const oldScope = calendar.scope;
+
+    document.querySelector('.pc-title').click();
+    document.querySelector('.pc-title').click();
+    document.querySelector('.pc-pointer-left').click();
+    expect(calendar.scope.getTime()).toEqual(oldScope.getTime());
   });
 
   it('(DecadeState.handleRightClick) it should change month to next', () => {
@@ -261,6 +446,22 @@ describe('Mouse clicks', () => {
     expect(calendar.scope.getTime()).toEqual(new Date('2020-01-01').getTime());
   });
 
+  it('(DecadeState.handleRightClick) it should NOT change month to next (maxDate limiter)', () => {
+    document.body.innerHTML = `<div id="root"></div>`;
+    const calendar = new Calendar('#root', {
+      selectedDate: new Date('2003-02-01'),
+      minDate: new Date('2003-01-01'),
+      maxDate: new Date('2003-03-31')
+    });
+
+    const oldScope = calendar.scope;
+
+    document.querySelector('.pc-title').click();
+    document.querySelector('.pc-title').click();
+    document.querySelector('.pc-pointer-right').click();
+    expect(calendar.scope.getTime()).toEqual(oldScope.getTime());
+  });
+
   it('(DecadeState.handleCenterClick) it should show the months grid based on selected year', () => {
     document.body.innerHTML = `<div id="root"></div>`;
     const calendar = new Calendar('#root', {
@@ -272,6 +473,31 @@ describe('Mouse clicks', () => {
     document.querySelectorAll('button.pc-cell')[0].click();
     expect(calendar.options.selectedDate && calendar.options.selectedDate.getTime()).toEqual(date.getTime());
     expect(calendar.scope.getTime() + 10800 * 1000).toEqual(new Date('2010-01-01').getTime());
+    expect(calendar.state instanceof YearState).toBe(true);
+  });
+
+  it('(DecadeState.handleCenterClick) it should NOT show the months grid based on selected year', () => {
+    document.body.innerHTML = `<div id="root"></div>`;
+    const calendar = new Calendar('#root', {
+      selectedDate: date,
+      minDate: new Date('2019-01-01'),
+      maxDate: new Date('2019-03-31')
+    });
+
+    const oldScope = calendar.scope;
+
+    document.querySelector('.pc-title').click();
+    document.querySelector('.pc-title').click();
+    document.querySelectorAll('button.pc-cell')[0].click();
+    expect(calendar.scope.getTime()).toEqual(oldScope.getTime());
+    expect(calendar.state instanceof YearState).toBe(false);
+
+    document.querySelectorAll('button.pc-cell')[8].click();
+    expect(calendar.scope.getTime()).toEqual(oldScope.getTime());
+    expect(calendar.state instanceof YearState).toBe(false);
+
+    document.querySelectorAll('button.pc-cell')[9].click();
+    expect(calendar.scope.getTime() + 10800 * 1000).toEqual(new Date('2019-01-01').getTime());
     expect(calendar.state instanceof YearState).toBe(true);
   });
 });
@@ -291,6 +517,21 @@ describe('Events', () => {
     expect(callback).toBeCalledTimes(2);
   });
 
+  it('it should NOT listen the "prev" event (minDate limiter)', () => {
+    document.body.innerHTML = `<div id="root"></div>`;
+    const calendar = new Calendar('#root', {
+      selectedDate: date,
+      minDate: new Date('2019-02-01')
+    });
+
+    const callback = jest.fn();
+    calendar.on('prev', callback);
+
+    calendar.prev();
+    document.querySelector('.pc-pointer-left').click();
+    expect(callback).toBeCalledTimes(0);
+  });
+
   it('it should listen the "next" event', () => {
     document.body.innerHTML = `<div id="root"></div>`;
     const calendar = new Calendar('#root', {
@@ -303,6 +544,21 @@ describe('Events', () => {
     calendar.next();
     document.querySelector('.pc-pointer-right').click();
     expect(callback).toBeCalledTimes(2);
+  });
+
+  it('it should NOT listen the "next" event (maxDate limiter)', () => {
+    document.body.innerHTML = `<div id="root"></div>`;
+    const calendar = new Calendar('#root', {
+      selectedDate: date,
+      maxDate: new Date('2019-02-25')
+    });
+
+    const callback = jest.fn();
+    calendar.on('next', callback);
+
+    calendar.next();
+    document.querySelector('.pc-pointer-right').click();
+    expect(callback).toBeCalledTimes(0);
   });
 
   it('it should listen the "state-changed" event', () => {
@@ -348,6 +604,22 @@ describe('Events', () => {
     expect(callback).toBeCalledTimes(2);
   });
 
+  it('it should NOT listen the "date-changed" event (minDate & maxDate limiters)', () => {
+    document.body.innerHTML = `<div id="root"></div>`;
+    const calendar = new Calendar('#root', {
+      selectedDate: date,
+      minDate: new Date('2019-02-01'),
+      maxDate: new Date('2019-02-25')
+    });
+
+    const callback = jest.fn(date => date);
+    calendar.on('date-changed', callback);
+
+    calendar.changeDate(new Date());
+    document.querySelectorAll('button.pc-cell')[0].click();
+    expect(callback).toBeCalledTimes(0);
+  });
+
   it('it should listen the "scope-changed" event', () => {
     document.body.innerHTML = `<div id="root"></div>`;
     const calendar = new Calendar('#root', {
@@ -363,6 +635,25 @@ describe('Events', () => {
     document.querySelector('.pc-pointer-left').click();
     document.querySelector('.pc-pointer-right').click();
     expect(callback).toBeCalledTimes(5);
+  });
+
+  it('it should NOT listen the "scope-changed" event (minDate & maxDate limiters)', () => {
+    document.body.innerHTML = `<div id="root"></div>`;
+    const calendar = new Calendar('#root', {
+      selectedDate: date,
+      minDate: new Date('2019-02-01'),
+      maxDate: new Date('2019-02-25')
+    });
+
+    const callback = jest.fn(date => date);
+    calendar.on('scope-changed', callback);
+
+    calendar.changeScope(new Date('2019-01-01'));
+    calendar.prev();
+    calendar.prev();
+    document.querySelector('.pc-pointer-left').click();
+    document.querySelector('.pc-pointer-right').click();
+    expect(callback).toBeCalledTimes(0);
   });
 
   it('it should listen the "hide" event', () => {

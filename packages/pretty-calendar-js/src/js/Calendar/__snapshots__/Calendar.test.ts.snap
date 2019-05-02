@@ -367,12 +367,12 @@ exports[`API it should change scope 2`] = `
             1
           </button>
           <button
-            class="pc-cell active"
+            class="pc-cell"
           >
             2
           </button>
           <button
-            class="pc-cell"
+            class="pc-cell active"
           >
             3
           </button>
@@ -921,36 +921,43 @@ exports[`API it should change state 1`] = `
           </span>
           <button
             class="pc-cell light"
+            disabled=""
           >
             28
           </button>
           <button
             class="pc-cell light"
+            disabled=""
           >
             29
           </button>
           <button
             class="pc-cell light"
+            disabled=""
           >
             30
           </button>
           <button
             class="pc-cell light"
+            disabled=""
           >
             31
           </button>
           <button
-            class="pc-cell"
+            class="pc-cell light"
+            disabled=""
           >
             1
           </button>
           <button
-            class="pc-cell"
+            class="pc-cell light"
+            disabled=""
           >
             2
           </button>
           <button
-            class="pc-cell"
+            class="pc-cell light"
+            disabled=""
           >
             3
           </button>
@@ -1065,67 +1072,80 @@ exports[`API it should change state 1`] = `
             25
           </button>
           <button
-            class="pc-cell"
+            class="pc-cell light"
+            disabled=""
           >
             26
           </button>
           <button
-            class="pc-cell"
+            class="pc-cell light"
+            disabled=""
           >
             27
           </button>
           <button
-            class="pc-cell"
+            class="pc-cell light"
+            disabled=""
           >
             28
           </button>
           <button
             class="pc-cell light"
+            disabled=""
           >
             1
           </button>
           <button
             class="pc-cell light"
+            disabled=""
           >
             2
           </button>
           <button
             class="pc-cell light"
+            disabled=""
           >
             3
           </button>
           <button
             class="pc-cell light"
+            disabled=""
           >
             4
           </button>
           <button
             class="pc-cell light"
+            disabled=""
           >
             5
           </button>
           <button
             class="pc-cell light"
+            disabled=""
           >
             6
           </button>
           <button
             class="pc-cell light"
+            disabled=""
           >
             7
           </button>
           <button
             class="pc-cell light"
+            disabled=""
           >
             8
           </button>
           <button
             class="pc-cell light"
+            disabled=""
           >
             9
           </button>
           <button
             class="pc-cell light"
+            disabled=""
           >
             10
           </button>
@@ -1169,7 +1189,8 @@ exports[`API it should change state 2`] = `
           class="pc-plate pc-plate-months"
         >
           <button
-            class="pc-cell"
+            class="pc-cell light"
+            disabled=""
           >
             January
           </button>
@@ -1179,52 +1200,62 @@ exports[`API it should change state 2`] = `
             February
           </button>
           <button
-            class="pc-cell"
+            class="pc-cell light"
+            disabled=""
           >
             March
           </button>
           <button
-            class="pc-cell"
+            class="pc-cell light"
+            disabled=""
           >
             April
           </button>
           <button
-            class="pc-cell"
+            class="pc-cell light"
+            disabled=""
           >
             May
           </button>
           <button
-            class="pc-cell"
+            class="pc-cell light"
+            disabled=""
           >
             June
           </button>
           <button
-            class="pc-cell"
+            class="pc-cell light"
+            disabled=""
           >
             Jule
           </button>
           <button
-            class="pc-cell"
+            class="pc-cell light"
+            disabled=""
           >
             August
           </button>
           <button
-            class="pc-cell"
+            class="pc-cell light"
+            disabled=""
           >
             September
           </button>
           <button
-            class="pc-cell"
+            class="pc-cell light"
+            disabled=""
           >
             October
           </button>
           <button
-            class="pc-cell"
+            class="pc-cell light"
+            disabled=""
           >
             November
           </button>
           <button
-            class="pc-cell"
+            class="pc-cell light"
+            disabled=""
           >
             December
           </button>
@@ -1268,47 +1299,56 @@ exports[`API it should change state 3`] = `
           class="pc-plate pc-plate-months"
         >
           <button
-            class="pc-cell"
+            class="pc-cell light"
+            disabled=""
           >
             2010
           </button>
           <button
-            class="pc-cell"
+            class="pc-cell light"
+            disabled=""
           >
             2011
           </button>
           <button
-            class="pc-cell"
+            class="pc-cell light"
+            disabled=""
           >
             2012
           </button>
           <button
-            class="pc-cell"
+            class="pc-cell light"
+            disabled=""
           >
             2013
           </button>
           <button
-            class="pc-cell"
+            class="pc-cell light"
+            disabled=""
           >
             2014
           </button>
           <button
-            class="pc-cell"
+            class="pc-cell light"
+            disabled=""
           >
             2015
           </button>
           <button
-            class="pc-cell"
+            class="pc-cell light"
+            disabled=""
           >
             2016
           </button>
           <button
-            class="pc-cell"
+            class="pc-cell light"
+            disabled=""
           >
             2017
           </button>
           <button
-            class="pc-cell"
+            class="pc-cell light"
+            disabled=""
           >
             2018
           </button>
@@ -1393,36 +1433,43 @@ exports[`API it should change state 4`] = `
           </span>
           <button
             class="pc-cell light"
+            disabled=""
           >
             28
           </button>
           <button
             class="pc-cell light"
+            disabled=""
           >
             29
           </button>
           <button
             class="pc-cell light"
+            disabled=""
           >
             30
           </button>
           <button
             class="pc-cell light"
+            disabled=""
           >
             31
           </button>
           <button
-            class="pc-cell"
+            class="pc-cell light"
+            disabled=""
           >
             1
           </button>
           <button
-            class="pc-cell"
+            class="pc-cell light"
+            disabled=""
           >
             2
           </button>
           <button
-            class="pc-cell"
+            class="pc-cell light"
+            disabled=""
           >
             3
           </button>
@@ -1537,67 +1584,80 @@ exports[`API it should change state 4`] = `
             25
           </button>
           <button
-            class="pc-cell"
+            class="pc-cell light"
+            disabled=""
           >
             26
           </button>
           <button
-            class="pc-cell"
+            class="pc-cell light"
+            disabled=""
           >
             27
           </button>
           <button
-            class="pc-cell"
+            class="pc-cell light"
+            disabled=""
           >
             28
           </button>
           <button
             class="pc-cell light"
+            disabled=""
           >
             1
           </button>
           <button
             class="pc-cell light"
+            disabled=""
           >
             2
           </button>
           <button
             class="pc-cell light"
+            disabled=""
           >
             3
           </button>
           <button
             class="pc-cell light"
+            disabled=""
           >
             4
           </button>
           <button
             class="pc-cell light"
+            disabled=""
           >
             5
           </button>
           <button
             class="pc-cell light"
+            disabled=""
           >
             6
           </button>
           <button
             class="pc-cell light"
+            disabled=""
           >
             7
           </button>
           <button
             class="pc-cell light"
+            disabled=""
           >
             8
           </button>
           <button
             class="pc-cell light"
+            disabled=""
           >
             9
           </button>
           <button
             class="pc-cell light"
+            disabled=""
           >
             10
           </button>
