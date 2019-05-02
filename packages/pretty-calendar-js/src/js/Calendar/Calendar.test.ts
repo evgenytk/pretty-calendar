@@ -180,9 +180,9 @@ describe('Mouse clicks', () => {
 
     document.querySelectorAll('button.pc-cell')[0].click()
     expect(calendar.options.selectedDate && calendar.options.selectedDate.getTime()).toEqual(
-      new Date('2019-01-28').getTime(),
+      new Date('2019-01-28 00:00:00').getTime(),
     );
-    expect(calendar.scope.getTime()).toEqual(new Date('2019-01-28').getTime());
+    expect(calendar.scope.getTime()).toEqual(new Date('2019-01-28 00:00:00').getTime());
   });
 
   it('(YearState.handleLeftClick) it should change year to prev', () => {

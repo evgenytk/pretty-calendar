@@ -143,10 +143,9 @@ class Grid {
     // Set the first day of the month
     date = new Date(date.getTime());
     date = new Date(date.setDate(1));
+    date = new Date(date.setHours(0, 0, 0, 0));
 
     const dates: Date[] = [];
-    const months: string[] = this.getMonthNames();
-    const title: string = `${months[date.getMonth()]}, ${date.getFullYear()}`;
 
     let iDate = date;
 
