@@ -22,8 +22,10 @@ class MonthState extends State {
     newScope = resetMonth(newScope);
     newScope = addMonths(newScope, -1);
 
-    this.calendar.changeScope(newScope);
-    this.calendar.publisher.notify('prev');
+    if(this.calendar.monthIsAllowed(newScope)) {
+      this.calendar.changeScope(newScope);
+      this.calendar.publisher.notify('prev');
+    }
   }
 
   /**
@@ -34,8 +36,10 @@ class MonthState extends State {
     newScope = resetMonth(newScope);
     newScope = addMonths(newScope, 1);
 
-    this.calendar.changeScope(newScope);
-    this.calendar.publisher.notify('next');
+    if(this.calendar.monthIsAllowed(newScope)) {
+      this.calendar.changeScope(newScope);
+      this.calendar.publisher.notify('next');
+    }
   }
 
   /**

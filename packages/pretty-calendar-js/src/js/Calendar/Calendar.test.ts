@@ -492,7 +492,7 @@ describe('Mouse clicks', () => {
     expect(calendar.state instanceof YearState).toBe(true);
   });
 
-  it('(DecadeState.handleCenterClick) it should NOT show the months grid based on selected year', () => {
+  it('(DecadeState.handleCenterClick) it should NOT show the months grid based on selected year (minDate & maxDate limiters)', () => {
     document.body.innerHTML = `<div id="root"></div>`;
     const calendar = new Calendar('#root', {
       selectedDate: date,
@@ -528,25 +528,51 @@ describe('Events', () => {
     const callback = jest.fn();
     calendar.on('prev', callback);
 
+    // MonthState
     calendar.prev();
     document.querySelector('.pc-pointer-left').click();
     expect(callback).toBeCalledTimes(2);
+
+    // YearState
+    document.querySelector('.pc-title').click();
+    calendar.prev();
+    document.querySelector('.pc-pointer-left').click();
+    expect(callback).toBeCalledTimes(4);
+
+    // DecadeState
+    document.querySelector('.pc-title').click();
+    calendar.prev();
+    document.querySelector('.pc-pointer-left').click();
+    expect(callback).toBeCalledTimes(6);
   });
 
-  // it('it should NOT listen the "prev" event (minDate limiter)', () => {
-  //   document.body.innerHTML = `<div id="root"></div>`;
-  //   const calendar = new Calendar('#root', {
-  //     selectedDate: date,
-  //     minDate: new Date('2019-02-01')
-  //   });
+  it('it should NOT listen the "prev" event (minDate limiter)', () => {
+    document.body.innerHTML = `<div id="root"></div>`;
+    const calendar = new Calendar('#root', {
+      selectedDate: date,
+      minDate: new Date('2019-02-01')
+    });
 
-  //   const callback = jest.fn();
-  //   calendar.on('prev', callback);
+    const callback = jest.fn();
+    calendar.on('prev', callback);
 
-  //   calendar.prev();
-  //   document.querySelector('.pc-pointer-left').click();
-  //   expect(callback).toBeCalledTimes(0);
-  // });
+    // MonthState
+    calendar.prev();
+    document.querySelector('.pc-pointer-left').click();
+    expect(callback).toBeCalledTimes(0);
+
+    // YearState
+    document.querySelector('.pc-title').click();
+    calendar.prev();
+    document.querySelector('.pc-pointer-left').click();
+    expect(callback).toBeCalledTimes(0);
+
+    // DecadeState
+    document.querySelector('.pc-title').click();
+    calendar.prev();
+    document.querySelector('.pc-pointer-left').click();
+    expect(callback).toBeCalledTimes(0);
+  });
 
   it('it should listen the "next" event', () => {
     document.body.innerHTML = `<div id="root"></div>`;
@@ -557,25 +583,51 @@ describe('Events', () => {
     const callback = jest.fn();
     calendar.on('next', callback);
 
+    // MonthState
     calendar.next();
     document.querySelector('.pc-pointer-right').click();
     expect(callback).toBeCalledTimes(2);
+
+    // YearState
+    document.querySelector('.pc-title').click();
+    calendar.next();
+    document.querySelector('.pc-pointer-right').click();
+    expect(callback).toBeCalledTimes(4);
+
+    // DecadeState
+    document.querySelector('.pc-title').click();
+    calendar.next();
+    document.querySelector('.pc-pointer-right').click();
+    expect(callback).toBeCalledTimes(6);
   });
 
-  // it('it should NOT listen the "next" event (maxDate limiter)', () => {
-  //   document.body.innerHTML = `<div id="root"></div>`;
-  //   const calendar = new Calendar('#root', {
-  //     selectedDate: date,
-  //     maxDate: new Date('2019-02-25')
-  //   });
+  it('it should NOT listen the "next" event (maxDate limiter)', () => {
+    document.body.innerHTML = `<div id="root"></div>`;
+    const calendar = new Calendar('#root', {
+      selectedDate: date,
+      maxDate: new Date('2019-02-25')
+    });
 
-  //   const callback = jest.fn();
-  //   calendar.on('next', callback);
+    const callback = jest.fn();
+    calendar.on('next', callback);
 
-  //   calendar.next();
-  //   document.querySelector('.pc-pointer-right').click();
-  //   expect(callback).toBeCalledTimes(0);
-  // });
+    // MonthState
+    calendar.next();
+    document.querySelector('.pc-pointer-right').click();
+    expect(callback).toBeCalledTimes(0);
+
+    // YearState
+    document.querySelector('.pc-title').click();
+    calendar.next();
+    document.querySelector('.pc-pointer-right').click();
+    expect(callback).toBeCalledTimes(0);
+
+    // DecadeState
+    document.querySelector('.pc-title').click();
+    calendar.next();
+    document.querySelector('.pc-pointer-right').click();
+    expect(callback).toBeCalledTimes(0);
+  });
 
   it('it should listen the "state-changed" event', () => {
     document.body.innerHTML = `<div id="root"></div>`;
@@ -604,6 +656,28 @@ describe('Events', () => {
     expect(callback.mock.results[5].value).toBe('DecadeState');
     expect(callback.mock.results[6].value).toBe('YearState');
     expect(callback.mock.results[7].value).toBe('MonthState');
+  });
+
+  it('it should NOT listen the "state-changed" event (minDate & maxDate limiters)', () => {
+    document.body.innerHTML = `<div id="root"></div>`;
+    const calendar = new Calendar('#root', {
+      selectedDate: date,
+      minDate: new Date('2019-02-01 00:00:00'),
+      maxDate: new Date('2019-03-01 23:59:59')
+    });
+
+    const callback = jest.fn(state => state);
+    calendar.on('state-changed', callback);
+
+    document.querySelector('.pc-title').click();
+    document.querySelectorAll('button.pc-cell')[0].click();
+    document.querySelectorAll('button.pc-cell')[3].click();
+    document.querySelectorAll('button.pc-cell')[2].click();
+    document.querySelector('.pc-title').click();
+    document.querySelector('.pc-title').click();
+    document.querySelectorAll('button.pc-cell')[2].click();
+    document.querySelectorAll('button.pc-cell')[9].click();
+    expect(callback).toBeCalledTimes(5);
   });
 
   it('it should listen the "date-changed" event', () => {
@@ -664,11 +738,29 @@ describe('Events', () => {
     const callback = jest.fn(date => date);
     calendar.on('scope-changed', callback);
 
+    // MonthState
     calendar.changeScope(new Date('2019-01-01'));
     calendar.prev();
-    calendar.prev();
+    calendar.next();
     document.querySelector('.pc-pointer-left').click();
     document.querySelector('.pc-pointer-right').click();
+
+    // YearState
+    calendar.changeState(new YearState(calendar));
+    calendar.changeScope(new Date('2018-01-01'));
+    calendar.prev();
+    calendar.next();
+    document.querySelector('.pc-pointer-left').click();
+    document.querySelector('.pc-pointer-right').click();
+
+    // DecadeState
+    calendar.changeState(new DecadeState(calendar));
+    calendar.changeScope(new Date('2018-01-01'));
+    calendar.prev();
+    calendar.next();
+    document.querySelector('.pc-pointer-left').click();
+    document.querySelector('.pc-pointer-right').click();
+
     expect(callback).toBeCalledTimes(0);
   });
 

@@ -25,8 +25,10 @@ class YearState extends State {
     newScope = resetYear(newScope);
     newScope = addYears(newScope, -1);
 
-    this.calendar.changeScope(newScope);
-    this.calendar.publisher.notify('prev');
+    if(this.calendar.monthIsAllowed(newScope)) {
+      this.calendar.changeScope(newScope);
+      this.calendar.publisher.notify('prev');
+    }
   }
 
   /**
@@ -39,8 +41,10 @@ class YearState extends State {
     newScope = resetYear(newScope);
     newScope = addYears(newScope, 1);
 
-    this.calendar.changeScope(newScope);
-    this.calendar.publisher.notify('next');
+    if(this.calendar.monthIsAllowed(newScope)) {
+      this.calendar.changeScope(newScope);
+      this.calendar.publisher.notify('next');
+    }
   }
 
   /**
