@@ -2,6 +2,7 @@ import State from './State';
 import YearState from './YearState';
 import Calendar from '../Calendar/Calendar';
 import { v, IVDOMNode } from '../VDOM';
+import { resetMonth, addMonths, belongsToMonth, diffInDays, isToday } from '@pretty-calendar/core';
 
 class MonthState extends State {
   /**
@@ -18,9 +19,8 @@ class MonthState extends State {
    */
   public handleLeftClick = (): void => {
     let newScope = new Date(this.calendar.scope);
-    // TODO: create reset date method in this class.
-    newScope = new Date(newScope.setDate(1));
-    newScope = new Date(newScope.setMonth(newScope.getMonth() - 1));
+    newScope = resetMonth(newScope);
+    newScope = addMonths(newScope, -1);
 
     this.calendar.changeScope(newScope);
     this.calendar.publisher.notify('prev');
@@ -31,9 +31,8 @@ class MonthState extends State {
    */
   public handleRightClick = (): void => {
     let newScope = new Date(this.calendar.scope);
-    // TODO: create reset date method in this class.
-    newScope = new Date(newScope.setDate(1));
-    newScope = new Date(newScope.setMonth(newScope.getMonth() + 1));
+    newScope = resetMonth(newScope);
+    newScope = addMonths(newScope, 1);
 
     this.calendar.changeScope(newScope);
     this.calendar.publisher.notify('next');
@@ -81,15 +80,15 @@ class MonthState extends State {
             const { selectedDate } = this.calendar.options;
             let className = 'pc-cell';
 
-            if (!date.dayInMonth(scope) || !dateIsAllowed(date)) {
+            if (!belongsToMonth(date, scope) || !dateIsAllowed(date)) {
               className += ' light';
             }
 
-            if (date.isToday()) {
+            if (isToday(date)) {
               className += ' active';
             }
 
-            if (selectedDate && selectedDate.diffInDays(date) === 0) {
+            if (selectedDate && diffInDays(selectedDate, date) === 0) {
               className += ' selected';
             }
             return v('button', {className, disabled: !dateIsAllowed(date), onClick: () => this.handleDateClick(date.getTime())}, date.getDate())

@@ -3,6 +3,7 @@ import MonthState from './MonthState';
 import DecadeState from './DecadeState';
 import Calendar from '../Calendar/Calendar';
 import { v, IVDOMNode } from '../VDOM';
+import { resetMonth, resetYear, addYears } from '@pretty-calendar/core';
 
 class YearState extends State {
   /**
@@ -19,10 +20,10 @@ class YearState extends State {
    */
   public handleLeftClick = (): void => {
     let newScope = new Date(this.calendar.scope);
-    // TODO: create reset date method in this class.
-    newScope = new Date(newScope.setDate(1));
-    newScope = new Date(newScope.setMonth(0));
-    newScope = new Date(newScope.setFullYear(newScope.getFullYear() - 1));
+
+    newScope = resetMonth(newScope);
+    newScope = resetYear(newScope);
+    newScope = addYears(newScope, -1);
 
     this.calendar.changeScope(newScope);
     this.calendar.publisher.notify('prev');
@@ -33,10 +34,10 @@ class YearState extends State {
    */
   public handleRightClick = (): void => {
     let newScope = new Date(this.calendar.scope);
-    // TODO: create reset date method in this class.
-    newScope = new Date(newScope.setDate(1));
-    newScope = new Date(newScope.setMonth(0));
-    newScope = new Date(newScope.setFullYear(newScope.getFullYear() + 1));
+
+    newScope = resetMonth(newScope);
+    newScope = resetYear(newScope);
+    newScope = addYears(newScope, 1);
 
     this.calendar.changeScope(newScope);
     this.calendar.publisher.notify('next');
