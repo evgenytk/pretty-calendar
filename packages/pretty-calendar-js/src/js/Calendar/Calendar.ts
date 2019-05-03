@@ -1,4 +1,3 @@
-import '../Extensions/Date';
 import { Grid, WeekdaysEnum } from '@pretty-calendar/core';
 import State from '../State/State';
 import MonthState from '../State/MonthState';
