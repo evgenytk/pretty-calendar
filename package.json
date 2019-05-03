@@ -17,9 +17,8 @@
   "scripts": {
     "build": "lerna run build",
     "test": "lerna run test",
-    "format": "lerna run format",
     "lint": "lerna run lint",
-    "prepare": "npm run build && npm run format",
+    "prepare": "npm run build",
     "prepublishOnly": "npm test && npm run lint",
     "preversion": "npm test && npm run lint"
   }
