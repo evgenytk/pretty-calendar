@@ -956,8 +956,7 @@ exports[`API it should change state 1`] = `
             2
           </button>
           <button
-            class="pc-cell light"
-            disabled=""
+            class="pc-cell"
           >
             3
           </button>
@@ -1468,8 +1467,7 @@ exports[`API it should change state 4`] = `
             2
           </button>
           <button
-            class="pc-cell light"
-            disabled=""
+            class="pc-cell"
           >
             3
           </button>

@@ -4,6 +4,9 @@ import YearState from '../State/YearState';
 import DecadeState from '../State/DecadeState';
 import Publisher from '../Publisher/Publisher';
 
+const timezone_mock = require('timezone-mock');
+      timezone_mock.register('UTC');
+
 const date = new Date('2019-02-05');
 const eventFire = (el: any, etype: any) => {
   if (el.fireEvent) {
@@ -54,8 +57,8 @@ describe('Initialization', () => {
     document.body.innerHTML = `<div id="root"></div>`;
     const calendar = new Calendar('#root', {
       minDate: '2019-01-25 00:00:00',
-      maxDate: '28 February 2019 00:00:00',
-      selectedDate: 1549746000000
+      maxDate: '2019-02-28 00:00:00',
+      selectedDate: 1549756800000
     });
 
     expect(calendar.options.minDate.getTime()).toEqual(new Date('2019-01-25 00:00:00').getTime());
@@ -341,7 +344,7 @@ describe('Mouse clicks', () => {
     expect(calendar.scope.getTime()).toEqual(oldScope.getTime());
   });
 
-  it('(YearState.handleRightClick) it should change month to next', () => {
+  it('(YearState.handleRightClick) it should change year to next', () => {
     document.body.innerHTML = `<div id="root"></div>`;
     const calendar = new Calendar('#root', {
       selectedDate: date,
@@ -389,7 +392,7 @@ describe('Mouse clicks', () => {
     document.querySelector('.pc-title').click();
     document.querySelectorAll('button.pc-cell')[2].click();
     expect(calendar.options.selectedDate && calendar.options.selectedDate.getTime()).toEqual(date.getTime());
-    expect(calendar.scope.getTime() + 10800 * 1000).toEqual(new Date('2019-03-01').getTime());
+    expect(calendar.scope.getTime()).toEqual(new Date('2019-03-01').getTime());
     expect(calendar.state instanceof MonthState).toBe(true);
   });
 
@@ -413,7 +416,7 @@ describe('Mouse clicks', () => {
     expect(calendar.state instanceof MonthState).toBe(false);
 
     document.querySelectorAll('button.pc-cell')[2].click();
-    expect(calendar.scope.getTime() + 10800 * 1000).toEqual(new Date('2019-03-01').getTime());
+    expect(calendar.scope.getTime()).toEqual(new Date('2019-03-01').getTime());
     expect(calendar.state instanceof MonthState).toBe(true);
   });
 
@@ -485,7 +488,7 @@ describe('Mouse clicks', () => {
     document.querySelector('.pc-title').click();
     document.querySelectorAll('button.pc-cell')[0].click();
     expect(calendar.options.selectedDate && calendar.options.selectedDate.getTime()).toEqual(date.getTime());
-    expect(calendar.scope.getTime() + 10800 * 1000).toEqual(new Date('2010-01-01').getTime());
+    expect(calendar.scope.getTime()).toEqual(new Date('2010-01-01').getTime());
     expect(calendar.state instanceof YearState).toBe(true);
   });
 
@@ -510,7 +513,7 @@ describe('Mouse clicks', () => {
     expect(calendar.state instanceof YearState).toBe(false);
 
     document.querySelectorAll('button.pc-cell')[9].click();
-    expect(calendar.scope.getTime() + 10800 * 1000).toEqual(new Date('2019-01-01').getTime());
+    expect(calendar.scope.getTime()).toEqual(new Date('2019-01-01').getTime());
     expect(calendar.state instanceof YearState).toBe(true);
   });
 });
