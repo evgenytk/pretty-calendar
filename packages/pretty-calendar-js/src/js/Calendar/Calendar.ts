@@ -91,6 +91,7 @@ class Calendar {
       ...options,
     };
 
+    this.parseDates();
     this.checkOptions();
 
     this.grid = new Grid(this.options.intl);
@@ -366,6 +367,25 @@ class Calendar {
     }
 
     return new states[name](this);
+  }
+
+  /**
+   * Parse user dates.
+   */
+  private parseDates(): void {
+    const { selectedDate, minDate, maxDate } = this.options;
+
+    if(selectedDate && !(selectedDate instanceof Date)) {
+      this.options.selectedDate = new Date(selectedDate);
+    }
+
+    if(minDate && !(minDate instanceof Date)) {
+      this.options.minDate = new Date(minDate);
+    }
+
+    if(maxDate && !(maxDate instanceof Date)) {
+      this.options.maxDate = new Date(maxDate);
+    }
   }
 
   /**
